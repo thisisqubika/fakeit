@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Fakeit</string>
+    <string name="full_name">Full name:</string>
+    <string name="full_middle_name">Full middle name:</string>
+    <string name="first_name">First name:</string>
+    <string name="last_name">Last name:</string>
+    <string name="user_name">User name:</string>
+    <string name="title">Title:</string>
 </resources>

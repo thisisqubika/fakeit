@@ -8,4 +8,34 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Base"/>
+
+    <style name="Base.ContainerWithoutPadding">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Base.ContainerTopBottomPadded" parent="Base.ContainerWithoutPadding">
+        <item name="android:paddingTop">@dimen/medium_padding</item>
+        <item name="android:paddingBottom">@dimen/medium_padding</item>
+    </style>
+
+    <style name="Base.ContainerFullPadded" parent="Base.ContainerTopBottomPadded">
+        <item name="android:paddingRight">@dimen/medium_padding</item>
+        <item name="android:paddingLeft">@dimen/medium_padding</item>
+    </style>
+
+    <style name="Base.ContainerFullWidth">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Base.Wrapper">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Base.Wrapper.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

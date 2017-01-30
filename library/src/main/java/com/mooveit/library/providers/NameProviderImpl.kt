@@ -12,13 +12,14 @@ class NameProviderImpl(context: Context) : NameProvider {
     private val prefixes: List<String> = Arrays.asList(*context.resources.getStringArray(R.array.prefixes))
     private val titles: List<String> = Arrays.asList(*context.resources.getStringArray(R.array.title))
     private val nameDividers: List<String> = Arrays.asList(*context.resources.getStringArray(R.array.name_dividers))
+    private val random = Random()
 
     override fun firstName(): String {
-        return firstNames[Random().nextInt(firstNames.size)]
+        return firstNames[random.nextInt(firstNames.size)]
     }
 
     override fun lastName(): String {
-        return lastNames[Random().nextInt(lastNames.size)]
+        return lastNames[random.nextInt(lastNames.size)]
     }
 
     override fun fullName(): String {
@@ -30,14 +31,14 @@ class NameProviderImpl(context: Context) : NameProvider {
     }
 
     override fun userName(): String {
-        return firstName().toLowerCase() + nameDividers[Random().nextInt(nameDividers.size)] + lastName().toLowerCase()
+        return firstName().toLowerCase() + nameDividers[random.nextInt(nameDividers.size)] + lastName().toLowerCase()
     }
 
     override fun prefix(): String {
-        return prefixes[Random().nextInt(prefixes.size)]
+        return prefixes[random.nextInt(prefixes.size)]
     }
 
     override fun title(): String {
-        return titles[Random().nextInt(titles.size)]
+        return titles[random.nextInt(titles.size)]
     }
 }

@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Fakeit.init(this);
+        Fakeit.initWithLocale(this, "es");
 
         TextView fullName = (TextView) findViewById(R.id.full_name);
         TextView fullMiddleName = (TextView) findViewById(R.id.full_middle_name);

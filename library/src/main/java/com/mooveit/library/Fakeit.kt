@@ -3,13 +3,16 @@ package com.mooveit.library
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import com.mooveit.library.providers.BusinessProviderImpl
 import com.mooveit.library.providers.NameProviderImpl
+import com.mooveit.library.providers.definition.BusinessProvider
 import com.mooveit.library.providers.definition.NameProvider
 import java.util.*
 
 class Fakeit private constructor(context: Context, locale: Locale) {
 
     val nameProvider: NameProvider
+    var businessProvider: BusinessProvider
 
     init {
         var resources: Resources = context.resources
@@ -18,6 +21,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         resources.updateConfiguration(configuration, null)
 
         this.nameProvider = NameProviderImpl(resources)
+        this.businessProvider = BusinessProviderImpl(resources)
     }
 
     companion object Companion {
@@ -58,6 +62,15 @@ class Fakeit private constructor(context: Context, locale: Locale) {
                 throw IllegalArgumentException("Fake it must be initialized before start")
             } else {
                 return Fakeit.fakeit!!.nameProvider
+            }
+        }
+
+        @JvmStatic
+        fun business(): BusinessProvider {
+            if (fakeit == null) {
+                throw IllegalArgumentException("Fake it must be initialized before start")
+            } else {
+                return Fakeit.fakeit!!.businessProvider
             }
         }
     }

@@ -2,6 +2,7 @@ package com.mooveit.fakeit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.mooveit.library.Fakeit;
@@ -15,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
 
         Fakeit.initWithLocale(this, "es");
 
+        setupNameSample();
+        setupBusinessSample();
+    }
+
+    private void setupNameSample() {
         TextView fullName = (TextView) findViewById(R.id.full_name);
         TextView fullMiddleName = (TextView) findViewById(R.id.full_middle_name);
         TextView firstName = (TextView) findViewById(R.id.first_name);
@@ -28,5 +34,20 @@ public class MainActivity extends AppCompatActivity {
         lastName.setText(Fakeit.name().lastName());
         title.setText(Fakeit.name().title());
         userName.setText(Fakeit.name().userName());
+    }
+
+    private void setupBusinessSample() {
+        TextView businessName = (TextView) findViewById(R.id.business_name);
+        TextView businessType = (TextView) findViewById(R.id.business_type);
+        TextView businessSubType = (TextView) findViewById(R.id.business_subtype);
+
+        businessName.setText(Fakeit.business().name());
+        businessType.setText(Fakeit.business().type());
+        businessSubType.setText(Fakeit.business().subType());
+    }
+
+    public void refresh(View view) {
+        setupNameSample();
+        setupBusinessSample();
     }
 }

@@ -81,4 +81,60 @@
         android:layout_below="@+id/title"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_toRightOf="@+id/user_name_label"/>
+
+    <View
+        android:id="@+id/separator_1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/user_name_label"
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginBottom="@dimen/separator_margin"
+        android:background="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/business_name_label"
+        style="@style/Base.Wrapper.Bold"
+        android:layout_below="@+id/separator_1"
+        android:text="@string/business_name"/>
+
+    <TextView
+        android:id="@+id/business_name"
+        style="@style/Base.Wrapper"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@+id/business_name_label"
+        android:layout_below="@+id/separator_1"/>
+
+    <TextView
+        android:id="@+id/business_type_label"
+        style="@style/Base.Wrapper.Bold"
+        android:layout_below="@+id/business_name_label"
+        android:text="@string/business_type"/>
+
+    <TextView
+        android:id="@+id/business_type"
+        style="@style/Base.Wrapper"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@+id/business_type_label"
+        android:layout_below="@+id/business_name_label"/>
+
+    <TextView
+        android:id="@+id/business_subtype_label"
+        style="@style/Base.Wrapper.Bold"
+        android:layout_below="@+id/business_type"
+        android:text="@string/business_subtype"/>
+
+    <TextView
+        android:id="@+id/business_subtype"
+        style="@style/Base.Wrapper"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@+id/business_subtype_label"
+        android:layout_below="@+id/business_type"/>
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="refresh"
+        style="@style/Base.Wrapper"
+        android:text="@string/refresh"/>
 </RelativeLayout>

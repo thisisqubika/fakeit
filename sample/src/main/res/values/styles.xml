@@ -35,7 +35,19 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="Base.Wrapper.MarginLeft">
+        <item name="android:layout_marginLeft">@dimen/activity_vertical_margin</item>
+    </style>
+
     <style name="Base.Wrapper.Bold">
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Base.Separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/separator_height</item>
+        <item name="android:layout_marginTop">@dimen/separator_margin</item>
+        <item name="android:layout_marginBottom">@dimen/separator_margin</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 </resources>

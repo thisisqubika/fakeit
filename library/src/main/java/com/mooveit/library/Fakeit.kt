@@ -3,16 +3,20 @@ package com.mooveit.library
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import com.mooveit.library.providers.AddressProviderImpl
 import com.mooveit.library.providers.BusinessProviderImpl
 import com.mooveit.library.providers.NameProviderImpl
+import com.mooveit.library.providers.definition.AddressProvider
 import com.mooveit.library.providers.definition.BusinessProvider
 import com.mooveit.library.providers.definition.NameProvider
+import com.mooveit.library.providers.definition.Provider
 import java.util.*
 
 class Fakeit private constructor(context: Context, locale: Locale) {
 
     val nameProvider: NameProvider
     var businessProvider: BusinessProvider
+    val addressProvider: AddressProvider
 
     init {
         var resources: Resources = context.resources
@@ -22,6 +26,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         this.nameProvider = NameProviderImpl(resources)
         this.businessProvider = BusinessProviderImpl(resources)
+        this.addressProvider = AddressProviderImpl(resources)
     }
 
     companion object Companion {
@@ -58,19 +63,24 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun name(): NameProvider {
-            if (fakeit == null) {
-                throw IllegalArgumentException("Fake it must be initialized before start")
-            } else {
-                return Fakeit.fakeit!!.nameProvider
-            }
+            return checkInitialization({ Fakeit.fakeit!!.nameProvider }) as NameProvider
         }
 
         @JvmStatic
         fun business(): BusinessProvider {
+            return checkInitialization({ Fakeit.fakeit!!.businessProvider }) as BusinessProvider
+        }
+
+        @JvmStatic
+        fun address(): AddressProvider {
+            return checkInitialization({ Fakeit.fakeit!!.addressProvider }) as AddressProvider
+        }
+
+        fun checkInitialization(method: () -> Provider): Provider {
             if (fakeit == null) {
                 throw IllegalArgumentException("Fake it must be initialized before start")
             } else {
-                return Fakeit.fakeit!!.businessProvider
+                return method()
             }
         }
     }

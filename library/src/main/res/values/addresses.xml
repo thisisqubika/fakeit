@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cities">
+        <item>Birmingham</item>
+        <item>Anchorage</item>
+        <item>Phoenix</item>
+        <item>Conway</item>
+        <item>Bakersfield</item>
+        <item>Aguilar</item>
+        <item>Amston</item>
+        <item>Bethany Beach</item>
+        <item>Washington</item>
+        <item>Jacksonville</item>
+        <item>Calhoun</item>
+        <item>Captain Cook</item>
+        <item>Boise</item>
+        <item>Lake Zurich</item>
+        <item>Boonville</item>
+        <item>Ackley</item>
+        <item>Altoona</item>
+        <item>Grolier Books</item>
+        <item>New Orleans</item>
+        <item>Blanchard Twp</item>
+        <item>Absarokee</item>
+        <item>Ainsworth</item>
+        <item>Lathrop Wells</item>
+        <item>Langdon</item>
+        <item>Byram Township</item>
+        <item>Canones</item>
+        <item>Manhattan</item>
+        <item>Winston-salem</item>
+        <item>Bremen</item>
+        <item>Akron</item>
+        <item>Achille</item>
+        <item>Beaverton</item>
+        <item>Calverton</item>
+        <item>Springfield</item>
+        <item>Flint</item>
+        <item>Saint Paul</item>
+        <item>Abbeville</item>
+        <item>Armstrong</item>
+        <item>Pittsburgh</item>
+        <item>Adamsville</item>
+        <item>Barnwell</item>
+        <item>Rowena</item>
+        <item>Nashville</item>
+        <item>Dallas</item>
+        <item>Altamont</item>
+        <item>West Arlingtn</item>
+        <item>Abingdon</item>
+        <item>Amboy</item>
+        <item>Clarksburg</item>
+        <item>Silver Lake</item>
+        <item>Afton</item>
+    </string-array>
+
+    <string-array name="street_addresses">
+        <item>London Drive</item>
+        <item>A Street</item>
+        <item>West Earll Drive</item>
+        <item>Commerce Street</item>
+        <item>Schirra Court</item>
+        <item>East Moncrieff Place, Unit 200</item>
+        <item>Brainard Rd</item>
+        <item>Boulden Blvd</item>
+        <item>Jessie Street</item>
+        <item>Mike Padgett Hwy</item>
+        <item>Kaihikapu St.</item>
+        <item>S. 13th Street</item>
+        <item>Regency Drive</item>
+        <item>North Fares Ave.</item>
+        <item>Sixth Street Southwest</item>
+        <item>W. Pawnee</item>
+        <item>Business Park Drive</item>
+        <item>Distributors Row</item>
+        <item>West Commercial Street</item>
+        <item>East Monument Street</item>
+        <item>Monad Road</item>
+        <item>South 90th Street</item>
+        <item>Pepsi Road</item>
+        <item>E Greg Street Ste 107</item>
+        <item>Nami Lane Unit #5</item>
+        <item>Menaul Blvd N.E.</item>
+        <item>Church Street</item>
+        <item>North 23rd Street</item>
+        <item>Third Ave North</item>
+        <item>East Tallmadge Ave</item>
+        <item>N.E. 44th Street</item>
+        <item>West Seventh Place</item>
+        <item>East Monument Street</item>
+        <item>Harrison Ave</item>
+        <item>Haggerty Rd.</item>
+        <item>Setzler Parkway North</item>
+        <item>Business Park Drive</item>
+        <item>East 13th Street</item>
+        <item>South Warfield Street</item>
+        <item>Niantic Ave</item>
+        <item>East Daniel Morgan Ave.</item>
+        <item>6th Street</item>
+        <item>Anderson Street</item>
+        <item>Cambridge Road</item>
+        <item>South 900 West</item>
+        <item>Miller Lane</item>
+        <item>Salem Ave Southwest</item>
+        <item>Forbes Blvd</item>
+        <item>Young Street</item>
+        <item>American Blvd</item>
+        <item>East Central Avenue</item>
+    </string-array>
+
+    <string-array name="building_numbers">
+        <item>1040</item>
+        <item>5501</item>
+        <item>3350</item>
+        <item>425</item>
+        <item>6100</item>
+        <item>14603</item>
+        <item>227</item>
+        <item>43</item>
+        <item>1563</item>
+        <item>3222</item>
+        <item>2915</item>
+        <item>801</item>
+        <item>900</item>
+        <item>2110</item>
+        <item>3336</item>
+        <item>3609</item>
+        <item>3880</item>
+        <item>1205</item>
+        <item>29</item>
+        <item>3701</item>
+        <item>1465</item>
+        <item>4360</item>
+        <item>80</item>
+        <item>150</item>
+        <item>3</item>
+        <item>281</item>
+        <item>229</item>
+        <item>1129</item>
+        <item>2805</item>
+        <item>975</item>
+        <item>103</item>
+        <item>2358</item>
+        <item>3701</item>
+        <item>345</item>
+        <item>8350</item>
+        <item>7601</item>
+        <item>105</item>
+        <item>1221</item>
+        <item>1550</item>
+        <item>245</item>
+        <item>200</item>
+        <item>3100</item>
+        <item>536</item>
+        <item>4601</item>
+        <item>2841</item>
+        <item>58</item>
+        <item>1125</item>
+        <item>4800</item>
+        <item>1010</item>
+        <item>1869</item>
+        <item>4401</item>
+    </string-array>
+
+    <string-array name="zip_codes">
+        <item>35211</item>
+        <item>99505</item>
+        <item>85920</item>
+        <item>72032</item>
+        <item>93381</item>
+        <item>81020</item>
+        <item>06231</item>
+        <item>19930</item>
+        <item>20003</item>
+        <item>32267</item>
+        <item>30701</item>
+        <item>96704</item>
+        <item>83730</item>
+        <item>60049</item>
+        <item>47601</item>
+        <item>50601</item>
+        <item>66710</item>
+        <item>40386</item>
+        <item>70140</item>
+        <item>04406</item>
+        <item>59001</item>
+        <item>69210</item>
+        <item>89020</item>
+        <item>03602</item>
+        <item>07821</item>
+        <item>87516</item>
+        <item>10048</item>
+        <item>27151</item>
+        <item>58319</item>
+        <item>44301</item>
+        <item>74720</item>
+        <item>97078</item>
+        <item>20705</item>
+        <item>01133</item>
+        <item>48559</item>
+        <item>55161</item>
+        <item>38601</item>
+        <item>65230</item>
+        <item>15263</item>
+        <item>02801</item>
+        <item>29812</item>
+        <item>57056</item>
+        <item>37237</item>
+        <item>75388</item>
+        <item>84001</item>
+        <item>05250</item>
+        <item>24212</item>
+        <item>98601</item>
+        <item>26461</item>
+        <item>53199</item>
+        <item>83110</item>
+    </string-array>
+
+    <string-array name="states">
+        <item>Alabama</item>
+        <item>Alaska</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>Delaware</item>
+        <item>District of Columbia</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Hawaii</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maine</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Maryland</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item>
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Vermont</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>West Virginia</item>
+        <item>Wisconsin</item>
+        <item>Wyoming</item>
+    </string-array>
+
+    <string-array name="states_abbreviations">
+        <item>AL</item>
+        <item>AK</item>
+        <item>AZ</item>
+        <item>AR</item>
+        <item>CA</item>
+        <item>CO</item>
+        <item>CT</item>
+        <item>DE</item>
+        <item>DC</item>
+        <item>FL</item>
+        <item>GA</item>
+        <item>HI</item>
+        <item>ID</item>
+        <item>IL</item>
+        <item>IN</item>
+        <item>IA</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LA</item>
+        <item>ME</item>
+        <item>MT</item>
+        <item>NE</item>
+        <item>NV</item>
+        <item>NH</item>
+        <item>NJ</item>
+        <item>NM</item>
+        <item>NY</item>
+        <item>NC</item>
+        <item>ND</item>
+        <item>OH</item>
+        <item>OK</item>
+        <item>OR</item>
+        <item>MD</item>
+        <item>MA</item>
+        <item>MI</item>
+        <item>MN</item>
+        <item>MS</item>
+        <item>MO</item>
+        <item>PA</item>
+        <item>RI</item>
+        <item>SC</item>
+        <item>SD</item>
+        <item>TN</item>
+        <item>TX</item>
+        <item>UT</item>
+        <item>VT</item>
+        <item>VA</item>
+        <item>WA</item>
+        <item>WV</item>
+        <item>WI</item>
+        <item>WY</item>
+    </string-array>
+
+    <string-array name="latitudes">
+        <item>33.46</item>
+        <item>61.31</item>
+        <item>33.45</item>
+        <item>35.08</item>
+        <item>35.37</item>
+        <item>37.40</item>
+        <item>41.62</item>
+        <item>38.53</item>
+        <item>38.89</item>
+        <item>30.38</item>
+        <item>34.49</item>
+        <item>19.50</item>
+        <item>43.61</item>
+        <item>42.17</item>
+        <item>38.04</item>
+        <item>42.55</item>
+        <item>37.52</item>
+        <item>38.02</item>
+        <item>29.95</item>
+        <item>45.18</item>
+        <item>45.50</item>
+        <item>42.54</item>
+        <item>36.53</item>
+        <item>43.15</item>
+        <item>40.98</item>
+        <item>36.18</item>
+        <item>40.71</item>
+        <item>36.11</item>
+        <item>47.72</item>
+        <item>41.08</item>
+        <item>33.83</item>
+        <item>45.48</item>
+        <item>39.03</item>
+        <item>42.10</item>
+        <item>43.02</item>
+        <item>45.01</item>
+        <item>34.50</item>
+        <item>39.26</item>
+        <item>40.44</item>
+        <item>41.51</item>
+        <item>33.24</item>
+        <item>43.52</item>
+        <item>36.16</item>
+        <item>32.78</item>
+        <item>40.43</item>
+        <item>43.06</item>
+        <item>36.70</item>
+        <item>45.93</item>
+        <item>39.29</item>
+        <item>42.55</item>
+        <item>42.72</item>
+    </string-array>
+
+    <string-array name="longitudes">
+        <item>-86.81</item>
+        <item>-149.65</item>
+        <item>-112.06</item>
+        <item>-92.45</item>
+        <item>-119.01</item>
+        <item>-104.65</item>
+        <item>-72.37</item>
+        <item>-75.06</item>
+        <item>-77.03</item>
+        <item>-81.41</item>
+        <item>-84.94</item>
+        <item>-155.90</item>
+        <item>-116.20</item>
+        <item>-87.99</item>
+        <item>-87.27</item>
+        <item>-93.05</item>
+        <item>-95.66</item>
+        <item>-84.74</item>
+        <item>-90.07</item>
+        <item>-69.45</item>
+        <item>-109.56</item>
+        <item>-99.85</item>
+        <item>-116.47</item>
+        <item>-72.36</item>
+        <item>-74.74</item>
+        <item>-106.43</item>
+        <item>-74.01</item>
+        <item>-80.24</item>
+        <item>-99.36</item>
+        <item>-81.52</item>
+        <item>-96.38</item>
+        <item>-122.80</item>
+        <item>-76.92</item>
+        <item>-72.59</item>
+        <item>-83.68</item>
+        <item>-93.15</item>
+        <item>-89.50</item>
+        <item>-92.70</item>
+        <item>-79.98</item>
+        <item>-71.16</item>
+        <item>-81.36</item>
+        <item>-96.55</item>
+        <item>-86.78</item>
+        <item>-96.80</item>
+        <item>-110.25</item>
+        <item>-73.15</item>
+        <item>-81.96</item>
+        <item>-122.44</item>
+        <item>-80.39</item>
+        <item>-88.17</item>
+        <item>-110.92</item>
+    </string-array>
+</resources>

@@ -6,8 +6,19 @@
     <string name="last_name">Last name:</string>
     <string name="user_name">User name:</string>
     <string name="title">Title:</string>
+
     <string name="business_name">Business name:</string>
     <string name="business_type">Business type:</string>
     <string name="business_subtype">Business sub-type:</string>
+
+    <string name="address_city">City:</string>
+    <string name="address_street">Street address:</string>
+    <string name="address_building_number">Building number:</string>
+    <string name="address_zip_code">Zip code:</string>
+    <string name="address_state">State:</string>
+    <string name="address_state_abbreviation">State abbreviation:</string>
+    <string name="address_latitude">Latitude:</string>
+    <string name="address_longitude">Longitude:</string>
+
     <string name="refresh">Refresh</string>
 </resources>

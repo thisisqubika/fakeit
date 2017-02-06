@@ -6,4 +6,8 @@
     <string name="last_name">Last name:</string>
     <string name="user_name">User name:</string>
     <string name="title">Title:</string>
+    <string name="business_name">Business name:</string>
+    <string name="business_type">Business type:</string>
+    <string name="business_subtype">Business sub-type:</string>
+    <string name="refresh">Refresh</string>
 </resources>

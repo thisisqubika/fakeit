@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="names">
+        <item>JPMorgan Chase</item>
+        <item>Berkshire Hathaway</item>
+        <item>Exxon Mobil</item>
+        <item>General Electric</item>
+        <item>Wells Fargo</item>
+        <item>Bank of America</item>
+        <item>Apple</item>
+        <item>Citigroup</item>
+        <item>Chevron</item>
+        <item>Wal-Mart Stores</item>
+        <item>AT&amp;T</item>
+        <item>Verizon Communications</item>
+        <item>Microsoft</item>
+        <item>IBM</item>
+        <item>Procter &amp; Gamble</item>
+        <item>Johnson &amp; Johnson</item>
+        <item>American International Group</item>
+        <item>Pfizer</item>
+        <item>Ford Motor</item>
+        <item>Google</item>
+        <item>Comcast</item>
+        <item>Goldman Sachs Group</item>
+        <item>General Motors</item>
+        <item>MetLife</item>
+        <item>ConocoPhillips</item>
+        <item>Intel</item>
+        <item>Hewlett-Packard</item>
+        <item>Coca-Cola</item>
+        <item>Cisco Systems</item>
+        <item>Boeing</item>
+        <item>UnitedHealth Group</item>
+        <item>United Technologies</item>
+        <item>PepsiCo</item>
+        <item>Oracle</item>
+        <item>CVS Caremark</item>
+        <item>Merck &amp; Co</item>
+        <item>Walt Disney</item>
+        <item>American Express</item>
+        <item>Morgan Stanley</item>
+        <item>Schlumberger</item>
+        <item>Caterpillar</item>
+        <item>US Bancorp</item>
+        <item>Dow Chemical</item>
+        <item>Home Depot</item>
+        <item>Phillips 66</item>
+        <item>Capital One Financial</item>
+        <item>MondelÄ“z International</item>
+        <item>Occidental Petroleum</item>
+        <item>Twenty-First Century Fox, Inc.</item>
+        <item>Qualcomm</item>
+        <item>Time Warner</item>
+        <item>Philip Morris International</item>
+        <item>Honeywell International</item>
+        <item>Express Scripts</item>
+        <item>United Parcel Service</item>
+        <item>PNC Financial Services</item>
+        <item>Duke Energy</item>
+        <item>Delta Air Lines</item>
+        <item>Amgen</item>
+        <item>EI du Pont de Nemours</item>
+        <item>Walgreen</item>
+        <item>Valero Energy</item>
+        <item>Travelers Cos</item>
+        <item>Deere &amp; Co</item>
+        <item>Union Pacific</item>
+        <item>McDonald\'s</item>
+        <item>WellPoint</item>
+        <item>Aflac</item>
+        <item>3M</item>
+        <item>Allstate</item>
+        <item>Lockheed Martin</item>
+        <item>Target</item>
+        <item>Bank of New York Mellon</item>
+        <item>EMC</item>
+        <item>Costco Wholesale</item>
+        <item>Eli Lilly &amp; Co</item>
+        <item>Lowe\'s Cos</item>
+        <item>Freeport-McMoRan Copper</item>
+        <item>Abbott Laboratories</item>
+        <item>Aetna</item>
+        <item>Altria Group</item>
+        <item>BlackRock</item>
+        <item>Exelon</item>
+        <item>Archer Daniels Midland</item>
+        <item>McKesson</item>
+        <item>Hess</item>
+        <item>eBay</item>
+        <item>Time Warner Cable</item>
+        <item>General Dynamics</item>
+        <item>AbbVie</item>
+        <item>Medtronic</item>
+        <item>Bristol-Myers Squibb</item>
+        <item>FedEx</item>
+        <item>Halliburton</item>
+        <item>Danaher</item>
+        <item>Apache</item>
+        <item>Marathon Petroleum</item>
+        <item>Southern Co</item>
+        <item>NextEra Energy</item>
+        <item>Visa</item>
+        <item>Cigna</item>
+        <item>National Oilwell Varco</item>
+        <item>Directv</item>
+        <item>State Street</item>
+        <item>Kroger</item>
+        <item>Johnson Controls</item>
+        <item>Emerson Electric</item>
+        <item>Dominion Resources</item>
+        <item>BB&amp;T</item>
+        <item>NIKE</item>
+        <item>Kinder Morgan</item>
+        <item>EOG Resources</item>
+        <item>Monsanto</item>
+        <item>Raytheon</item>
+        <item>Chubb</item>
+        <item>American Electric</item>
+        <item>HCA Holdings</item>
+        <item>Northrop Grumman</item>
+        <item>Kraft Foods Group</item>
+        <item>Discover Financial Services</item>
+        <item>Fannie Mae</item>
+        <item>Las Vegas Sands</item>
+        <item>Baxter International</item>
+        <item>Anadarko Petroleum</item>
+        <item>Ameriprise Financial</item>
+        <item>International Paper</item>
+        <item>Gilead Sciences</item>
+        <item>Kimberly-Clark</item>
+        <item>CBS</item>
+        <item>Marathon Oil</item>
+        <item>Carnival</item>
+        <item>Freddie Mac</item>
+        <item>General Mills</item>
+        <item>Viacom</item>
+        <item>Thermo Fisher Scientific</item>
+        <item>Baker Hughes</item>
+        <item>Automatic Data</item>
+        <item>CSX</item>
+        <item>Norfolk Southern</item>
+        <item>Lincoln National</item>
+        <item>Macy\'s</item>
+        <item>SunTrust Banks</item>
+        <item>PG&amp;E</item>
+        <item>Illinois Tool Works</item>
+        <item>Humana</item>
+        <item>Texas Instruments</item>
+        <item>Colgate-Palmolive</item>
+        <item>PPL</item>
+        <item>Prudential Financial</item>
+        <item>Praxair</item>
+        <item>Edison International</item>
+        <item>PPG Industries</item>
+        <item>Fifth Third Bancorp</item>
+        <item>United Continental Holdings</item>
+        <item>Chesapeake Energy</item>
+        <item>Amazon.com</item>
+        <item>Paccar</item>
+        <item>Xerox</item>
+        <item>Loews</item>
+        <item>TJX Cos</item>
+        <item>Charles Schwab</item>
+        <item>Principal Financial Group</item>
+        <item>Sempra Energy</item>
+        <item>Corning</item>
+        <item>Consolidated Edison</item>
+        <item>Micron Technology</item>
+        <item>Progressive</item>
+        <item>Cummins</item>
+        <item>Ecolab</item>
+        <item>Public Service Enterprise</item>
+        <item>Precision Castparts</item>
+        <item>MasterCard</item>
+        <item>Kellogg</item>
+        <item>Facebook</item>
+        <item>Sysco</item>
+        <item>DISH Network</item>
+        <item>Safeway</item>
+        <item>Omnicom Group</item>
+        <item>Cardinal Health</item>
+        <item>Marsh &amp; McLennan</item>
+        <item>Xcel Energy</item>
+        <item>Franklin Resources</item>
+        <item>Hartford Financial Services</item>
+        <item>Simon Property Group</item>
+        <item>Regions Financial</item>
+        <item>Southwest Airlines</item>
+        <item>Western Digital</item>
+        <item>Air Products &amp; Chemicals</item>
+        <item>Entergy</item>
+        <item>SLM</item>
+        <item>ConAgra Foods</item>
+        <item>Reynolds American</item>
+        <item>Unum Group</item>
+        <item>Mosaic</item>
+        <item>Stryker</item>
+        <item>Spectra Energy</item>
+        <item>Tyson Foods</item>
+        <item>FirstEnergy</item>
+        <item>Biogen Idec</item>
+        <item>M&amp;T Bank</item>
+        <item>Murphy Oil</item>
+        <item>Celgene</item>
+        <item>Dollar General</item>
+        <item>Parker-Hannifin</item>
+        <item>Whirlpool</item>
+        <item>Liberty Media</item>
+        <item>Kohl\'s</item>
+        <item>Genworth Financial</item>
+        <item>Priceline.com</item>
+        <item>Annaly Capital Management</item>
+        <item>VF</item>
+        <item>CME Group</item>
+        <item>CenturyLink</item>
+        <item>Yum Brands</item>
+        <item>AmerisourceBergen</item>
+        <item>DTE Energy</item>
+        <item>Northeast Utilities</item>
+        <item>Liberty Interactive</item>
+        <item>Nucor</item>
+        <item>Hilton Worldwide Holdings</item>
+        <item>Gap</item>
+        <item>KeyCorp</item>
+        <item>DaVita</item>
+        <item>Yahoo</item>
+        <item>Northern Trust</item>
+        <item>American Airlines Group</item>
+        <item>Williams Cos</item>
+        <item>Devon Energy</item>
+        <item>Becton, Dickinson</item>
+        <item>Alcoa</item>
+        <item>Thomson Reuters</item>
+        <item>Best Buy</item>
+        <item>Allergan</item>
+        <item>TRW Automotive Holdings</item>
+        <item>Bunge</item>
+        <item>Motorola Solutions</item>
+        <item>Noble Energy</item>
+        <item>Cognizant Technology</item>
+        <item>EstÃ©e Lauder Cos</item>
+        <item>L-3 Communications</item>
+        <item>Leucadia National</item>
+        <item>VMware</item>
+        <item>Eastman Chemical</item>
+        <item>Cameron International</item>
+        <item>Discovery Communications</item>
+        <item>Republic Services</item>
+        <item>Goodyear</item>
+        <item>AES</item>
+        <item>Fluor</item>
+        <item>Weyerhaeuser</item>
+        <item>Mylan</item>
+        <item>HollyFrontier</item>
+        <item>Stanley Black &amp; Decker</item>
+        <item>Dover</item>
+        <item>Bed Bath &amp; Beyond</item>
+        <item>Waste Management</item>
+        <item>Invesco</item>
+        <item>American Capital Agency</item>
+        <item>Hertz Global Holdings</item>
+        <item>AutoZone</item>
+        <item>Symantec</item>
+        <item>Nielsen Holdings</item>
+        <item>L Brands</item>
+        <item>Sherwin-Williams</item>
+        <item>Royal Caribbean Cruises</item>
+        <item>Constellation Brands</item>
+        <item>SanDisk</item>
+        <item>Applied Materials</item>
+        <item>Whole Foods Market</item>
+        <item>HCP</item>
+        <item>TD Ameritrade Holding</item>
+        <item>Marriott International</item>
+        <item>Genuine Parts</item>
+        <item>Ross Stores</item>
+        <item>Agilent Technologies</item>
+        <item>Textron</item>
+        <item>Staples</item>
+        <item>WW Grainger</item>
+        <item>American Tower</item>
+        <item>Computer Sciences</item>
+        <item>CF Industries Holdings</item>
+        <item>Hershey</item>
+        <item>CIT Group</item>
+        <item>Nordstrom</item>
+        <item>Boston Properties</item>
+        <item>Starbucks</item>
+        <item>News Corp</item>
+        <item>Tesoro</item>
+        <item>NRG Energy</item>
+        <item>CarMax</item>
+        <item>NiSource</item>
+        <item>Huntington Bancshares</item>
+        <item>Comerica</item>
+        <item>Oneok</item>
+        <item>Reinsurance Group of America</item>
+        <item>MGM Resorts</item>
+        <item>Broadcom</item>
+        <item>Fidelity National Information</item>
+        <item>St Jude Medical</item>
+        <item>Public Storage</item>
+        <item>Coca-Cola Enterprises</item>
+        <item>Rockwell Automation</item>
+        <item>Avnet</item>
+        <item>Ralph Lauren</item>
+        <item>Lorillard</item>
+        <item>Continental Resources</item>
+        <item>CA</item>
+        <item>Wynn Resorts</item>
+        <item>IntercontinentalExchange</item>
+        <item>Rock-Tenn</item>
+        <item>Mattel</item>
+        <item>CenterPoint Energy</item>
+        <item>Harley-Davidson</item>
+        <item>Ventas</item>
+        <item>O\'Reilly Automotive</item>
+        <item>Newmont Mining</item>
+        <item>McGraw-Hill Cos</item>
+        <item>Assurant</item>
+        <item>BorgWarner</item>
+        <item>Ashland</item>
+        <item>Ambac Financial Group</item>
+        <item>Hormel Foods</item>
+        <item>Prologis</item>
+        <item>Celanese</item>
+        <item>Alleghany</item>
+        <item>Arrow Electronics</item>
+        <item>Boston Scientific</item>
+        <item>PulteGroup</item>
+        <item>T Rowe Price</item>
+        <item>Quest Diagnostics</item>
+        <item>CMS Energy</item>
+        <item>Zimmer Holdings</item>
+        <item>General Growth Properties</item>
+        <item>Charter Communications</item>
+        <item>NetApp</item>
+        <item>Starwood Hotels</item>
+        <item>Coach</item>
+        <item>New York Community</item>
+        <item>Campbell Soup</item>
+        <item>Dollar Tree</item>
+        <item>Western Union</item>
+        <item>First Republic Bank</item>
+        <item>Fiserv</item>
+        <item>Wisconsin Energy</item>
+        <item>Molson Coors Brewing</item>
+        <item>Sears Holdings</item>
+        <item>Alliance Data Systems</item>
+        <item>FMC Technologies</item>
+        <item>Intuit</item>
+        <item>Henry Schein</item>
+        <item>Lear</item>
+        <item>Ameren</item>
+        <item>Fidelity National Financial</item>
+        <item>American Financial Group</item>
+        <item>WR Berkley</item>
+        <item>Moody\'s</item>
+        <item>Jacobs Engineering</item>
+        <item>Dr Pepper Snapple Group</item>
+        <item>Cincinnati Financial</item>
+        <item>Crown Castle International</item>
+        <item>Lennar</item>
+        <item>Equity Residential</item>
+        <item>Intuitive Surgical</item>
+        <item>CH Robinson Worldwide</item>
+        <item>Ingram Micro</item>
+        <item>Avalonbay Communities</item>
+        <item>Host Hotels &amp; Resorts</item>
+        <item>Brown-Forman</item>
+        <item>JM Smucker</item>
+        <item>Mead Johnson Nutrition</item>
+        <item>Analog Devices</item>
+        <item>Clorox</item>
+        <item>Amphenol</item>
+        <item>Southwestern Energy</item>
+        <item>Raymond James Financial</item>
+        <item>Health Care REIT</item>
+        <item>AutoNation</item>
+        <item>CONSOL Energy</item>
+        <item>Zions Bancorp</item>
+        <item>Vornado Realty</item>
+        <item>Juniper Networks</item>
+        <item>Universal Health</item>
+        <item>Regeneron Pharmaceuticals</item>
+        <item>Keurig Green Mountain</item>
+        <item>Torchmark</item>
+        <item>Paychex</item>
+        <item>Catamaran</item>
+        <item>CNO Financial Group</item>
+        <item>Zoetis</item>
+        <item>Helmerich &amp; Payne</item>
+        <item>Xilinx</item>
+        <item>Rockwell Collins</item>
+        <item>LabCorp</item>
+        <item>Family Dollar Stores</item>
+        <item>Protective Life</item>
+        <item>PVH</item>
+        <item>Calpine</item>
+        <item>DR Horton</item>
+        <item>AGCO</item>
+        <item>Rite Aid</item>
+        <item>Mohawk Industries</item>
+        <item>CR Bard</item>
+        <item>SCANA</item>
+        <item>Manpower</item>
+        <item>Ball</item>
+        <item>Flowserve</item>
+        <item>Markel</item>
+        <item>Roper Industries</item>
+        <item>Wyndham Worldwide</item>
+        <item>Community Health Sys</item>
+        <item>Advance Auto Parts</item>
+        <item>Adobe Systems</item>
+        <item>Pioneer Natural Resources</item>
+        <item>Starwood Property Trust</item>
+        <item>Cerner</item>
+        <item>United Rentals</item>
+        <item>Caesars Entertainment</item>
+        <item>EQT</item>
+        <item>Ametek</item>
+        <item>Level 3 Communications</item>
+        <item>Aramark</item>
+        <item>US Steel</item>
+        <item>E-Trade Financial</item>
+        <item>KLA-Tencor</item>
+        <item>Fastenal</item>
+        <item>Interpublic Group</item>
+        <item>Quanta Services</item>
+        <item>Old Republic International</item>
+        <item>Visteon</item>
+        <item>CBRE Group</item>
+        <item>Scripps Networks Interactive</item>
+        <item>Cimarex Energy</item>
+        <item>American Water Works</item>
+        <item>Tenet Healthcare</item>
+        <item>Sigma-Aldrich</item>
+        <item>Petsmart</item>
+        <item>Newell Rubbermaid</item>
+        <item>Salesforce.com</item>
+        <item>Foot Locker</item>
+        <item>Westlake Chemical</item>
+        <item>Rockwood Holdings</item>
+        <item>Darden Restaurants</item>
+        <item>Two Harbors Investment</item>
+        <item>World Fuel Services</item>
+        <item>Altera</item>
+        <item>Chipotle Mexican Grill</item>
+        <item>Linear Technology</item>
+        <item>Beam</item>
+        <item>Avis Budget Group</item>
+        <item>Jarden</item>
+        <item>Harbinger Group</item>
+        <item>NVIDIA</item>
+        <item>Harris</item>
+        <item>Forest Laboratories</item>
+        <item>Expeditors International</item>
+        <item>Eastman Kodak</item>
+        <item>Alexion Pharmaceuticals</item>
+        <item>Tech Data</item>
+        <item>Tractor Supply</item>
+        <item>Crown Holdings</item>
+        <item>Cliffs Natural Resources</item>
+        <item>Alaska Air Group</item>
+        <item>JB Hunt Transport</item>
+        <item>NCR</item>
+        <item>Masco</item>
+        <item>Twitter</item>
+        <item>First Niagara Financial</item>
+        <item>Netflix</item>
+        <item>JC Penney</item>
+        <item>Tesla Motors</item>
+        <item>Huntsman</item>
+        <item>Waters</item>
+        <item>SL Green Realty</item>
+        <item>WABCO Holdings</item>
+        <item>Affiliated Managers Group</item>
+        <item>LinkedIn</item>
+        <item>PBF Energy</item>
+        <item>Reliance Steel</item>
+        <item>Pinnacle West</item>
+        <item>BOK Financial</item>
+        <item>Hudson City Bancorp</item>
+        <item>Realogy Holdings</item>
+        <item>Kansas City Southern</item>
+        <item>McCormick &amp; Co</item>
+        <item>Jabil Circuit</item>
+        <item>Dick\'s Sporting Goods</item>
+        <item>Murphy USA</item>
+        <item>Varian Medical Systems</item>
+        <item>MeadWestvaco</item>
+        <item>VeriSign</item>
+        <item>CVR Energy</item>
+        <item>Monster Beverage</item>
+        <item>East West Bancorp</item>
+        <item>Gannett</item>
+        <item>Illumina</item>
+        <item>Nelnet</item>
+        <item>SVB Financial Group</item>
+        <item>Church &amp; Dwight</item>
+        <item>Maxim Integrated Products</item>
+        <item>AGL Resources</item>
+        <item>Supervalu</item>
+        <item>Avon Products</item>
+        <item>Airgas</item>
+        <item>GameStop Corp.</item>
+        <item>American Equity Investment</item>
+        <item>UGI</item>
+        <item>Polaris Industries</item>
+        <item>Citrix Systems</item>
+        <item>Signature Bank</item>
+        <item>NASDAQ OMX Group</item>
+        <item>Interactive Brokers Group</item>
+        <item>Cablevision Systems Corporation</item>
+        <item>Cheniere Energy</item>
+        <item>Cabot Oil &amp; Gas</item>
+        <item>Workday, Inc.</item>
+        <item>Erie Indemnity</item>
+        <item>Verisk Analytics</item>
+        <item>Sealed Air</item>
+        <item>B/E Aerospace</item>
+        <item>Dean Foods</item>
+        <item>Penske Automotive</item>
+        <item>Antero Resources</item>
+        <item>Vertex Pharmaceuticals</item>
+        <item>Peabody Energy</item>
+        <item>LKQ</item>
+        <item>Whiting Petroleum</item>
+        <item>Denbury Resources</item>
+        <item>Concho Resources</item>
+        <item>OGE Energy</item>
+        <item>People\'s United Financial</item>
+        <item>Microchip Technology</item>
+        <item>CareFusion</item>
+        <item>CC Media Holdings</item>
+        <item>Integrys Energy Group</item>
+        <item>Alliant Energy</item>
+        <item>Ingredion</item>
+        <item>Symetra Financial</item>
+        <item>City National</item>
+        <item>CST Brands</item>
+        <item>Edwards Lifesciences</item>
+        <item>New Media Investment Group</item>
+        <item>Pall</item>
+        <item>Amdocs</item>
+        <item>Frontier Communications</item>
+        <item>Packaging Corp of America</item>
+        <item>Brunswick</item>
+        <item>Hanesbrands</item>
+        <item>Akamai Technologies</item>
+        <item>Towers Watson &amp; Co.</item>
+        <item>Stericycle</item>
+        <item>Range Resources</item>
+        <item>Western Refining</item>
+        <item>Joy Global</item>
+        <item>Oceaneering International</item>
+        <item>TripAdvisor</item>
+        <item>American Natl Ins</item>
+        <item>Windstream</item>
+        <item>Teradata</item>
+        <item>URS</item>
+        <item>Oshkosh</item>
+        <item>FMC</item>
+        <item>Synovus Financial</item>
+        <item>Equifax</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>Consumer Discretionary</item>
+        <item>Consumer Staples</item>
+        <item>Energy</item>
+        <item>Financials</item>
+        <item>Health Care</item>
+        <item>Industrials</item>
+        <item>Information Technology</item>
+        <item>Materials</item>
+        <item>Sector</item>
+        <item>Telecommunication Services</item>
+        <item>Utilities</item>
+    </string-array>
+
+    <string-array name="subtype">
+        <item>Advertising</item>
+        <item>Apparel/Accessories</item>
+        <item>Apparel/Footwear Retail</item>
+        <item>Auto &amp; Truck Manufacturers</item>
+        <item>Auto &amp; Truck Parts</item>
+        <item>Broadcasting &amp; Cable</item>
+        <item>Business &amp; Personal Services</item>
+        <item>Casinos &amp; Gaming</item>
+        <item>Consumer Electronics</item>
+        <item>Department Stores</item>
+        <item>Discount Stores</item>
+        <item>Furniture &amp; Fixtures</item>
+        <item>Home Improvement Retail</item>
+        <item>Hotels &amp; Motels</item>
+        <item>Household Appliances</item>
+        <item>Internet &amp; Catalog Retail</item>
+        <item>Printing &amp; Publishing</item>
+        <item>Recreational Products</item>
+        <item>Restaurants</item>
+        <item>Specialty Stores</item>
+        <item>Beverages</item>
+        <item>Drug Retail</item>
+        <item>Food Processing</item>
+        <item>Food Retail</item>
+        <item>Household/Personal Care</item>
+        <item>Tobacco</item>
+        <item>Oil &amp; Gas Operations</item>
+        <item>Oil Services &amp; Equipment</item>
+        <item>Consumer Financial Services</item>
+        <item>Diversified Insurance</item>
+        <item>Insurance Brokers</item>
+        <item>Investment Services</item>
+        <item>Life &amp; Health Insurance</item>
+        <item>Major Banks</item>
+        <item>Property &amp; Casualty Insurance</item>
+        <item>Real Estate</item>
+        <item>Regional Banks</item>
+        <item>Rental &amp; Leasing</item>
+        <item>Thrifts &amp; Mortgage Finance</item>
+        <item>Biotechs</item>
+        <item>Healthcare Services</item>
+        <item>Managed Health Care</item>
+        <item>Medical Equipment &amp; Supplies</item>
+        <item>Pharmaceuticals</item>
+        <item>Aerospace &amp; Defense</item>
+        <item>Air Courier</item>
+        <item>Airline</item>
+        <item>Business Products &amp; Supplies</item>
+        <item>Conglomerates</item>
+        <item>Construction Services</item>
+        <item>Electrical Equipment</item>
+        <item>Environmental &amp; Waste</item>
+        <item>Heavy Equipment</item>
+        <item>Other Industrial Equipment</item>
+        <item>Other Transportation</item>
+        <item>Railroads</item>
+        <item>Security Systems</item>
+        <item>Trading Companies</item>
+        <item>Trucking</item>
+        <item>Communications Equipment</item>
+        <item>Computer &amp; Electronics Retail</item>
+        <item>Computer Hardware</item>
+        <item>Computer Services</item>
+        <item>Computer Storage Devices</item>
+        <item>Electronics</item>
+        <item>Semiconductors</item>
+        <item>Software &amp; Programming</item>
+        <item>Aluminum</item>
+        <item>Construction Materials</item>
+        <item>Containers &amp; Packaging</item>
+        <item>Diversified Chemicals</item>
+        <item>Diversified Metals &amp; Mining</item>
+        <item>Iron &amp; Steel</item>
+        <item>Paper &amp; Paper Products</item>
+        <item>Specialized Chemicals</item>
+        <item>Industry</item>
+        <item>Telecommunications services</item>
+        <item>Diversified Utilities</item>
+        <item>Electric Utilities</item>
+        <item>Natural Gas Utilities</item>
+        <item>Precision Healthcare Equipment</item>
+    </string-array>
+</resources>

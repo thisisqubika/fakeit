@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface NameProvider {
+interface NameProvider : Provider {
 
     fun firstName(): String
     fun lastName(): String

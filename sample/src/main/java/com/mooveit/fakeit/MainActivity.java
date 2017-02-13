@@ -1,53 +1,73 @@
 package com.mooveit.fakeit;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
 
+import com.mooveit.fakeit.databinding.ActivityMainBinding;
+import com.mooveit.fakeit.models.AddressData;
+import com.mooveit.fakeit.models.BusinessData;
+import com.mooveit.fakeit.models.NameData;
 import com.mooveit.library.Fakeit;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final boolean CONSISTENT_ADDRESS = true;
+
+    private ActivityMainBinding mBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         Fakeit.initWithLocale(this, "es");
 
-        setupNameSample();
-        setupBusinessSample();
+        NameData nameData = new NameData();
+        BusinessData businessData = new BusinessData();
+        AddressData addressData = new AddressData();
+
+        setNameData(nameData);
+        setBusinessData(businessData);
+        setAddressData(addressData);
+
+        mBinding.setNameData(nameData);
+        mBinding.setBusinessData(businessData);
+        mBinding.setAddressData(addressData);
     }
 
-    private void setupNameSample() {
-        TextView fullName = (TextView) findViewById(R.id.full_name);
-        TextView fullMiddleName = (TextView) findViewById(R.id.full_middle_name);
-        TextView firstName = (TextView) findViewById(R.id.first_name);
-        TextView lastName = (TextView) findViewById(R.id.last_name);
-        TextView title = (TextView) findViewById(R.id.title);
-        TextView userName = (TextView) findViewById(R.id.user_name);
-
-        fullName.setText(Fakeit.name().fullName());
-        fullMiddleName.setText(Fakeit.name().fullWithMiddleName());
-        firstName.setText(Fakeit.name().firstName());
-        lastName.setText(Fakeit.name().lastName());
-        title.setText(Fakeit.name().title());
-        userName.setText(Fakeit.name().userName());
+    private void setNameData(NameData data) {
+        data.fullName.set(Fakeit.name().fullName());
+        data.fullMiddleName.set(Fakeit.name().fullWithMiddleName());
+        data.firstName.set(Fakeit.name().firstName());
+        data.lastName.set(Fakeit.name().lastName());
+        data.title.set(Fakeit.name().title());
+        data.userName.set(Fakeit.name().userName());
     }
 
-    private void setupBusinessSample() {
-        TextView businessName = (TextView) findViewById(R.id.business_name);
-        TextView businessType = (TextView) findViewById(R.id.business_type);
-        TextView businessSubType = (TextView) findViewById(R.id.business_subtype);
+    private void setBusinessData(BusinessData data) {
+        data.businessName.set(Fakeit.business().name());
+        data.businessType.set(Fakeit.business().type());
+        data.businessSubType.set(Fakeit.business().subType());
+    }
 
-        businessName.setText(Fakeit.business().name());
-        businessType.setText(Fakeit.business().type());
-        businessSubType.setText(Fakeit.business().subType());
+    private void setAddressData(AddressData data) {
+        if (CONSISTENT_ADDRESS) {
+            Fakeit.address().initRandomAddress();
+        }
+        data.city.set(Fakeit.address().city());
+        data.streetAddress.set(Fakeit.address().streetAddress());
+        data.buildingNumber.set(Fakeit.address().buildingNumber());
+        data.zipCode.set(Fakeit.address().zipCode());
+        data.state.set(Fakeit.address().state());
+        data.stateAbbreviation.set(Fakeit.address().stateAbbreviation());
+        data.latitude.set(Fakeit.address().latitude());
+        data.longitude.set(Fakeit.address().longitude());
     }
 
     public void refresh(View view) {
-        setupNameSample();
-        setupBusinessSample();
+        setNameData(mBinding.getNameData());
+        setBusinessData(mBinding.getBusinessData());
+        setAddressData(mBinding.getAddressData());
     }
 }

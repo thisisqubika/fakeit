@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="nameData"
+            type="com.mooveit.fakeit.models.NameData"/>
+    </data>
+
+    <RelativeLayout
+        style="@style/Base.ContainerFullWidth">
+
+        <TextView
+            android:id="@+id/full_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/full_name"/>
+
+        <TextView
+            android:id="@+id/full_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/first_name_label"
+            android:text="@{nameData.fullName}"/>
+
+        <TextView
+            android:id="@+id/full_middle_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/full_name_label"
+            android:text="@string/full_middle_name"/>
+
+        <TextView
+            android:id="@+id/full_middle_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/full_name"
+            android:layout_toRightOf="@+id/full_middle_name_label"
+            android:text="@{nameData.fullMiddleName}"/>
+
+        <TextView
+            android:id="@+id/first_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/full_middle_name_label"
+            android:text="@string/first_name"/>
+
+        <TextView
+            android:id="@+id/first_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/full_middle_name"
+            android:layout_toRightOf="@+id/first_name_label"
+            android:text="@{nameData.firstName}"/>
+
+        <TextView
+            android:id="@+id/last_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/first_name_label"
+            android:text="@string/last_name"/>
+
+        <TextView
+            android:id="@+id/last_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/first_name"
+            android:layout_toRightOf="@+id/last_name_label"
+            android:text="@{nameData.lastName}"/>
+
+        <TextView
+            android:id="@+id/title_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/last_name_label"
+            android:text="@string/title"/>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/last_name"
+            android:layout_toRightOf="@+id/title_label"
+            android:text="@{nameData.title}"/>
+
+        <TextView
+            android:id="@+id/user_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/title_label"
+            android:text="@string/user_name"/>
+
+        <TextView
+            android:id="@+id/user_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/user_name_label"
+            android:text="@{nameData.userName}"/>
+    </RelativeLayout>
+</layout>

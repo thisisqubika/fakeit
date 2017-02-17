@@ -20,5 +20,11 @@
     <string name="address_latitude">Latitude:</string>
     <string name="address_longitude">Longitude:</string>
 
+    <string name="card_name">Card name:</string>
+    <string name="card_brand">Card brand:</string>
+    <string name="card_number">Card number:</string>
+    <string name="card_type">Card type:</string>
+    <string name="card_expiration_date">Card expiration date:</string>
+
     <string name="refresh">Refresh</string>
 </resources>

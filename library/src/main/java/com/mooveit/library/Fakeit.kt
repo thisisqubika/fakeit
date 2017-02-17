@@ -5,11 +5,9 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import com.mooveit.library.providers.AddressProviderImpl
 import com.mooveit.library.providers.BusinessProviderImpl
+import com.mooveit.library.providers.CardProviderImpl
 import com.mooveit.library.providers.NameProviderImpl
-import com.mooveit.library.providers.definition.AddressProvider
-import com.mooveit.library.providers.definition.BusinessProvider
-import com.mooveit.library.providers.definition.NameProvider
-import com.mooveit.library.providers.definition.Provider
+import com.mooveit.library.providers.definition.*
 import java.util.*
 
 class Fakeit private constructor(context: Context, locale: Locale) {
@@ -17,6 +15,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     val nameProvider: NameProvider
     var businessProvider: BusinessProvider
     val addressProvider: AddressProvider
+    val cardProvider: CardProvider
 
     init {
         var resources: Resources = context.resources
@@ -27,6 +26,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         this.nameProvider = NameProviderImpl(resources)
         this.businessProvider = BusinessProviderImpl(resources)
         this.addressProvider = AddressProviderImpl(resources)
+        this.cardProvider = CardProviderImpl(resources)
     }
 
     companion object Companion {
@@ -74,6 +74,11 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         @JvmStatic
         fun address(): AddressProvider {
             return checkInitialization({ Fakeit.fakeit!!.addressProvider }) as AddressProvider
+        }
+
+        @JvmStatic
+        fun card(): CardProvider {
+            return checkInitialization({ Fakeit.fakeit!!.cardProvider }) as CardProvider
         }
 
         fun checkInitialization(method: () -> Provider): Provider {

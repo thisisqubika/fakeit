@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="card_names">
+        <item>Adolfo Monahan Wunsch</item>
+        <item>Gladys Yesenia Ritchie</item>
+    </string-array>
+    <string-array name="card_brands">
+        <item>Visa</item>
+        <item>MasterCard</item>
+        <item>American Express</item>
+        <item>Capital One</item>
+        <item>AccountNow Prepaid Cards</item>
+    </string-array>
+    <string-array name="card_numbers">
+        <item>1234-1567-1234-9876</item>
+        <item>3456-1234-0987-4321</item>
+        <item>9881-3456-3221-4509</item>
+        <item>4028-3859-2865-9823</item>
+    </string-array>
+    <string-array name="card_types">
+        <item>Rewards</item>
+        <item>Low Interest</item>
+        <item>Balance Transfer</item>
+        <item>Secured</item>
+    </string-array>
+    <string-array name="card_expiration_dates">
+        <item>03-21</item>
+        <item>09-26</item>
+        <item>11-19</item>
+        <item>20-30</item>
+    </string-array>
+</resources>

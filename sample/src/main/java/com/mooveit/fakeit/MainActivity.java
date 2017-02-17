@@ -8,6 +8,7 @@ import android.view.View;
 import com.mooveit.fakeit.databinding.ActivityMainBinding;
 import com.mooveit.fakeit.models.AddressData;
 import com.mooveit.fakeit.models.BusinessData;
+import com.mooveit.fakeit.models.CardData;
 import com.mooveit.fakeit.models.NameData;
 import com.mooveit.library.Fakeit;
 
@@ -26,14 +27,17 @@ public class MainActivity extends AppCompatActivity {
         NameData nameData = new NameData();
         BusinessData businessData = new BusinessData();
         AddressData addressData = new AddressData();
+        CardData cardData = new CardData();
 
         setNameData(nameData);
         setBusinessData(businessData);
         setAddressData(addressData);
+        setCardData(cardData);
 
         mBinding.setNameData(nameData);
         mBinding.setBusinessData(businessData);
         mBinding.setAddressData(addressData);
+        mBinding.setCardData(cardData);
     }
 
     private void setNameData(NameData data) {
@@ -65,9 +69,18 @@ public class MainActivity extends AppCompatActivity {
         data.longitude.set(Fakeit.address().longitude());
     }
 
+    private void setCardData(CardData data) {
+        data.name.set(Fakeit.card().name());
+        data.brand.set(Fakeit.card().brand());
+        data.number.set(Fakeit.card().number());
+        data.type.set(Fakeit.card().type());
+        data.expirationDate.set(Fakeit.card().expirationDate());
+    }
+
     public void refresh(View view) {
         setNameData(mBinding.getNameData());
         setBusinessData(mBinding.getBusinessData());
         setAddressData(mBinding.getAddressData());
+        setCardData(mBinding.getCardData());
     }
 }

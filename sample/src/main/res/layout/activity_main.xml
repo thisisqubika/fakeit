@@ -21,16 +21,20 @@
         <variable
             name="cardData"
             type="com.mooveit.fakeit.models.CardData"/>
+
+        <variable
+            name="dateDate"
+            type="com.mooveit.fakeit.models.DateData"/>
     </data>
 
     <ScrollView
-        style="@style/Base.ContainerFullPadded"
+        style="@style/Base.ContainerWithoutPadding"
         android:fitsSystemWindows="true"
         tools:context="com.mooveit.fakeit.MainActivity">
 
         <RelativeLayout
             android:id="@+id/activity_main"
-            style="@style/Base.ContainerWithoutPadding">
+            style="@style/Base.ContainerFullPadded">
 
             <include
                 android:id="@+id/layout_name"
@@ -73,11 +77,23 @@
                 android:layout_below="@+id/separator_3"
                 bind:cardData="@{cardData}"/>
 
+            <View
+                android:id="@+id/separator_4"
+                style="@style/Base.Separator"
+                android:layout_below="@+id/layout_card"/>
+
+            <include
+                android:id="@+id/layout_date"
+                style="@style/Base.ContainerFullWidth"
+                layout="@layout/layout_date"
+                android:layout_below="@+id/separator_4"
+                bind:dateDate="@{dateDate}"/>
+
             <Button
                 android:id="@+id/refresh"
                 style="@style/Base.Wrapper"
                 android:layout_alignParentBottom="true"
-                android:layout_below="@+id/layout_card"
+                android:layout_below="@+id/layout_date"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/separator_margin"
                 android:onClick="refresh"

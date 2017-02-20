@@ -26,5 +26,10 @@
     <string name="card_type">Card type:</string>
     <string name="card_expiration_date">Card expiration date:</string>
 
+    <string name="date">Date:</string>
+    <string name="date_between_ranges">Date between ranges:</string>
+    <string name="date_in_the_future">Date in the future:</string>
+    <string name="date_in_the_past">Date in the past:</string>
+
     <string name="refresh">Refresh</string>
 </resources>

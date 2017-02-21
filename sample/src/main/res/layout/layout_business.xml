@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="businessData"
+            type="com.mooveit.fakeit.models.BusinessData"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth">
+
+        <TextView
+            android:id="@+id/business_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/separator_1"
+            android:text="@string/business_name"/>
+
+        <TextView
+            android:id="@+id/business_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/separator_1"
+            android:layout_toRightOf="@+id/business_name_label"
+            android:text="@{businessData.businessName}"/>
+
+        <TextView
+            android:id="@+id/business_type_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/business_name_label"
+            android:text="@string/business_type"/>
+
+        <TextView
+            android:id="@+id/business_type"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/business_name_label"
+            android:layout_toRightOf="@+id/business_type_label"
+            android:text="@{businessData.businessType}"/>
+
+        <TextView
+            android:id="@+id/business_subtype_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/business_type"
+            android:text="@string/business_subtype"/>
+
+        <TextView
+            android:id="@+id/business_subtype"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/business_type"
+            android:layout_toRightOf="@+id/business_subtype_label"
+            android:text="@{businessData.businessSubType}"/>
+    </RelativeLayout>
+</layout>

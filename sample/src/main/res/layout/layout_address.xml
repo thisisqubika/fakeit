@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="addressData"
+            type="com.mooveit.fakeit.models.AddressData"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth">
+
+        <TextView
+            android:id="@+id/address_city_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/separator_2"
+            android:text="@string/address_city"/>
+
+        <TextView
+            android:id="@+id/address_city"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/separator_2"
+            android:layout_toRightOf="@+id/address_city_label"
+            android:text="@{addressData.city}"/>
+
+        <TextView
+            android:id="@+id/address_street_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/address_city"
+            android:text="@string/address_street"/>
+
+        <TextView
+            android:id="@+id/address_street"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/address_city"
+            android:layout_toRightOf="@+id/address_street_label"
+            android:text="@{addressData.streetAddress}"/>
+
+        <TextView
+            android:id="@+id/address_building_number_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/address_street_label"
+            android:text="@string/address_building_number"/>
+
+        <TextView
+            android:id="@+id/address_building_number"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/address_street_label"
+            android:layout_toRightOf="@+id/address_building_number_label"
+            android:text="@{addressData.buildingNumber}"/>
+
+        <TextView
+            android:id="@+id/address_zip_code_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/address_building_number_label"
+            android:text="@string/address_zip_code"/>
+
+        <TextView
+            android:id="@+id/address_zip_code"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/address_building_number_label"
+            android:layout_toRightOf="@+id/address_zip_code_label"
+            android:text="@{addressData.zipCode}"/>
+
+        <TextView
+            android:id="@+id/address_state_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/address_zip_code_label"
+            android:text="@string/address_state"/>
+
+        <TextView
+            android:id="@+id/address_state"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/address_zip_code_label"
+            android:layout_toRightOf="@+id/address_state_label"
+            android:text="@{addressData.state}"/>
+
+        <TextView
+            android:id="@+id/address_state_abbreviation_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/address_state"
+            android:text="@string/address_state_abbreviation"/>
+
+        <TextView
+            android:id="@+id/address_state_abbreviation"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/address_state"
+            android:layout_toRightOf="@+id/address_state_abbreviation_label"
+            android:text="@{addressData.stateAbbreviation}"/>
+
+        <TextView
+            android:id="@+id/address_latitude_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/address_state_abbreviation_label"
+            android:text="@string/address_latitude"/>
+
+        <TextView
+            android:id="@+id/address_latitude"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/address_state_abbreviation_label"
+            android:layout_toRightOf="@+id/address_latitude_label"
+            android:text="@{addressData.latitude}"/>
+
+        <TextView
+            android:id="@+id/address_longitude_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/address_latitude_label"
+            android:text="@string/address_longitude"/>
+
+        <TextView
+            android:id="@+id/address_longitude"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/address_latitude_label"
+            android:layout_toRightOf="@+id/address_longitude_label"
+            android:text="@{addressData.longitude}"/>
+    </RelativeLayout>
+</layout>

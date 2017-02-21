@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="cardData"
+            type="com.mooveit.fakeit.models.CardData"/>
+    </data>
+
+    <RelativeLayout
+        style="@style/Base.ContainerFullWidth">
+
+        <TextView
+            android:id="@+id/card_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/card_name"/>
+
+        <TextView
+            android:id="@+id/card_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/card_name_label"
+            android:text="@{cardData.name}"/>
+
+        <TextView
+            android:id="@+id/card_brand_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/card_name_label"
+            android:text="@string/card_brand"/>
+
+        <TextView
+            android:id="@+id/card_brand"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/card_name_label"
+            android:layout_toRightOf="@+id/card_brand_label"
+            android:text="@{cardData.brand}"/>
+
+        <TextView
+            android:id="@+id/card_number_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/card_brand_label"
+            android:text="@string/card_number"/>
+
+        <TextView
+            android:id="@+id/card_number"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/card_brand_label"
+            android:layout_toRightOf="@+id/card_number_label"
+            android:text="@{cardData.number}"/>
+
+        <TextView
+            android:id="@+id/card_type_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/card_number_label"
+            android:text="@string/card_type"/>
+
+        <TextView
+            android:id="@+id/card_type"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/card_number_label"
+            android:layout_toRightOf="@+id/card_type_label"
+            android:text="@{cardData.type}"/>
+
+        <TextView
+            android:id="@+id/expiration_date_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/card_type_label"
+            android:text="@string/card_expiration_date"/>
+
+        <TextView
+            android:id="@+id/expiration_date"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/card_type_label"
+            android:layout_toRightOf="@+id/expiration_date_label"
+            android:text="@{cardData.expirationDate}"/>
+    </RelativeLayout>
+</layout>

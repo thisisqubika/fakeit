@@ -34,4 +34,5 @@ ext {
     junitVersion = '4.12'
     supportLibraryVersion = '25.0.1'
     espressoCoreVersion = '2.2.2'
+    yamlVersion = 'v1.18-android'
 }

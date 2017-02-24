@@ -1,32 +1,77 @@
 package com.mooveit.library
 
 import android.content.Context
-import android.content.res.Configuration
-import android.content.res.Resources
 import com.mooveit.library.providers.AddressProviderImpl
 import com.mooveit.library.providers.BusinessProviderImpl
 import com.mooveit.library.providers.CardProviderImpl
 import com.mooveit.library.providers.NameProviderImpl
 import com.mooveit.library.providers.definition.*
+import org.yaml.snakeyaml.Yaml
 import java.util.*
+import java.util.regex.Pattern
 
 class Fakeit private constructor(context: Context, locale: Locale) {
 
-    val nameProvider: NameProvider
-    var businessProvider: BusinessProvider
+    val numeralAndBracesRegEx = "#\\{(.*?)\\}"
+    val businessProvider: BusinessProvider
     val addressProvider: AddressProvider
     val cardProvider: CardProvider
+    val yaml = Yaml()
+    val values: LinkedHashMap<String, LinkedHashMap<String, String>>
 
     init {
-        var resources: Resources = context.resources
-        var configuration: Configuration = resources.configuration
-        configuration.locale = locale
-        resources.updateConfiguration(configuration, null)
+        val assetManager = context.assets
 
-        this.nameProvider = NameProviderImpl(resources)
-        this.businessProvider = BusinessProviderImpl(resources)
-        this.addressProvider = AddressProviderImpl(resources)
-        this.cardProvider = CardProviderImpl(resources)
+        val inputStream = assetManager.open(("locales/".plus(locale.language.plus(".yml"))))
+        val yamlValues = yaml.load(inputStream) as Map<String, Map<String, String>>
+        val localeValues = yamlValues.get(locale.language) as Map<String, Map<String, String>>
+        this.values = localeValues.get("faker") as LinkedHashMap<String, LinkedHashMap<String, String>>
+
+        this.businessProvider = BusinessProviderImpl(context.resources)
+        this.addressProvider = AddressProviderImpl(context.resources)
+        this.cardProvider = CardProviderImpl(context.resources)
+    }
+
+    fun fetch(key: String): String {
+        val separator = key.indexOf(".")
+        val category = key.substring(0, separator)
+        val selected = key.substring(separator + 1, key.length)
+        val categoryValues = this.values[category] as LinkedHashMap<*, *>
+        val selectedValues = categoryValues[selected] as ArrayList<String>
+
+        if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
+            return getDataToFetch(category, selectedValues)
+        } else {
+            return getRandomString(selectedValues)
+        }
+    }
+
+    fun getDataToFetch(category: String, selectedValues: ArrayList<String>): String {
+        val setOfValueNames = getRandomString(selectedValues)
+        val matcher = Pattern.compile(numeralAndBracesRegEx).matcher(setOfValueNames)
+        val stringBuffer = StringBuffer()
+        while (matcher.find()) {
+            matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1)))
+        }
+        matcher.appendTail(stringBuffer)
+        return stringBuffer.toString()
+    }
+
+    fun fetchValueByCategory(category: String, key: String): String {
+        val separator = key.indexOf(".")
+        var dataCategory = category
+        var keyToFetch = key
+        if (separator != -1) {
+            dataCategory = key.substring(0, separator).toLowerCase()
+            keyToFetch = key.substring(separator + 1, key.length)
+        }
+        val categoryValues = this.values[dataCategory] as LinkedHashMap<String, ArrayList<String>>
+        val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
+        return getRandomString(selectedValues)
+    }
+
+    fun getRandomString(selectedValues: ArrayList<String>): String {
+        return selectedValues[Random().nextInt(selectedValues.size)]
     }
 
     companion object Companion {
@@ -45,7 +90,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun init(context: Context): Fakeit {
-            fakeitInit(context, context.getResources().getConfiguration().locale)
+            fakeitInit(context, Locale.getDefault())
             return fakeit as Fakeit
         }
 
@@ -57,13 +102,12 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun initWithLocale(context: Context, localeString: String): Fakeit {
-            var locale: Locale = Locale(localeString)
-            return initWithLocale(context, locale)
+            return initWithLocale(context, Locale(localeString))
         }
 
         @JvmStatic
         fun name(): NameProvider {
-            return checkInitialization({ Fakeit.fakeit!!.nameProvider }) as NameProvider
+            return NameProviderImpl()
         }
 
         @JvmStatic
@@ -83,7 +127,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         fun checkInitialization(method: () -> Provider): Provider {
             if (fakeit == null) {
-                throw IllegalArgumentException("Fake it must be initialized before start")
+                throw Throwable(IllegalArgumentException("Fake it must be initialized before start"))
             } else {
                 return method()
             }

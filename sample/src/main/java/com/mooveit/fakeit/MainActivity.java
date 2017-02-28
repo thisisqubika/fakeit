@@ -9,8 +9,11 @@ import com.mooveit.fakeit.databinding.ActivityMainBinding;
 import com.mooveit.fakeit.models.AddressData;
 import com.mooveit.fakeit.models.BusinessData;
 import com.mooveit.fakeit.models.CardData;
+import com.mooveit.fakeit.models.DateData;
 import com.mooveit.fakeit.models.NameData;
 import com.mooveit.library.Fakeit;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,16 +31,19 @@ public class MainActivity extends AppCompatActivity {
         BusinessData businessData = new BusinessData();
         AddressData addressData = new AddressData();
         CardData cardData = new CardData();
+        DateData dateData = new DateData();
 
         setNameData(nameData);
         setBusinessData(businessData);
         setAddressData(addressData);
         setCardData(cardData);
+        setDateData(dateData);
 
         mBinding.setNameData(nameData);
         mBinding.setBusinessData(businessData);
         mBinding.setAddressData(addressData);
         mBinding.setCardData(cardData);
+        mBinding.setDateDate(dateData);
     }
 
     private void setNameData(NameData data) {
@@ -77,10 +83,24 @@ public class MainActivity extends AppCompatActivity {
         data.expirationDate.set(Fakeit.card().expirationDate());
     }
 
+    private void setDateData(DateData data) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2016, 05, 10);
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.set(2020, 11, 25);
+        Calendar calendar3 = Calendar.getInstance();
+        calendar3.set(2017, 01, 20);
+        data.date.set(Fakeit.date().date());
+        data.dateBetweenRanges.set(Fakeit.date().dateBetweenRanges(calendar, calendar2));
+        data.dateInTheFuture.set(Fakeit.date().dateInTheFuture(10));
+        data.dateInThePast.set(Fakeit.date().dateInThePast(calendar3));
+    }
+
     public void refresh(View view) {
         setNameData(mBinding.getNameData());
         setBusinessData(mBinding.getBusinessData());
         setAddressData(mBinding.getAddressData());
         setCardData(mBinding.getCardData());
+        setDateData(mBinding.getDateDate());
     }
 }

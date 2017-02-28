@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="dateDate"
+            type="com.mooveit.fakeit.models.DateData"/>
+    </data>
+
+    <RelativeLayout
+        style="@style/Base.ContainerFullWidth">
+
+        <TextView
+            android:id="@+id/date_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/date"/>
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/date_label"
+            android:text="@{dateDate.date}"/>
+
+        <TextView
+            android:id="@+id/date_between_ranges_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/date_label"
+            android:text="@string/date_between_ranges"/>
+
+        <TextView
+            android:id="@+id/date_between_ranges"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/date_label"
+            android:layout_toRightOf="@+id/date_between_ranges_label"
+            android:text="@{dateDate.dateBetweenRanges}"/>
+
+        <TextView
+            android:id="@+id/date_in_the_future_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/date_between_ranges_label"
+            android:text="@string/date_in_the_future"/>
+
+        <TextView
+            android:id="@+id/date_in_the_future"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/date_between_ranges_label"
+            android:layout_toRightOf="@+id/date_in_the_future_label"
+            android:text="@{dateDate.dateInTheFuture}"/>
+
+        <TextView
+            android:id="@+id/date_in_the_past_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/date_in_the_future_label"
+            android:text="@string/date_in_the_past"/>
+
+        <TextView
+            android:id="@+id/date_in_the_past"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/date_in_the_future_label"
+            android:layout_toRightOf="@+id/date_in_the_past_label"
+            android:text="@{dateDate.dateInThePast}"/>
+    </RelativeLayout>
+</layout>

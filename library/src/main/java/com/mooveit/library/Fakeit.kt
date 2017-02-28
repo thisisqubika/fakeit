@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import com.mooveit.library.providers.AddressProviderImpl
 import com.mooveit.library.providers.BusinessProviderImpl
+import com.mooveit.library.providers.DateProviderImpl
 import com.mooveit.library.providers.CardProviderImpl
 import com.mooveit.library.providers.NameProviderImpl
 import com.mooveit.library.providers.definition.*
@@ -16,6 +17,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     var businessProvider: BusinessProvider
     val addressProvider: AddressProvider
     val cardProvider: CardProvider
+    val dateProvider: DateProvider
 
     init {
         var resources: Resources = context.resources
@@ -27,6 +29,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         this.businessProvider = BusinessProviderImpl(resources)
         this.addressProvider = AddressProviderImpl(resources)
         this.cardProvider = CardProviderImpl(resources)
+        this.dateProvider = DateProviderImpl(resources)
     }
 
     companion object Companion {
@@ -79,6 +82,11 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         @JvmStatic
         fun card(): CardProvider {
             return checkInitialization({ Fakeit.fakeit!!.cardProvider }) as CardProvider
+        }
+
+        @JvmStatic
+        fun date(): DateProvider {
+            return checkInitialization({ Fakeit.fakeit!!.dateProvider }) as DateProvider
         }
 
         fun checkInitialization(method: () -> Provider): Provider {

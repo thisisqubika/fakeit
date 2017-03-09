@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        Fakeit.initWithLocale(this, "es");
+        Fakeit.initWithLocale(this, "en");
 
         NameData nameData = new NameData();
         BusinessData businessData = new BusinessData();
@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setNameData(NameData data) {
-        data.fullName.set(Fakeit.name().fullName());
-        data.fullMiddleName.set(Fakeit.name().fullWithMiddleName());
+        data.fullName.set(Fakeit.name().firstName() + " " + Fakeit.name().lastName());
+        data.fullMiddleName.set(Fakeit.name().name());
         data.firstName.set(Fakeit.name().firstName());
         data.lastName.set(Fakeit.name().lastName());
         data.title.set(Fakeit.name().title());
-        data.userName.set(Fakeit.name().userName());
+        data.userName.set("avatar4242");
     }
 
     private void setBusinessData(BusinessData data) {

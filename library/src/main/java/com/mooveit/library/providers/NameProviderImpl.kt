@@ -1,44 +1,36 @@
 package com.mooveit.library.providers
 
-import android.content.res.Resources
-import com.mooveit.library.R
+import com.mooveit.library.Fakeit.Companion.fakeit
 import com.mooveit.library.providers.definition.NameProvider
-import java.util.*
 
-class NameProviderImpl(resources: Resources) : NameProvider {
+class NameProviderImpl : NameProvider {
 
-    private val firstNames: List<String> = Arrays.asList(*resources.getStringArray(R.array.first_names))
-    private val lastNames: List<String> = Arrays.asList(*resources.getStringArray(R.array.last_names))
-    private val prefixes: List<String> = Arrays.asList(*resources.getStringArray(R.array.prefixes))
-    private val titles: List<String> = Arrays.asList(*resources.getStringArray(R.array.title))
-    private val nameDividers: List<String> = Arrays.asList(*resources.getStringArray(R.array.name_dividers))
-    private val random = Random()
+    override fun name(): String {
+        return fakeit!!.fetch("name.name")
+    }
+
+    override fun nameWithMiddle(): String {
+        return fakeit!!.fetch("name.name_with_middle")
+    }
 
     override fun firstName(): String {
-        return firstNames[random.nextInt(firstNames.size)]
+        return fakeit!!.fetch("name.first_name")
     }
 
     override fun lastName(): String {
-        return lastNames[random.nextInt(lastNames.size)]
-    }
-
-    override fun fullName(): String {
-        return prefix() + " " + firstName() + " " + lastName()
-    }
-
-    override fun fullWithMiddleName(): String {
-        return prefix() + " " + firstName() + " " + firstName() + " " + lastName()
-    }
-
-    override fun userName(): String {
-        return firstName().toLowerCase() + nameDividers[random.nextInt(nameDividers.size)] + lastName().toLowerCase()
+        return fakeit!!.fetch("name.last_name")
     }
 
     override fun prefix(): String {
-        return prefixes[random.nextInt(prefixes.size)]
+        return fakeit!!.fetch("name.prefix")
+    }
+
+    override fun suffix(): String {
+        return fakeit!!.fetch("name.")
     }
 
     override fun title(): String {
-        return titles[random.nextInt(titles.size)]
+        return "Not implemented"
     }
+
 }

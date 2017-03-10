@@ -6,7 +6,7 @@ import com.mooveit.library.providers.definition.BusinessProvider
 class BusinessProviderImpl : BusinessProvider {
 
     override fun name(): String {
-        return fakeit!!.fetch("commerce.department")
+        return fakeit!!.fetch("commerce.product_name.product")
     }
 
     override fun type(): String {

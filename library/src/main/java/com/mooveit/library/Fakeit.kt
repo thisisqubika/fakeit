@@ -31,11 +31,23 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         this.values = localeValues.get("faker") as LinkedHashMap<String, LinkedHashMap<String, String>>
     }
 
+    fun fetchCategoryValues(category: String): LinkedHashMap<*, *> {
+        var separator = category.indexOf(".")
+        var subCategory = category
+        var values = this.values
+        while (separator != -1) {
+            values = values[subCategory.substring(0, separator)] as LinkedHashMap<String, LinkedHashMap<String, String>>
+            subCategory = subCategory.substring(separator + 1, subCategory.length)
+            separator = subCategory.indexOf(".")
+        }
+        return values[subCategory] as LinkedHashMap<*, *>
+    }
+
     fun fetch(key: String): String {
-        val separator = key.indexOf(".")
+        val separator = key.lastIndexOf(".")
         val category = key.substring(0, separator)
         val selected = key.substring(separator + 1, key.length)
-        val categoryValues = this.values[category] as LinkedHashMap<*, *>
+        val categoryValues = fetchCategoryValues(category)
         val selectedValues = categoryValues[selected] as ArrayList<String>
 
         if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {

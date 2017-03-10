@@ -8,11 +8,14 @@ import com.mooveit.library.providers.NameProviderImpl
 import com.mooveit.library.providers.definition.*
 import org.yaml.snakeyaml.Yaml
 import java.util.*
+import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class Fakeit private constructor(context: Context, locale: Locale) {
 
     val numeralAndBracesRegEx = "#\\{(.*?)\\}"
+    val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
+    val numeralOnlyRegEx = "#"
     val businessProvider: BusinessProvider
     val addressProvider: AddressProvider
     val cardProvider: CardProvider
@@ -41,20 +44,34 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
             return getDataToFetch(category, selectedValues)
+        } else if (selectedValues[0].matches(Regex(numeralRegEx))) {
+            return fetchNumerals(selectedValues)
         } else {
             return getRandomString(selectedValues)
         }
     }
 
-    fun getDataToFetch(category: String, selectedValues: ArrayList<String>): String {
-        val setOfValueNames = getRandomString(selectedValues)
-        val matcher = Pattern.compile(numeralAndBracesRegEx).matcher(setOfValueNames)
-        val stringBuffer = StringBuffer()
+    fun matchAndReplace(stringToMatch: String, stringBuffer: StringBuffer, regExp: String, method: (Matcher) -> Matcher): String {
+        val matcher = Pattern.compile(regExp).matcher(stringToMatch)
         while (matcher.find()) {
-            matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1)))
+            method(matcher)
         }
         matcher.appendTail(stringBuffer)
         return stringBuffer.toString()
+    }
+
+    fun fetchNumerals(selectedValues: ArrayList<String>): String {
+        val numeral = getRandomString(selectedValues)
+        val stringBuffer = StringBuffer()
+        return matchAndReplace(numeral, stringBuffer, numeralOnlyRegEx,
+                { matcher -> matcher.appendReplacement(stringBuffer, Random().nextInt(10).toString()) })
+    }
+
+    fun getDataToFetch(category: String, selectedValues: ArrayList<String>): String {
+        val setOfValues = getRandomString(selectedValues)
+        val stringBuffer = StringBuffer()
+        return matchAndReplace(setOfValues, stringBuffer, numeralAndBracesRegEx,
+                { matcher -> matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1))) })
     }
 
     fun fetchValueByCategory(category: String, key: String): String {

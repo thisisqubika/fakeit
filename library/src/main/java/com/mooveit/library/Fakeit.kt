@@ -5,7 +5,10 @@ import com.mooveit.library.providers.AddressProviderImpl
 import com.mooveit.library.providers.BusinessProviderImpl
 import com.mooveit.library.providers.CardProviderImpl
 import com.mooveit.library.providers.NameProviderImpl
-import com.mooveit.library.providers.definition.*
+import com.mooveit.library.providers.definition.AddressProvider
+import com.mooveit.library.providers.definition.BusinessProvider
+import com.mooveit.library.providers.definition.CardProvider
+import com.mooveit.library.providers.definition.NameProvider
 import org.yaml.snakeyaml.Yaml
 import java.util.*
 import java.util.regex.Matcher
@@ -16,9 +19,6 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     val numeralAndBracesRegEx = "#\\{(.*?)\\}"
     val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
     val numeralOnlyRegEx = "#"
-    val businessProvider: BusinessProvider
-    val addressProvider: AddressProvider
-    val cardProvider: CardProvider
     val yaml = Yaml()
     val values: LinkedHashMap<String, LinkedHashMap<String, String>>
 
@@ -29,10 +29,6 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         val yamlValues = yaml.load(inputStream) as Map<String, Map<String, String>>
         val localeValues = yamlValues.get(locale.language) as Map<String, Map<String, String>>
         this.values = localeValues.get("faker") as LinkedHashMap<String, LinkedHashMap<String, String>>
-
-        this.businessProvider = BusinessProviderImpl(context.resources)
-        this.addressProvider = AddressProviderImpl(context.resources)
-        this.cardProvider = CardProviderImpl(context.resources)
     }
 
     fun fetch(key: String): String {
@@ -84,7 +80,15 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
         val categoryValues = this.values[dataCategory] as LinkedHashMap<String, ArrayList<String>>
         val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
-        return getRandomString(selectedValues)
+
+        var result = getRandomString(selectedValues)
+        if (result.matches(Regex(numeralRegEx))) {
+            result = fetchNumerals(selectedValues)
+        }
+        if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
+            result = getDataToFetch(category, selectedValues)
+        }
+        return result
     }
 
     fun getRandomString(selectedValues: ArrayList<String>): String {
@@ -129,25 +133,17 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun business(): BusinessProvider {
-            return checkInitialization({ Fakeit.fakeit!!.businessProvider }) as BusinessProvider
+            return BusinessProviderImpl()
         }
 
         @JvmStatic
         fun address(): AddressProvider {
-            return checkInitialization({ Fakeit.fakeit!!.addressProvider }) as AddressProvider
+            return AddressProviderImpl()
         }
 
         @JvmStatic
         fun card(): CardProvider {
-            return checkInitialization({ Fakeit.fakeit!!.cardProvider }) as CardProvider
-        }
-
-        fun checkInitialization(method: () -> Provider): Provider {
-            if (fakeit == null) {
-                throw Throwable(IllegalArgumentException("Fake it must be initialized before start"))
-            } else {
-                return method()
-            }
+            return CardProviderImpl()
         }
     }
 }

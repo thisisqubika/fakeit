@@ -14,8 +14,6 @@ import com.mooveit.library.Fakeit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final boolean CONSISTENT_ADDRESS = true;
-
     private ActivityMainBinding mBinding;
 
     @Override
@@ -56,17 +54,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setAddressData(AddressData data) {
-        if (CONSISTENT_ADDRESS) {
-            Fakeit.address().initRandomAddress();
-        }
         data.city.set(Fakeit.address().city());
         data.streetAddress.set(Fakeit.address().streetAddress());
         data.buildingNumber.set(Fakeit.address().buildingNumber());
         data.zipCode.set(Fakeit.address().zipCode());
         data.state.set(Fakeit.address().state());
         data.stateAbbreviation.set(Fakeit.address().stateAbbreviation());
-        data.latitude.set(Fakeit.address().latitude());
-        data.longitude.set(Fakeit.address().longitude());
     }
 
     private void setCardData(CardData data) {

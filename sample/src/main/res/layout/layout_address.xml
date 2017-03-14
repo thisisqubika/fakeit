@@ -90,31 +90,5 @@
             android:layout_below="@+id/address_state"
             android:layout_toRightOf="@+id/address_state_abbreviation_label"
             android:text="@{addressData.stateAbbreviation}"/>
-
-        <TextView
-            android:id="@+id/address_latitude_label"
-            style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/address_state_abbreviation_label"
-            android:text="@string/address_latitude"/>
-
-        <TextView
-            android:id="@+id/address_latitude"
-            style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/address_state_abbreviation_label"
-            android:layout_toRightOf="@+id/address_latitude_label"
-            android:text="@{addressData.latitude}"/>
-
-        <TextView
-            android:id="@+id/address_longitude_label"
-            style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/address_latitude_label"
-            android:text="@string/address_longitude"/>
-
-        <TextView
-            android:id="@+id/address_longitude"
-            style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/address_latitude_label"
-            android:layout_toRightOf="@+id/address_longitude_label"
-            android:text="@{addressData.longitude}"/>
     </RelativeLayout>
 </layout>

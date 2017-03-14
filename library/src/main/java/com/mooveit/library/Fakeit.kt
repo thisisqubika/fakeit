@@ -5,17 +5,20 @@ import com.mooveit.library.providers.AddressProviderImpl
 import com.mooveit.library.providers.BusinessProviderImpl
 import com.mooveit.library.providers.CardProviderImpl
 import com.mooveit.library.providers.NameProviderImpl
-import com.mooveit.library.providers.definition.*
+import com.mooveit.library.providers.definition.AddressProvider
+import com.mooveit.library.providers.definition.BusinessProvider
+import com.mooveit.library.providers.definition.CardProvider
+import com.mooveit.library.providers.definition.NameProvider
 import org.yaml.snakeyaml.Yaml
 import java.util.*
+import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class Fakeit private constructor(context: Context, locale: Locale) {
 
     val numeralAndBracesRegEx = "#\\{(.*?)\\}"
-    val businessProvider: BusinessProvider
-    val addressProvider: AddressProvider
-    val cardProvider: CardProvider
+    val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
+    val numeralOnlyRegEx = "#"
     val yaml = Yaml()
     val values: LinkedHashMap<String, LinkedHashMap<String, String>>
 
@@ -26,35 +29,57 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         val yamlValues = yaml.load(inputStream) as Map<String, Map<String, String>>
         val localeValues = yamlValues.get(locale.language) as Map<String, Map<String, String>>
         this.values = localeValues.get("faker") as LinkedHashMap<String, LinkedHashMap<String, String>>
+    }
 
-        this.businessProvider = BusinessProviderImpl(context.resources)
-        this.addressProvider = AddressProviderImpl(context.resources)
-        this.cardProvider = CardProviderImpl(context.resources)
+    fun fetchCategoryValues(category: String): LinkedHashMap<*, *> {
+        var separator = category.indexOf(".")
+        var subCategory = category
+        var values = this.values
+        while (separator != -1) {
+            values = values[subCategory.substring(0, separator)] as LinkedHashMap<String, LinkedHashMap<String, String>>
+            subCategory = subCategory.substring(separator + 1, subCategory.length)
+            separator = subCategory.indexOf(".")
+        }
+        return values[subCategory] as LinkedHashMap<*, *>
     }
 
     fun fetch(key: String): String {
-        val separator = key.indexOf(".")
+        val separator = key.lastIndexOf(".")
         val category = key.substring(0, separator)
         val selected = key.substring(separator + 1, key.length)
-        val categoryValues = this.values[category] as LinkedHashMap<*, *>
+        val categoryValues = fetchCategoryValues(category)
         val selectedValues = categoryValues[selected] as ArrayList<String>
 
         if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
             return getDataToFetch(category, selectedValues)
+        } else if (selectedValues[0].matches(Regex(numeralRegEx))) {
+            return fetchNumerals(selectedValues)
         } else {
             return getRandomString(selectedValues)
         }
     }
 
-    fun getDataToFetch(category: String, selectedValues: ArrayList<String>): String {
-        val setOfValueNames = getRandomString(selectedValues)
-        val matcher = Pattern.compile(numeralAndBracesRegEx).matcher(setOfValueNames)
-        val stringBuffer = StringBuffer()
+    fun matchAndReplace(stringToMatch: String, stringBuffer: StringBuffer, regExp: String, method: (Matcher) -> Matcher): String {
+        val matcher = Pattern.compile(regExp).matcher(stringToMatch)
         while (matcher.find()) {
-            matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1)))
+            method(matcher)
         }
         matcher.appendTail(stringBuffer)
         return stringBuffer.toString()
+    }
+
+    fun fetchNumerals(selectedValues: ArrayList<String>): String {
+        val numeral = getRandomString(selectedValues)
+        val stringBuffer = StringBuffer()
+        return matchAndReplace(numeral, stringBuffer, numeralOnlyRegEx,
+                { matcher -> matcher.appendReplacement(stringBuffer, Random().nextInt(10).toString()) })
+    }
+
+    fun getDataToFetch(category: String, selectedValues: ArrayList<String>): String {
+        val setOfValues = getRandomString(selectedValues)
+        val stringBuffer = StringBuffer()
+        return matchAndReplace(setOfValues, stringBuffer, numeralAndBracesRegEx,
+                { matcher -> matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1))) })
     }
 
     fun fetchValueByCategory(category: String, key: String): String {
@@ -67,7 +92,15 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
         val categoryValues = this.values[dataCategory] as LinkedHashMap<String, ArrayList<String>>
         val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
-        return getRandomString(selectedValues)
+
+        var result = getRandomString(selectedValues)
+        if (result.matches(Regex(numeralRegEx))) {
+            result = fetchNumerals(selectedValues)
+        }
+        if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
+            result = getDataToFetch(category, selectedValues)
+        }
+        return result
     }
 
     fun getRandomString(selectedValues: ArrayList<String>): String {
@@ -112,25 +145,17 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun business(): BusinessProvider {
-            return checkInitialization({ Fakeit.fakeit!!.businessProvider }) as BusinessProvider
+            return BusinessProviderImpl()
         }
 
         @JvmStatic
         fun address(): AddressProvider {
-            return checkInitialization({ Fakeit.fakeit!!.addressProvider }) as AddressProvider
+            return AddressProviderImpl()
         }
 
         @JvmStatic
         fun card(): CardProvider {
-            return checkInitialization({ Fakeit.fakeit!!.cardProvider }) as CardProvider
-        }
-
-        fun checkInitialization(method: () -> Provider): Provider {
-            if (fakeit == null) {
-                throw Throwable(IllegalArgumentException("Fake it must be initialized before start"))
-            } else {
-                return method()
-            }
+            return CardProviderImpl()
         }
     }
 }

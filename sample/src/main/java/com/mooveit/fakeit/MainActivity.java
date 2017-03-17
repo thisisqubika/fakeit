@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        Fakeit.initWithLocale(this, "en");
+        Fakeit.initWithLocale(this, "es");
 
         NameData nameData = new NameData();
         BusinessData businessData = new BusinessData();

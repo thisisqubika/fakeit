@@ -21,6 +21,10 @@
         <variable
             name="cardData"
             type="com.mooveit.fakeit.models.CardData"/>
+
+        <variable
+            name="ancientData"
+            type="com.mooveit.fakeit.models.AncientData"/>
     </data>
 
     <ScrollView
@@ -72,6 +76,18 @@
                 layout="@layout/layout_card"
                 android:layout_below="@+id/separator_3"
                 bind:cardData="@{cardData}"/>
+
+            <View
+                android:id="@+id/separator_4"
+                style="@style/Base.Separator"
+                android:layout_below="@+id/layout_card"/>
+
+            <include
+                android:id="@+id/layout_ancient"
+                style="@style/Base.ContainerFullWidth"
+                layout="@layout/layout_ancient"
+                android:layout_below="@+id/separator_4"
+                bind:ancientData="@{ancientData}"/>
 
             <Button
                 android:id="@+id/refresh"

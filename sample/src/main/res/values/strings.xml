@@ -26,5 +26,10 @@
     <string name="card_type">Card type:</string>
     <string name="card_expiration_date">Card expiration date:</string>
 
+    <string name="ancient_god">God:</string>
+    <string name="ancient_primordial">Primordial:</string>
+    <string name="ancient_titan">Titan:</string>
+    <string name="ancient_hero">Hero:</string>
+
     <string name="refresh">Refresh</string>
 </resources>

@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.mooveit.fakeit.databinding.ActivityMainBinding;
 import com.mooveit.fakeit.models.AddressData;
+import com.mooveit.fakeit.models.AncientData;
 import com.mooveit.fakeit.models.BusinessData;
 import com.mooveit.fakeit.models.CardData;
 import com.mooveit.fakeit.models.NameData;
@@ -26,16 +27,19 @@ public class MainActivity extends AppCompatActivity {
         BusinessData businessData = new BusinessData();
         AddressData addressData = new AddressData();
         CardData cardData = new CardData();
+        AncientData ancientData = new AncientData();
 
         setNameData(nameData);
         setBusinessData(businessData);
         setAddressData(addressData);
         setCardData(cardData);
+        setAncientData(ancientData);
 
         mBinding.setNameData(nameData);
         mBinding.setBusinessData(businessData);
         mBinding.setAddressData(addressData);
         mBinding.setCardData(cardData);
+        mBinding.setAncientData(ancientData);
     }
 
     private void setNameData(NameData data) {
@@ -70,10 +74,18 @@ public class MainActivity extends AppCompatActivity {
         data.expirationDate.set(Fakeit.card().expirationDate());
     }
 
+    public void setAncientData(AncientData data) {
+        data.god.set(Fakeit.ancient().god());
+        data.primordial.set(Fakeit.ancient().primordial());
+        data.titan.set(Fakeit.ancient().titan());
+        data.hero.set(Fakeit.ancient().hero());
+    }
+
     public void refresh(View view) {
         setNameData(mBinding.getNameData());
         setBusinessData(mBinding.getBusinessData());
         setAddressData(mBinding.getAddressData());
         setCardData(mBinding.getCardData());
+        setAncientData(mBinding.getAncientData());
     }
 }

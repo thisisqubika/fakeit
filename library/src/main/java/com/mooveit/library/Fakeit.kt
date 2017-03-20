@@ -2,14 +2,8 @@ package com.mooveit.library
 
 import android.content.Context
 import android.content.res.AssetManager
-import com.mooveit.library.providers.AddressProviderImpl
-import com.mooveit.library.providers.BusinessProviderImpl
-import com.mooveit.library.providers.CardProviderImpl
-import com.mooveit.library.providers.NameProviderImpl
-import com.mooveit.library.providers.definition.AddressProvider
-import com.mooveit.library.providers.definition.BusinessProvider
-import com.mooveit.library.providers.definition.CardProvider
-import com.mooveit.library.providers.definition.NameProvider
+import com.mooveit.library.providers.*
+import com.mooveit.library.providers.definition.*
 import org.yaml.snakeyaml.Yaml
 import java.util.*
 import java.util.regex.Matcher
@@ -210,5 +204,77 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         fun card(): CardProvider {
             return CardProviderImpl()
         }
+
+        @JvmStatic
+        fun ancient(): AncientProvider {
+            return AncientProviderImpl()
+        }
+
+        @JvmStatic
+        fun artist(): ArtistProvider {
+            return ArtistProviderImpl()
+        }
+
+        @JvmStatic
+        fun beer(): BeerProvider {
+            return BeerProviderImpl()
+        }
+
+        @JvmStatic
+        fun book(): BookProvider {
+            return BookProviderImpl()
+        }
+
+        @JvmStatic
+        fun cat(): CatProvider {
+            return CatProviderImpl()
+        }
+
+        @JvmStatic
+        fun chuckNorris(): ChuckNorrisFactsProvider {
+            return ChuckNorrisFactsProviderImpl()
+        }
+
+        @JvmStatic
+        fun compass(): CompassProvider {
+            return CompassProviderImpl()
+        }
+
+        @JvmStatic
+        fun demographic(): DemographicProvider {
+            return DemographicProviderImpl()
+        }
+
+        @JvmStatic
+        fun esports(): EsportProvider {
+            return EsportProviderImpl()
+        }
+
+        @JvmStatic
+        fun file(): FileProvider {
+            return FileProviderImpl()
+        }
+
+        @JvmStatic
+        fun food(): FoodProvider {
+            return FoodProviderImpl()
+        }
+
+        @JvmStatic
+        fun friends(): FriendsProvider {
+            return FriendsProviderImpl()
+        }
+
+        @JvmStatic
+        fun gameOfThrones(): GameOfThronesProvider {
+            return GameOfThronesProviderImpl()
+        }
+
+        @JvmStatic
+        fun harryPotter(): HarryPotterProvider {
+            return HarryPotterProviderImpl()
+        }
+        
+
     }
 }

@@ -1,6 +1,7 @@
 package com.mooveit.library
 
 import android.content.Context
+import android.content.res.AssetManager
 import com.mooveit.library.providers.AddressProviderImpl
 import com.mooveit.library.providers.BusinessProviderImpl
 import com.mooveit.library.providers.CardProviderImpl
@@ -19,36 +20,88 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     val numeralAndBracesRegEx = "#\\{(.*?)\\}"
     val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
     val numeralOnlyRegEx = "#"
+    val defaultLanguage = "en"
     val yaml = Yaml()
     val values: LinkedHashMap<String, LinkedHashMap<String, String>>
+    val valuesDefaults: LinkedHashMap<String, LinkedHashMap<String, String>>
 
     init {
         val assetManager = context.assets
-
-        val inputStream = assetManager.open(("locales/".plus(locale.language.plus(".yml"))))
-        val yamlValues = yaml.load(inputStream) as Map<String, Map<String, String>>
-        val localeValues = yamlValues.get(locale.language) as Map<String, Map<String, String>>
-        this.values = localeValues.get("faker") as LinkedHashMap<String, LinkedHashMap<String, String>>
+        this.values = getValues(locale.language, assetManager)
+        if (locale.language != defaultLanguage) {
+            this.valuesDefaults = getValues(defaultLanguage, assetManager)
+        } else {
+            this.valuesDefaults = LinkedHashMap()
+        }
     }
 
-    fun fetchCategoryValues(category: String): LinkedHashMap<*, *> {
+    fun getValues(language: String, assetManager: AssetManager): LinkedHashMap<String, LinkedHashMap<String, String>> {
+        val inputStreamDefault = assetManager.open(("locales/".plus(language.plus(".yml"))))
+        val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
+        val localeValuesDefault = yamlValuesDefault[language] as Map<*, *>
+        return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
+    }
+
+    fun getResourceNotFound(key: String): String {
+        return "Resource not found $key"
+    }
+
+    fun fetchCategoryValues(key: String, category: String,
+                            valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
         var separator = category.indexOf(".")
         var subCategory = category
-        var values = this.values
+        var values = valuesToFetch
+        var check = true
+        if (separator == -1 && values[subCategory] == null) {
+            if (this.valuesDefaults.size == 0) {
+                throw Exception(getResourceNotFound(key))
+            }
+            values = this.valuesDefaults
+        }
         while (separator != -1) {
+            if (values[subCategory.substring(0, separator)] == null) {
+                if (!check || this.valuesDefaults.size == 0) {
+                    throw Exception(getResourceNotFound(key))
+                }
+                separator = category.indexOf(".")
+                subCategory = category
+                values = this.valuesDefaults
+                check = false
+            }
             values = values[subCategory.substring(0, separator)] as LinkedHashMap<String, LinkedHashMap<String, String>>
             subCategory = subCategory.substring(separator + 1, subCategory.length)
             separator = subCategory.indexOf(".")
         }
-        return values[subCategory] as LinkedHashMap<*, *>
+        if (values[subCategory] is LinkedHashMap<*, *>) {
+            return values[subCategory] as LinkedHashMap<*, *>
+        } else {
+            throw Exception("Resource Key not found $category on $key")
+        }
+    }
+
+    fun fetchSelectedValue(key: String, category: String, selected: String): ArrayList<String> {
+        var categoryValues = fetchCategoryValues(key, category, this.values)
+        if (categoryValues[selected] == null) {
+            if (this.valuesDefaults.size == 0) {
+                throw Exception(getResourceNotFound(key))
+            }
+            categoryValues = fetchCategoryValues(key, category, this.valuesDefaults)
+            if (categoryValues[selected] == null) {
+                throw Exception(getResourceNotFound(key))
+            }
+        }
+        if (categoryValues[selected] is ArrayList<*>) {
+            return categoryValues[selected] as ArrayList<String>
+        } else {
+            throw Exception("Resource $category.$selected is not a value")
+        }
     }
 
     fun fetch(key: String): String {
         val separator = key.lastIndexOf(".")
         val category = key.substring(0, separator)
         val selected = key.substring(separator + 1, key.length)
-        val categoryValues = fetchCategoryValues(category)
-        val selectedValues = categoryValues[selected] as ArrayList<String>
+        val selectedValues = fetchSelectedValue(key, category, selected)
 
         if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
             return getDataToFetch(category, selectedValues)

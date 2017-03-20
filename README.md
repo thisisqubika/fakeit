@@ -71,4 +71,4 @@ License
 
 [MIT](https://github.com/moove-it/fakeit/blob/master/LICENSE)
 
-Fakeit is mainted by [*Moove-it*](www.moove-it.com)
+Fakeit is mainted by © [Moove-it](www.moove-it.com)

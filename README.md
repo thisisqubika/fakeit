@@ -3,6 +3,8 @@ Fakeit
 
 ![alt text](https://github.com/moove-it/fakeit/blob/master/banner.png "Fakeit Github banner")
 
+This library is a port of Ruby gem [Faker](https://github.com/stympy/faker).
+
 Download
 --------
 

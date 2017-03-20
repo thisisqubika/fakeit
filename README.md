@@ -57,7 +57,7 @@ This is the current list of fake data models available:
 Questions and issues
 --------
 
-For bug reports and feature requests, use [Github issue tracker]9https://github.com/moove-it/fakeit/issues)
+For bug reports and feature requests, use [Github issue tracker](https://github.com/moove-it/fakeit/issues)
 
 Contributing
 --------
@@ -71,4 +71,4 @@ License
 
 [MIT](https://github.com/moove-it/fakeit/blob/master/LICENSE)
 
-Fakeit is mainted by © [Moove-it](www.moove-it.com)
+Fakeit is mainted by © [Moove-it](http://www.moove-it.com)

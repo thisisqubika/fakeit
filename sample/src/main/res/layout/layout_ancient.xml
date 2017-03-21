@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ancientData"
+            type="com.mooveit.fakeit.models.AncientData"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth">
+
+        <TextView
+            android:id="@+id/ancient_god_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/ancient_god"/>
+
+        <TextView
+            android:id="@+id/ancient_god"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/ancient_god_label"
+            android:text="@{ancientData.god}"/>
+
+        <TextView
+            android:id="@+id/ancient_primordial_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/ancient_god_label"
+            android:text="@string/ancient_primordial"/>
+
+        <TextView
+            android:id="@+id/ancient_primordial"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/ancient_god"
+            android:layout_toRightOf="@+id/ancient_primordial_label"
+            android:text="@{ancientData.primordial}"/>
+
+        <TextView
+            android:id="@+id/ancient_titan_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/ancient_primordial"
+            android:text="@string/ancient_titan"/>
+
+        <TextView
+            android:id="@+id/ancient_titan"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/ancient_primordial"
+            android:layout_toRightOf="@+id/ancient_titan_label"
+            android:text="@{ancientData.titan}"/>
+
+        <TextView
+            android:id="@+id/ancient_hero_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/ancient_titan"
+            android:text="@string/ancient_hero"/>
+
+        <TextView
+            android:id="@+id/ancient_hero"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/ancient_titan"
+            android:layout_toRightOf="@+id/ancient_hero_label"
+            android:text="@{ancientData.hero}"/>
+
+    </RelativeLayout>
+</layout>

@@ -10,9 +10,9 @@ Download
 Maven
 ```xml
 <dependency>
-  <groupId>com.mooveit.fakeit</groupId>
+  <groupId>com.github.moove-it</groupId>
   <artifactId>fakeit</artifactId>
-  <version>0.1</version>
+  <version>v0.1</version>
 </dependency>
 ```
 or Gradle:

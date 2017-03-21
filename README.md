@@ -7,7 +7,7 @@ This library is a port of Ruby gem [Faker](https://github.com/stympy/faker).
 
 Download
 --------
-
+Maven
 ```xml
 <dependency>
   <groupId>com.mooveit.fakeit</groupId>
@@ -63,8 +63,6 @@ Contributing
 --------
 
 All contributions are welcome!
-
-For more information see the contributing guide.
 
 License
 --------

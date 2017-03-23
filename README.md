@@ -3,7 +3,7 @@ Fakeit
 
 ![alt text](https://github.com/moove-it/fakeit/blob/master/banner.png "Fakeit Github banner")
 
-This library is a port of Ruby gem [Faker](https://github.com/stympy/faker).
+This library is a port of the Ruby gem [Faker](https://github.com/stympy/faker). It generates realistic fake data — like names, emails, dates, countries — to be used in your Android development environment. It can be used in a variety of scenarios, including automated testing and database population.
 
 Download
 --------

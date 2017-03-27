@@ -1,15 +1,12 @@
 <resources>
-    <string name="app_name">Fakeit</string>
+    <string name="application_name">Fakeit</string>
+
     <string name="full_name">Full name:</string>
     <string name="full_middle_name">Full middle name:</string>
     <string name="first_name">First name:</string>
     <string name="last_name">Last name:</string>
     <string name="user_name">User name:</string>
     <string name="title">Title:</string>
-
-    <string name="business_name">Business name:</string>
-    <string name="business_type">Business type:</string>
-    <string name="business_subtype">Business sub-type:</string>
 
     <string name="address_city">City:</string>
     <string name="address_street">Street address:</string>
@@ -20,16 +17,198 @@
     <string name="address_latitude">Latitude:</string>
     <string name="address_longitude">Longitude:</string>
 
+    <string name="ancient_god">God:</string>
+    <string name="ancient_primordial">Primordial:</string>
+    <string name="ancient_titan">Titan:</string>
+    <string name="ancient_hero">Hero:</string>
+
     <string name="card_name">Card name:</string>
     <string name="card_brand">Card brand:</string>
     <string name="card_number">Card number:</string>
     <string name="card_type">Card type:</string>
     <string name="card_expiration_date">Card expiration date:</string>
 
-    <string name="ancient_god">God:</string>
-    <string name="ancient_primordial">Primordial:</string>
-    <string name="ancient_titan">Titan:</string>
-    <string name="ancient_hero">Hero:</string>
+    <string name="business_name">Business name:</string>
+    <string name="business_type">Business type:</string>
+    <string name="business_subtype">Business sub-type:</string>
+
+    <string name="app_name">App name:</string>
+    <string name="app_version">App version:</string>
+    <string name="app_author">App author:</string>
+
+    <string name="artist_name">Artist name:</string>
+
+    <string name="bank_name">Bank name:</string>
+    <string name="bank_swift_bic">Bank swift bic:</string>
+    <string name="bank_country_code">Bank country code:</string>
+    <string name="bank_iban_letter_code">Bank iban letter code:</string>
+    <string name="bank_iban_digits">Bank iban digits:</string>
+
+    <string name="beer_name">Beer name:</string>
+    <string name="beer_style">Beer style:</string>
+    <string name="beer_hop">Beer hop:</string>
+    <string name="beer_yeast">Beer yeast:</string>
+    <string name="beer_malts">Beer malts:</string>
+    <string name="beer_ibu">Beer ibu:</string>
+    <string name="beer_alcohol">Beer alcohol:</string>
+    <string name="beer_blg">Beer blg:</string>
+
+    <string name="book_title">Book title:</string>
+    <string name="book_author">Book author:</string>
+    <string name="book_publisher">Book publisher:</string>
+    <string name="book_genre">Book genre:</string>
+
+    <string name="cat_name">Cat name:</string>
+    <string name="cat_breed">Cat breed:</string>
+    <string name="cat_registry">Cat registry:</string>
+
+    <string name="chuck_norris_fact">Chuck Norris fact:</string>
+
+    <string name="code_asin">Code asin:</string>
+
+    <string name="company_suffix">Company suffix:</string>
+    <string name="company_buzzword">Company buzzword:</string>
+    <string name="company_bs">Company bs:</string>
+    <string name="company_name">Company name:</string>
+    <string name="company_industry">Company industry:</string>
+    <string name="company_profession">Company profession:</string>
+
+    <string name="compass_cardinal">Compass cardinal:</string>
+    <string name="compass_ordinal">Compass ordinal:</string>
+    <string name="compass_half_wind">Compass half wind:</string>
+    <string name="compass_quarter_wind">Compass quarter wind:</string>
+    <string name="compass_direction">Compass direction:</string>
+    <string name="compass_abbreviation">Compass abbreviation:</string>
+    <string name="compass_azimuth">Compass azimuth:</string>
+    <string name="compass_cardinal_abbreviation">Compass cardinal abbreviation:</string>
+    <string name="compass_ordinal_abbreviation">Compass ordinal abbreviation:</string>
+    <string name="compass_half_wind_abbreviation">Compass half wind abbreviation:</string>
+    <string name="compass_quarter_wind_abbreviation">Compass quarter wind abbreviation:</string>
+    <string name="compass_cardinal_azimuth">Compass cardinal azimuth:</string>
+    <string name="compass_ordinal_azimuth">Compass ordinal azimuth:</string>
+    <string name="compass_half_wind_azimuth">Compass half wind azimuth:</string>
+    <string name="compass_quarter_wind_azimuth">Compass quarter wind azimuth:</string>
+
+    <string name="demographic_race">Demographic race:</string>
+    <string name="demographic_educational_attainment">Demographic educational attainment:</string>
+    <string name="demographic_demonym">Demographic demonym:</string>
+    <string name="demographic_marital_status">Demographic marital status:</string>
+    <string name="demographic_sex">Demographic sex:</string>
+
+    <string name="educator_name">Educator name:</string>
+    <string name="educator_secondary">Educator secondary:</string>
+    <string name="educator_tertiary_type">Educator tertiary type:</string>
+    <string name="educator_tertiary_course_subject">Educator tertiary course subject:</string>
+    <string name="educator_tertiary_course_type">Educator tertiary course type:</string>
+
+    <string name="e_sport_players">E-sport players:</string>
+    <string name="e_sport_teams">E-sport teams:</string>
+    <string name="e_sport_leagues">E-sport leagues:</string>
+    <string name="e_sport_events">E-sport events:</string>
+    <string name="e_sport_games">E-sport games:</string>
+
+    <string name="file_extension">File extension:</string>
+    <string name="file_mime_type">File mime type:</string>
+
+    <string name="food_ingredients">Food ingredients:</string>
+    <string name="food_spices">Food spices:</string>
+    <string name="food_measurement">Food measurement:</string>
+
+    <string name="friends_characters">Friends characters:</string>
+    <string name="friends_locations">Friends locations:</string>
+    <string name="friends_quotes">Friends quotes:</string>
+
+    <string name="game_of_thrones_characters">Game of Thrones characters:</string>
+    <string name="game_of_thrones_houses">Game of Thrones houses:</string>
+    <string name="game_of_thrones_cities">Game of Thrones cities:</string>
+    <string name="game_of_thrones_quotes">Game of Thrones quotes:</string>
+    <string name="game_of_thrones_dragons">Game of Thrones dragons:</string>
+
+    <string name="hacker_abbreviation">Hacker abbreviation:</string>
+    <string name="hacker_adjective">Hacker adjective:</string>
+    <string name="hacker_noun">Hacker noun:</string>
+    <string name="hacker_verb">Hacker verb:</string>
+    <string name="hacker_ingverb">Hacker ingverb:</string>
+
+    <string name="harry_potter_characters">Harry Potter characters:</string>
+    <string name="harry_potter_locations">Harry Potter locations:</string>
+    <string name="harry_potter_quotes">Harry Potter quotes:</string>
+    <string name="harry_potter_books">Harry Potter books:</string>
+
+    <string name="hey_arnold_characters">Hey Arnold characters:</string>
+    <string name="hey_arnold_locations">Hey Arnold locations:</string>
+    <string name="hey_arnold_quotes">Hey Arnold quotes:</string>
+
+    <string name="hipster_words">Hipster words:</string>
+
+    <string name="internet_free_email">Internet free email:</string>
+    <string name="internet_domain_suffix">Internet domain suffix:</string>
+
+    <string name="job_position">Job position:</string>
+    <string name="job_seniority">Job seniority:</string>
+    <string name="job_title">Job title:</string>
+    <string name="job_field">Job field:</string>
+    <string name="job_key_skills">Job key skills:</string>
+
+    <string name="lord_of_the_rings_characters">Lord of the rings characters:</string>
+    <string name="lord_of_the_rings_locations">Lord of the rings locations:</string>
+
+    <string name="lorem_words">Lorem words:</string>
+    <string name="lorem_supplemental">Lorem supplemental:</string>
+
+    <string name="music_key">Music key:</string>
+    <string name="music_chord">Music chord:</string>
+    <string name="music_instrument">Music instrument:</string>
+    <string name="music_key_types">Music key types:</string>
+    <string name="music_chord_types">Music chord types:</string>
+
+    <string name="phone_number_format">Phone number format:</string>
+
+    <string name="pokemon_name">Pokemon name:</string>
+    <string name="pokemon_locations">Pokemon location:</string>
+
+    <string name="rick_and_morty_characters">Rick and morty characters:</string>
+    <string name="rick_and_morty_locations">Rick and morty locations:</string>
+    <string name="rick_and_morty_quotes">Rick and morty quotes:</string>
+
+    <string name="rock_band_name">Rock band name:</string>
+
+    <string name="address">Address</string>
+    <string name="ancient">Ancient</string>
+    <string name="business">Business</string>
+    <string name="card">Card</string>
+    <string name="name">Name</string>
+
+    <string name="app">App</string>
+    <string name="artist">Artist</string>
+    <string name="bank">Bank</string>
+    <string name="beer">Beer</string>
+    <string name="book">Book</string>
+    <string name="cat">Cat</string>
+    <string name="chuck_norris">Chuck Norris</string>
+    <string name="code">Code</string>
+    <string name="company">Company</string>
+    <string name="compass">Compass</string>
+    <string name="demographic">Demographic</string>
+    <string name="educator">Educator</string>
+    <string name="e_sport">E-Sport</string>
+    <string name="file">File</string>
+    <string name="food">Food</string>
+    <string name="friends">Friends</string>
+    <string name="game_of_thrones">Game of thrones</string>
+    <string name="hacker">Hacker</string>
+    <string name="harry_potter">Harry Potter</string>
+    <string name="hey_arnold">Hey Arnold</string>
+    <string name="hipster">Hipster</string>
+    <string name="internet">Internet</string>
+    <string name="job">Job</string>
+    <string name="lord_of_the_rings">Lord of the Rings</string>
+    <string name="lorem">Lorem</string>
+    <string name="music">Music</string>
+    <string name="phone_number">Phone number</string>
+    <string name="pokemon">Pokemon</string>
+    <string name="rick_and_morty">Rick and Morty</string>
+    <string name="rock_band">Rock band</string>
 
     <string name="refresh">Refresh</string>
 </resources>

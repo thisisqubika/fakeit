@@ -26,11 +26,10 @@ class NameProviderImpl : NameProvider {
     }
 
     override fun suffix(): String {
-        return fakeit!!.fetch("name.")
+        return fakeit!!.fetch("name.suffix")
     }
 
     override fun title(): String {
-        return "Not implemented"
+        return fakeit!!.fetch("name.title.job")
     }
-
 }

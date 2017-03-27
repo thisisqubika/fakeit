@@ -5,26 +5,24 @@
     <data>
 
         <variable
-            name="addressData"
-            type="com.mooveit.fakeit.models.AddressData"/>
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.AddressViewModel"/>
     </data>
 
     <RelativeLayout
         android:id="@+id/activity_main"
-        style="@style/Base.ContainerFullWidth">
+        style="@style/Base.ContainerFullWidth.FullPadded">
 
         <TextView
             android:id="@+id/address_city_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/separator_2"
             android:text="@string/address_city"/>
 
         <TextView
             android:id="@+id/address_city"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/separator_2"
             android:layout_toRightOf="@+id/address_city_label"
-            android:text="@{addressData.city}"/>
+            android:text="@{viewModel.data.city}"/>
 
         <TextView
             android:id="@+id/address_street_label"
@@ -37,7 +35,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/address_city"
             android:layout_toRightOf="@+id/address_street_label"
-            android:text="@{addressData.streetAddress}"/>
+            android:text="@{viewModel.data.streetAddress}"/>
 
         <TextView
             android:id="@+id/address_building_number_label"
@@ -50,7 +48,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/address_street_label"
             android:layout_toRightOf="@+id/address_building_number_label"
-            android:text="@{addressData.buildingNumber}"/>
+            android:text="@{viewModel.data.buildingNumber}"/>
 
         <TextView
             android:id="@+id/address_zip_code_label"
@@ -63,7 +61,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/address_building_number_label"
             android:layout_toRightOf="@+id/address_zip_code_label"
-            android:text="@{addressData.zipCode}"/>
+            android:text="@{viewModel.data.zipCode}"/>
 
         <TextView
             android:id="@+id/address_state_label"
@@ -76,7 +74,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/address_zip_code_label"
             android:layout_toRightOf="@+id/address_state_label"
-            android:text="@{addressData.state}"/>
+            android:text="@{viewModel.data.state}"/>
 
         <TextView
             android:id="@+id/address_state_abbreviation_label"
@@ -89,6 +87,13 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/address_state"
             android:layout_toRightOf="@+id/address_state_abbreviation_label"
-            android:text="@{addressData.stateAbbreviation}"/>
+            android:text="@{viewModel.data.stateAbbreviation}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
     </RelativeLayout>
 </layout>

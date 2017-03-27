@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.DemographicViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/race_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/demographic_race"/>
+
+        <TextView
+            android:id="@+id/race"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/race_label"
+            android:text="@{viewModel.data.race}"/>
+
+        <TextView
+            android:id="@+id/educational_attainment_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/race"
+            android:text="@string/demographic_educational_attainment"/>
+
+        <TextView
+            android:id="@+id/educational_attainment"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/race"
+            android:layout_toRightOf="@+id/educational_attainment_label"
+            android:text="@{viewModel.data.educationalAttainment}"/>
+
+        <TextView
+            android:id="@+id/demonym_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/educational_attainment"
+            android:text="@string/demographic_demonym"/>
+
+        <TextView
+            android:id="@+id/demonym"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/educational_attainment"
+            android:layout_toRightOf="@+id/demonym_label"
+            android:text="@{viewModel.data.demonym}"/>
+
+        <TextView
+            android:id="@+id/marital_status_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/demonym"
+            android:text="@string/demographic_marital_status"/>
+
+        <TextView
+            android:id="@+id/marital_status"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/demonym"
+            android:layout_toRightOf="@+id/marital_status_label"
+            android:text="@{viewModel.data.maritalStatus}"/>
+
+        <TextView
+            android:id="@+id/sex_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/marital_status"
+            android:text="@string/demographic_sex"/>
+
+        <TextView
+            android:id="@+id/sex"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/marital_status"
+            android:layout_toRightOf="@+id/sex_label"
+            android:text="@{viewModel.data.sex}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

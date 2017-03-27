@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.MusicViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/music_key_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/music_key"/>
+
+        <TextView
+            android:id="@+id/music_key"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/music_key_label"
+            android:text="@{viewModel.data.key}"/>
+
+        <TextView
+            android:id="@+id/music_chord_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/music_key"
+            android:text="@string/music_chord"/>
+
+        <TextView
+            android:id="@+id/music_chord"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/music_key"
+            android:layout_toRightOf="@+id/music_chord_label"
+            android:text="@{viewModel.data.chord}"/>
+
+        <TextView
+            android:id="@+id/music_instrument_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/music_chord"
+            android:text="@string/music_instrument"/>
+
+        <TextView
+            android:id="@+id/music_instrument"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/music_chord"
+            android:layout_toRightOf="@+id/music_instrument_label"
+            android:text="@{viewModel.data.instrument}"/>
+
+        <TextView
+            android:id="@+id/music_key_types_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/music_instrument"
+            android:text="@string/music_key_types"/>
+
+        <TextView
+            android:id="@+id/music_key_types"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/music_instrument"
+            android:layout_toRightOf="@+id/music_key_types_label"
+            android:text="@{viewModel.data.keyTypes}"/>
+
+        <TextView
+            android:id="@+id/music_chord_types_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/music_key_types"
+            android:text="@string/music_chord_types"/>
+
+        <TextView
+            android:id="@+id/music_chord_types"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/music_key_types"
+            android:layout_toRightOf="@+id/music_chord_types_label"
+            android:text="@{viewModel.data.chordTypes}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

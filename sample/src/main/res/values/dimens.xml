@@ -6,4 +6,5 @@
     <dimen name="medium_padding">16dp</dimen>
     <dimen name="separator_height">2dp</dimen>
     <dimen name="separator_margin">5dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

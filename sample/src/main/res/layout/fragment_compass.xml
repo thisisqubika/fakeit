@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.CompassViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/compass_abbreviation_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/compass_abbreviation"/>
+
+        <TextView
+            android:id="@+id/compass_abbreviation"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/compass_abbreviation_label"
+            android:text="@{viewModel.data.compassAbbreviation}"/>
+
+        <TextView
+            android:id="@+id/compass_azimuth_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_abbreviation"
+            android:text="@string/compass_azimuth"/>
+
+        <TextView
+            android:id="@+id/compass_azimuth"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_abbreviation"
+            android:layout_toRightOf="@+id/compass_azimuth_label"
+            android:text="@{viewModel.data.compassAbbreviation}"/>
+
+        <TextView
+            android:id="@+id/compass_cardinal_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_azimuth"
+            android:text="@string/compass_cardinal"/>
+
+        <TextView
+            android:id="@+id/compass_cardinal"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_azimuth"
+            android:layout_toRightOf="@+id/compass_cardinal_label"
+            android:text="@{viewModel.data.compassCardinal}"/>
+
+        <TextView
+            android:id="@+id/compass_cardinal_abbreviation_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_cardinal"
+            android:text="@string/compass_cardinal_abbreviation"/>
+
+        <TextView
+            android:id="@+id/compass_cardinal_abbreviation"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_cardinal"
+            android:layout_toRightOf="@+id/compass_cardinal_abbreviation_label"
+            android:text="@{viewModel.data.compassCardinalAbbreviation}"/>
+
+        <TextView
+            android:id="@+id/compass_cardinal_azimuth_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_cardinal_abbreviation"
+            android:text="@string/compass_cardinal_azimuth"/>
+
+        <TextView
+            android:id="@+id/compass_cardinal_azimuth"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_cardinal_abbreviation"
+            android:layout_toRightOf="@+id/compass_cardinal_azimuth_label"
+            android:text="@{viewModel.data.compassCardinalAzimuth}"/>
+
+        <TextView
+            android:id="@+id/compass_direction_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_cardinal_azimuth"
+            android:text="@string/compass_direction"/>
+
+        <TextView
+            android:id="@+id/compass_direction"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_cardinal_azimuth"
+            android:layout_toRightOf="@+id/compass_direction_label"
+            android:text="@{viewModel.data.compassDirection}"/>
+
+        <TextView
+            android:id="@+id/compass_half_wind_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_direction"
+            android:text="@string/compass_half_wind"/>
+
+        <TextView
+            android:id="@+id/compass_half_wind"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_direction"
+            android:layout_toRightOf="@+id/compass_half_wind_label"
+            android:text="@{viewModel.data.compassHalfWind}"/>
+
+        <TextView
+            android:id="@+id/compass_half_wind_abbreviation_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_half_wind"
+            android:text="@string/compass_half_wind_abbreviation"/>
+
+        <TextView
+            android:id="@+id/compass_half_wind_abbreviation"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_half_wind"
+            android:layout_toRightOf="@+id/compass_half_wind_abbreviation_label"
+            android:text="@{viewModel.data.compassHalfWindAbbreviation}"/>
+
+        <TextView
+            android:id="@+id/compass_half_wind_azimuth_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_half_wind_abbreviation"
+            android:text="@string/compass_half_wind_azimuth"/>
+
+        <TextView
+            android:id="@+id/compass_half_wind_azimuth"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_half_wind_abbreviation"
+            android:layout_toRightOf="@+id/compass_half_wind_azimuth_label"
+            android:text="@{viewModel.data.compassHalfWindAzimuth}"/>
+
+        <TextView
+            android:id="@+id/compass_ordinal_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_half_wind_azimuth"
+            android:text="@string/compass_ordinal"/>
+
+        <TextView
+            android:id="@+id/compass_ordinal"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_half_wind_azimuth"
+            android:layout_toRightOf="@+id/compass_ordinal_label"
+            android:text="@{viewModel.data.compassOrdinal}"/>
+
+        <TextView
+            android:id="@+id/compass_ordinal_abbreviation_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_ordinal"
+            android:text="@string/compass_ordinal_abbreviation"/>
+
+        <TextView
+            android:id="@+id/compass_ordinal_abbreviation"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_ordinal"
+            android:layout_toRightOf="@+id/compass_ordinal_abbreviation_label"
+            android:text="@{viewModel.data.compassOrdinalAbbreviation}"/>
+
+        <TextView
+            android:id="@+id/compass_ordinal_azimuth_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_ordinal_abbreviation"
+            android:text="@string/compass_ordinal_azimuth"/>
+
+        <TextView
+            android:id="@+id/compass_ordinal_azimuth"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_ordinal_abbreviation"
+            android:layout_toRightOf="@+id/compass_ordinal_azimuth_label"
+            android:text="@{viewModel.data.compassOrdinalAzimuth}"/>
+
+        <TextView
+            android:id="@+id/compass_quarter_wind_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_ordinal_azimuth"
+            android:text="@string/compass_quarter_wind"/>
+
+        <TextView
+            android:id="@+id/compass_quarter_wind"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_ordinal_azimuth"
+            android:layout_toRightOf="@+id/compass_quarter_wind_label"
+            android:text="@{viewModel.data.compassQuarterWind}"/>
+
+        <TextView
+            android:id="@+id/compass_quarter_wind_abbreviation_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_quarter_wind"
+            android:text="@string/compass_quarter_wind_abbreviation"/>
+
+        <TextView
+            android:id="@+id/compass_quarter_wind_abbreviation"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_quarter_wind"
+            android:layout_toRightOf="@+id/compass_quarter_wind_abbreviation_label"
+            android:text="@{viewModel.data.compassQuarterWindAbbreviation}"/>
+
+        <TextView
+            android:id="@+id/compass_quarter_azimuth_wind_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/compass_quarter_wind_abbreviation"
+            android:text="@string/compass_quarter_wind_azimuth"/>
+
+        <TextView
+            android:id="@+id/compass_quarter_wind_azimuth"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/compass_quarter_wind_abbreviation"
+            android:layout_toRightOf="@+id/compass_quarter_azimuth_wind_label"
+            android:text="@{viewModel.data.compassQuarterWindAzimuth}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

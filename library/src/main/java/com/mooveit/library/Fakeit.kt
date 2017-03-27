@@ -170,7 +170,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun init(context: Context): Fakeit {
-            fakeitInit(context, Locale.getDefault())
+            initWithLocale(context, "en")
             return fakeit as Fakeit
         }
 
@@ -201,6 +201,11 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
 
         @JvmStatic
+        fun app(): AppProvider {
+            return AppProviderImpl()
+        }
+
+        @JvmStatic
         fun card(): CardProvider {
             return CardProviderImpl()
         }
@@ -213,6 +218,11 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         @JvmStatic
         fun artist(): ArtistProvider {
             return ArtistProviderImpl()
+        }
+
+        @JvmStatic
+        fun bank(): BankProvider {
+            return BankProviderImpl()
         }
 
         @JvmStatic
@@ -236,6 +246,16 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
 
         @JvmStatic
+        fun code(): CodeProvider {
+            return CodeProviderImpl()
+        }
+
+        @JvmStatic
+        fun company(): CompanyProvider {
+            return CompanyProviderImpl()
+        }
+
+        @JvmStatic
         fun compass(): CompassProvider {
             return CompassProviderImpl()
         }
@@ -246,8 +266,23 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
 
         @JvmStatic
+        fun hipster(): HipsterProvider {
+            return HipsterProviderImpl()
+        }
+
+        @JvmStatic
+        fun educator(): EducatorProvider {
+            return EducatorProviderImpl()
+        }
+
+        @JvmStatic
         fun esports(): EsportProvider {
             return EsportProviderImpl()
+        }
+
+        @JvmStatic
+        fun internet(): InternetProvider {
+            return InternetProviderImpl()
         }
 
         @JvmStatic
@@ -274,7 +309,55 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         fun harryPotter(): HarryPotterProvider {
             return HarryPotterProviderImpl()
         }
-        
 
+        @JvmStatic
+        fun hacker(): HackerProvider {
+            return HackerProviderImpl()
+        }
+
+        @JvmStatic
+        fun job(): JobProvider {
+            return JobProviderImpl()
+        }
+
+        @JvmStatic
+        fun lorem(): LoremProvider {
+            return LoremProviderImpl()
+        }
+
+        @JvmStatic
+        fun lordOfTheRings(): LordOfTheRingsProvider {
+            return LordOfTheRingsProviderImpl()
+        }
+
+        @JvmStatic
+        fun music(): MusicProvider {
+            return MusicProviderImpl()
+        }
+
+        @JvmStatic
+        fun heyArnold(): HeyArnoldProvider {
+            throw Exception("HeyArnoldProvider not available yet")
+        }
+
+        @JvmStatic
+        fun pokemon(): PokemonProvider {
+            return PokemonProviderImpl()
+        }
+
+        @JvmStatic
+        fun phone(): PhoneNumberProvider {
+            return PhoneNumberProviderImpl()
+        }
+
+        @JvmStatic
+        fun rickAndMorty(): RickAndMortyProvider {
+            return RickAndMortyProviderImpl()
+        }
+
+        @JvmStatic
+        fun rockBand(): RockBandProvider {
+            return RockBandProviderImpl()
+        }
     }
 }

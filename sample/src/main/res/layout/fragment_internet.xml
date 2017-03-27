@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.InternetViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/internet_free_email_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/internet_free_email"/>
+
+        <TextView
+            android:id="@+id/internet_free_email"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/internet_free_email_label"
+            android:text="@{viewModel.data.internetFreeEmail}"/>
+
+        <TextView
+            android:id="@+id/internet_domain_suffix_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/internet_free_email"
+            android:text="@string/internet_domain_suffix"/>
+
+        <TextView
+            android:id="@+id/internet_domain_suffix"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/internet_free_email"
+            android:layout_toRightOf="@+id/internet_domain_suffix_label"
+            android:text="@{viewModel.data.internetDomainSuffix}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

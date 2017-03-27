@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.EducatorViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/educator_name"/>
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/name_label"
+            android:text="@{viewModel.data.name}"/>
+
+        <TextView
+            android:id="@+id/secondary_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/name"
+            android:text="@string/educator_secondary"/>
+
+        <TextView
+            android:id="@+id/secondary"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/name"
+            android:layout_toRightOf="@+id/secondary_label"
+            android:text="@{viewModel.data.secondary}"/>
+
+        <TextView
+            android:id="@+id/tertiary_type_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/secondary"
+            android:text="@string/educator_tertiary_type"/>
+
+        <TextView
+            android:id="@+id/tertiary_type"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/secondary"
+            android:layout_toRightOf="@+id/tertiary_type_label"
+            android:text="@{viewModel.data.tertiaryType}"/>
+
+        <TextView
+            android:id="@+id/tertiary_course_subject_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/tertiary_type"
+            android:text="@string/educator_tertiary_course_subject"/>
+
+        <TextView
+            android:id="@+id/tertiary_course_subject"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/tertiary_type"
+            android:layout_toRightOf="@+id/tertiary_course_subject_label"
+            android:text="@{viewModel.data.tertiaryCourseSubject}"/>
+
+        <TextView
+            android:id="@+id/tertiary_course_type_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/tertiary_course_subject"
+            android:text="@string/educator_tertiary_course_type"/>
+
+        <TextView
+            android:id="@+id/tertiary_course_type_author"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/tertiary_course_subject"
+            android:layout_toRightOf="@+id/tertiary_course_type_label"
+            android:text="@{viewModel.data.tertiaryCourseType}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

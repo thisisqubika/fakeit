@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.GameOfThronesViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/characters_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/game_of_thrones_characters"/>
+
+        <TextView
+            android:id="@+id/characters"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/characters_label"
+            android:text="@{viewModel.data.gotCharacter}"/>
+
+        <TextView
+            android:id="@+id/houses_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/characters"
+            android:text="@string/game_of_thrones_houses"/>
+
+        <TextView
+            android:id="@+id/houses"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/characters"
+            android:layout_toRightOf="@+id/houses_label"
+            android:text="@{viewModel.data.gothHouse}"/>
+
+        <TextView
+            android:id="@+id/cities_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/houses"
+            android:text="@string/game_of_thrones_cities"/>
+
+        <TextView
+            android:id="@+id/cities"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/houses"
+            android:layout_toRightOf="@+id/cities_label"
+            android:text="@{viewModel.data.gotCity}"/>
+
+        <TextView
+            android:id="@+id/quotes_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/cities"
+            android:text="@string/game_of_thrones_quotes"/>
+
+        <TextView
+            android:id="@+id/quotes"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/cities"
+            android:layout_toRightOf="@+id/quotes_label"
+            android:text="@{viewModel.data.gotQuote}"/>
+
+        <TextView
+            android:id="@+id/dragons_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/quotes"
+            android:text="@string/game_of_thrones_dragons"/>
+
+        <TextView
+            android:id="@+id/dragons"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/quotes"
+            android:layout_toRightOf="@+id/dragons_label"
+            android:text="@{viewModel.data.gotDragon}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

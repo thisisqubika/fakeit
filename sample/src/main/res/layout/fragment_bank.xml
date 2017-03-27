@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.BankViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/country_code_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/bank_country_code"/>
+
+        <TextView
+            android:id="@+id/country_code_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/country_code_label"
+            android:text="@{viewModel.data.bankCountryCode}"/>
+
+        <TextView
+            android:id="@+id/bank_iban_digits_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/country_code_label"
+            android:text="@string/bank_iban_digits"/>
+
+        <TextView
+            android:id="@+id/bank_iban_digits_version"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/country_code_label"
+            android:layout_toRightOf="@+id/bank_iban_digits_label"
+            android:text="@{viewModel.data.bankIbanDigits}"/>
+
+        <TextView
+            android:id="@+id/bank_iban_letter_code_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/bank_iban_digits_label"
+            android:text="@string/bank_iban_letter_code"/>
+
+        <TextView
+            android:id="@+id/bank_iban_letter_code"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/bank_iban_digits_label"
+            android:layout_toRightOf="@+id/bank_iban_letter_code_label"
+            android:text="@{viewModel.data.bankIbanLetterCode}"/>
+
+        <TextView
+            android:id="@+id/bank_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/bank_iban_letter_code"
+            android:text="@string/bank_name"/>
+
+        <TextView
+            android:id="@+id/bank_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/bank_iban_letter_code"
+            android:layout_toRightOf="@+id/bank_name_label"
+            android:text="@{viewModel.data.bankName}"/>
+
+        <TextView
+            android:id="@+id/bank_swift_bic_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/bank_name_label"
+            android:text="@string/bank_swift_bic"/>
+
+        <TextView
+            android:id="@+id/bank_swift_bic"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/bank_name_label"
+            android:layout_toRightOf="@+id/bank_swift_bic_label"
+            android:text="@{viewModel.data.bankSwiftBic}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

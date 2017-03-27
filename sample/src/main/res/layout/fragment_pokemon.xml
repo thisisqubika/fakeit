@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.PokemonViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/pokemon_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/pokemon_name"/>
+
+        <TextView
+            android:id="@+id/pokemon_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/pokemon_name_label"
+            android:text="@{viewModel.data.pokemonName}"/>
+
+        <TextView
+            android:id="@+id/locations_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/pokemon_name"
+            android:text="@string/pokemon_locations"/>
+
+        <TextView
+            android:id="@+id/locations"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/pokemon_name"
+            android:layout_toRightOf="@+id/locations_label"
+            android:text="@{viewModel.data.pokemonLocation}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

@@ -11,6 +11,4 @@ public class AddressData extends BaseObservable {
     public final ObservableField<String> zipCode = new ObservableField<>();
     public final ObservableField<String> state = new ObservableField<>();
     public final ObservableField<String> stateAbbreviation = new ObservableField<>();
-    public final ObservableField<String> latitude = new ObservableField<>();
-    public final ObservableField<String> longitude = new ObservableField<>();
 }

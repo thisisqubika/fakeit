@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.JobViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/position_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/job_position"/>
+
+        <TextView
+            android:id="@+id/position"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/position_label"
+            android:text="@{viewModel.data.jobPosition}"/>
+
+        <TextView
+            android:id="@+id/seniority_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/position"
+            android:text="@string/job_seniority"/>
+
+        <TextView
+            android:id="@+id/seniority"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/position"
+            android:layout_toRightOf="@+id/seniority_label"
+            android:text="@{viewModel.data.jobSeniority}"/>
+
+        <TextView
+            android:id="@+id/title_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/seniority"
+            android:text="@string/job_title"/>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/seniority"
+            android:layout_toRightOf="@+id/title_label"
+            android:text="@{viewModel.data.jobTitle}"/>
+
+        <TextView
+            android:id="@+id/field_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/title"
+            android:text="@string/job_field"/>
+
+        <TextView
+            android:id="@+id/field"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/field_label"
+            android:text="@{viewModel.data.jobField}"/>
+
+        <TextView
+            android:id="@+id/key_skill_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/field"
+            android:text="@string/job_key_skills"/>
+
+        <TextView
+            android:id="@+id/key_skill"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/field"
+            android:layout_toRightOf="@+id/key_skill_label"
+            android:text="@{viewModel.data.jobKeySkill}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

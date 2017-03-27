@@ -5,12 +5,12 @@
     <data>
 
         <variable
-            name="nameData"
-            type="com.mooveit.fakeit.models.NameData"/>
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.NameViewModel"/>
     </data>
 
     <RelativeLayout
-        style="@style/Base.ContainerFullWidth">
+        style="@style/Base.ContainerFullWidth.FullPadded">
 
         <TextView
             android:id="@+id/full_name_label"
@@ -21,7 +21,7 @@
             android:id="@+id/full_name"
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_toRightOf="@+id/first_name_label"
-            android:text="@{nameData.fullName}"/>
+            android:text="@{viewModel.data.fullName}"/>
 
         <TextView
             android:id="@+id/full_middle_name_label"
@@ -34,7 +34,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/full_name"
             android:layout_toRightOf="@+id/full_middle_name_label"
-            android:text="@{nameData.fullMiddleName}"/>
+            android:text="@{viewModel.data.fullMiddleName}"/>
 
         <TextView
             android:id="@+id/first_name_label"
@@ -47,7 +47,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/full_middle_name"
             android:layout_toRightOf="@+id/first_name_label"
-            android:text="@{nameData.firstName}"/>
+            android:text="@{viewModel.data.firstName}"/>
 
         <TextView
             android:id="@+id/last_name_label"
@@ -60,7 +60,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/first_name"
             android:layout_toRightOf="@+id/last_name_label"
-            android:text="@{nameData.lastName}"/>
+            android:text="@{viewModel.data.lastName}"/>
 
         <TextView
             android:id="@+id/title_label"
@@ -73,7 +73,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/last_name"
             android:layout_toRightOf="@+id/title_label"
-            android:text="@{nameData.title}"/>
+            android:text="@{viewModel.data.title}"/>
 
         <TextView
             android:id="@+id/user_name_label"
@@ -86,6 +86,13 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/title"
             android:layout_toRightOf="@+id/user_name_label"
-            android:text="@{nameData.userName}"/>
+            android:text="@{viewModel.data.userName}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
     </RelativeLayout>
 </layout>

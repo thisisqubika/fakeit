@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.CompanyViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/company_bs_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/company_bs"/>
+
+        <TextView
+            android:id="@+id/company_bs"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/company_bs_label"
+            android:text="@{viewModel.data.companyBs}"/>
+
+        <TextView
+            android:id="@+id/company_buzzword_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/company_bs_label"
+            android:text="@string/company_buzzword"/>
+
+        <TextView
+            android:id="@+id/company_buzzword"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/company_bs_label"
+            android:layout_toRightOf="@+id/company_buzzword_label"
+            android:text="@{viewModel.data.companyBuzzwords}"/>
+
+        <TextView
+            android:id="@+id/company_industry_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/company_buzzword_label"
+            android:text="@string/company_industry"/>
+
+        <TextView
+            android:id="@+id/company_industry"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/company_buzzword_label"
+            android:layout_toRightOf="@+id/company_industry_label"
+            android:text="@{viewModel.data.companyIndustry}"/>
+
+        <TextView
+            android:id="@+id/company_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/company_industry_label"
+            android:text="@string/company_name"/>
+
+        <TextView
+            android:id="@+id/company_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/company_industry_label"
+            android:layout_toRightOf="@+id/company_name_label"
+            android:text="@{viewModel.data.companyName}"/>
+
+        <TextView
+            android:id="@+id/company_profession_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/company_name_label"
+            android:text="@string/company_profession"/>
+
+        <TextView
+            android:id="@+id/company_profession"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/company_name_label"
+            android:layout_toRightOf="@+id/company_profession_label"
+            android:text="@{viewModel.data.companyProfession}"/>
+
+        <TextView
+            android:id="@+id/company_suffix_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/company_profession_label"
+            android:text="@string/company_suffix"/>
+
+        <TextView
+            android:id="@+id/company_suffix"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/company_profession_label"
+            android:layout_toRightOf="@+id/company_suffix_label"
+            android:text="@{viewModel.data.companySuffix}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

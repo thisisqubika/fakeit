@@ -31,6 +31,8 @@ dependencies {
 Basic usage
 --------
 
+Fakeit can be used in Java and Kotlin Android apps.
+
 First you need to initialize Fakeit:
 
 ```java

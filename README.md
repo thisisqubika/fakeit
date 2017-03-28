@@ -31,7 +31,17 @@ dependencies {
 Basic usage
 --------
 
-Add Fakeit to your project and just call it like this:
+First you need to initialize Fakeit:
+
+```java
+// Default locale is en
+Fakeit.init(context)
+
+// Or you can pass a Locale o a String locale
+Fakeit.init(context, locale)
+```
+
+And then, call the methods like this:
 
 ```java
 Fakeit.name().lastName()

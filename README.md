@@ -34,7 +34,7 @@ Basic usage
 Add Fakeit to your project and just call it like this:
 
 ```java
-Fakeit.name().lastName
+Fakeit.name().lastName()
 Fakeit.business().type()
 Fakeit.address().city()
 Fakeit.card().name()

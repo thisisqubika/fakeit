@@ -27,13 +27,13 @@
         <TextView
             android:id="@+id/business_type_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/business_name_label"
+            android:layout_below="@+id/business_name"
             android:text="@string/business_type"/>
 
         <TextView
             android:id="@+id/business_type"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/business_name_label"
+            android:layout_below="@+id/business_name"
             android:layout_toRightOf="@+id/business_type_label"
             android:text="@{viewModel.data.businessType}"/>
 

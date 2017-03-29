@@ -6,7 +6,7 @@ import com.mooveit.library.providers.definition.BankProvider
 class BankProviderImpl : BankProvider {
 
     override fun name(): String {
-        return fakeit!!.fetch("bank.title")
+        return fakeit!!.fetch("bank.name")
     }
 
     override fun swiftBic(): String {
@@ -14,11 +14,11 @@ class BankProviderImpl : BankProvider {
     }
 
     override fun bankCountryCode(): String {
-        return fakeit!!.fetch("bank.iban_details.country_code")
+        return fakeit!!.fetch("bank.iban_details.bank_country_code")
     }
 
     override fun ibanLetterCode(): String {
-        return fakeit!!.fetch("bank.iban_details..iban_letter_code")
+        return fakeit!!.fetch("bank.iban_details.iban_letter_code")
     }
 
     override fun ibanDigits(): String {

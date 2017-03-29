@@ -27,26 +27,26 @@
         <TextView
             android:id="@+id/app_version_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/app_name_label"
+            android:layout_below="@+id/app_name"
             android:text="@string/app_version"/>
 
         <TextView
             android:id="@+id/app_version"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/app_name_label"
+            android:layout_below="@+id/app_name"
             android:layout_toRightOf="@+id/app_version_label"
             android:text="@{viewModel.data.appVersion}"/>
 
         <TextView
             android:id="@+id/app_author_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/app_version_label"
+            android:layout_below="@+id/app_version"
             android:text="@string/app_author"/>
 
         <TextView
             android:id="@+id/app_author"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/app_version_label"
+            android:layout_below="@+id/app_version"
             android:layout_toRightOf="@+id/app_author_label"
             android:text="@{viewModel.data.appAuthor}"/>
 

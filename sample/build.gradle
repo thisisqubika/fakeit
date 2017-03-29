@@ -28,10 +28,9 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoCoreVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     testCompile "junit:junit:$junitVersion"
     compile project(path: ':library')
+    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile 'com.android.support:support-v4:25.3.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
     compile 'com.android.support:design:25.3.0'
 }

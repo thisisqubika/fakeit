@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/ancient_primordial_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/ancient_god_label"
+            android:layout_below="@+id/ancient_god"
             android:text="@string/ancient_primordial"/>
 
         <TextView

@@ -27,26 +27,26 @@
         <TextView
             android:id="@+id/bank_iban_digits_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/country_code_label"
+            android:layout_below="@+id/country_code_name"
             android:text="@string/bank_iban_digits"/>
 
         <TextView
             android:id="@+id/bank_iban_digits_version"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/country_code_label"
+            android:layout_below="@+id/country_code_name"
             android:layout_toRightOf="@+id/bank_iban_digits_label"
             android:text="@{viewModel.data.bankIbanDigits}"/>
 
         <TextView
             android:id="@+id/bank_iban_letter_code_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/bank_iban_digits_label"
+            android:layout_below="@+id/bank_iban_digits_version"
             android:text="@string/bank_iban_letter_code"/>
 
         <TextView
             android:id="@+id/bank_iban_letter_code"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/bank_iban_digits_label"
+            android:layout_below="@+id/bank_iban_digits_version"
             android:layout_toRightOf="@+id/bank_iban_letter_code_label"
             android:text="@{viewModel.data.bankIbanLetterCode}"/>
 
@@ -66,13 +66,13 @@
         <TextView
             android:id="@+id/bank_swift_bic_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/bank_name_label"
+            android:layout_below="@+id/bank_name"
             android:text="@string/bank_swift_bic"/>
 
         <TextView
             android:id="@+id/bank_swift_bic"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/bank_name_label"
+            android:layout_below="@+id/bank_name"
             android:layout_toRightOf="@+id/bank_swift_bic_label"
             android:text="@{viewModel.data.bankSwiftBic}"/>
 

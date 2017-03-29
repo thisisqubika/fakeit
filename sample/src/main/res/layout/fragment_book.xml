@@ -27,13 +27,13 @@
         <TextView
             android:id="@+id/book_genre_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/book_author_label"
+            android:layout_below="@+id/book_author"
             android:text="@string/book_genre"/>
 
         <TextView
             android:id="@+id/book_genre"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/book_author_label"
+            android:layout_below="@+id/book_author"
             android:layout_toRightOf="@+id/book_genre_label"
             android:text="@{viewModel.data.bookGenre}"/>
 
@@ -53,13 +53,13 @@
         <TextView
             android:id="@+id/book_title_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/book_publisher_label"
+            android:layout_below="@+id/book_publisher"
             android:text="@string/book_title"/>
 
         <TextView
             android:id="@+id/book_title"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/book_publisher_label"
+            android:layout_below="@+id/book_publisher"
             android:layout_toRightOf="@+id/book_title_label"
             android:text="@{viewModel.data.bookTitle}"/>
 

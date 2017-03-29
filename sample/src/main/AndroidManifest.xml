@@ -8,7 +8,7 @@
         android:label="@string/application_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.mooveit.fakeit.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DataActivity"
+            android:name="com.mooveit.fakeit.DataActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

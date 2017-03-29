@@ -27,26 +27,26 @@
         <TextView
             android:id="@+id/cat_name_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/cat_breed_label"
+            android:layout_below="@+id/cat_breed"
             android:text="@string/cat_name"/>
 
         <TextView
             android:id="@+id/cat_name"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/cat_breed_label"
+            android:layout_below="@+id/cat_breed"
             android:layout_toRightOf="@+id/cat_name_label"
             android:text="@{viewModel.data.catName}"/>
 
         <TextView
             android:id="@+id/cat_registry_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/cat_name_label"
+            android:layout_below="@+id/cat_name"
             android:text="@string/cat_registry"/>
 
         <TextView
             android:id="@+id/cat_registry"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/cat_name_label"
+            android:layout_below="@+id/cat_name"
             android:layout_toRightOf="@+id/cat_registry_label"
             android:text="@{viewModel.data.catRegistry}"/>
 

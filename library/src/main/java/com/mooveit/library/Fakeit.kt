@@ -8,6 +8,7 @@ import org.yaml.snakeyaml.Yaml
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import kotlin.collections.LinkedHashMap
 
 class Fakeit private constructor(context: Context, locale: Locale) {
 
@@ -36,12 +37,8 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
     }
 
-    fun getResourceNotFound(key: String): String {
-        return "Resource not found $key"
-    }
-
-    fun fetchCategoryValues(key: String, category: String,
-                            valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
+    fun fetchCategoryKeyValues(key: String, category: String,
+                               valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
         var separator = category.indexOf(".")
         var subCategory = category
         var values = valuesToFetch
@@ -68,24 +65,33 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
         if (values[subCategory] is LinkedHashMap<*, *>) {
             return values[subCategory] as LinkedHashMap<*, *>
+        } else if (values[subCategory] is ArrayList<*>) {
+            var valuesList = values[subCategory] as ArrayList<LinkedHashMap<*, *>>
+            return valuesList[Random().nextInt(valuesList.size)]
         } else {
             throw Exception("Resource Key not found $category on $key")
         }
     }
 
-    fun fetchSelectedValue(key: String, category: String, selected: String): ArrayList<String> {
-        var categoryValues = fetchCategoryValues(key, category, this.values)
-        if (categoryValues[selected] == null) {
+    fun fetchSelectedValue(key: String, category: String, selected: String): String {
+        var categoryKeyValues = fetchCategoryKeyValues(key, category, this.values)
+        if (categoryKeyValues[selected] == null) {
             if (this.valuesDefaults.size == 0) {
                 throw Exception(getResourceNotFound(key))
             }
-            categoryValues = fetchCategoryValues(key, category, this.valuesDefaults)
-            if (categoryValues[selected] == null) {
+            categoryKeyValues = fetchCategoryKeyValues(key, category, this.valuesDefaults)
+            if (categoryKeyValues[selected] == null) {
                 throw Exception(getResourceNotFound(key))
             }
         }
-        if (categoryValues[selected] is ArrayList<*>) {
-            return categoryValues[selected] as ArrayList<String>
+        if (categoryKeyValues[selected] is ArrayList<*>) {
+            var values = categoryKeyValues[selected] as ArrayList<ArrayList<String>>
+            if (values[0] is CharSequence) {
+                return getRandomString(values as ArrayList<String>)
+            }
+            return getRandomString(values[Random().nextInt(values.size)])
+        } else if (categoryKeyValues[selected] is String) {
+            return categoryKeyValues[selected] as String
         } else {
             throw Exception("Resource $category.$selected is not a value")
         }
@@ -95,15 +101,52 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         val separator = key.lastIndexOf(".")
         val category = key.substring(0, separator)
         val selected = key.substring(separator + 1, key.length)
-        val selectedValues = fetchSelectedValue(key, category, selected)
+        val selectedValue = fetchSelectedValue(key, category, selected)
 
-        if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
-            return getDataToFetch(category, selectedValues)
-        } else if (selectedValues[0].matches(Regex(numeralRegEx))) {
-            return fetchNumerals(selectedValues)
+        if (selectedValue.matches(Regex(numeralAndBracesRegEx))) {
+            return fetchKeyValueData(category, selectedValue)
+        } else if (selectedValue.matches(Regex(numeralRegEx))) {
+            return fetchNumerals(selectedValue)
         } else {
-            return getRandomString(selectedValues)
+            return selectedValue
         }
+    }
+
+    fun fetchNumerals(numeral: String): String {
+        val stringBuffer = StringBuffer()
+        return matchAndReplace(numeral, stringBuffer, numeralOnlyRegEx,
+                { matcher -> matcher.appendReplacement(stringBuffer, Random().nextInt(10).toString()) })
+    }
+
+    fun fetchKeyValueData(category: String, selectedValue: String): String {
+        val stringBuffer = StringBuffer()
+        return matchAndReplace(selectedValue, stringBuffer, numeralAndBracesRegEx,
+                { matcher -> matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1))) })
+    }
+
+    fun fetchValueByCategory(category: String, key: String): String {
+        val separator = key.lastIndexOf(".")
+        var dataCategory = category
+        var keyToFetch = key
+        var result: String
+
+        if (separator != -1) {
+            dataCategory = key.substring(0, separator).toLowerCase()
+            keyToFetch = key.substring(separator + 1, key.length)
+            result = fetchSelectedValue(key, dataCategory, keyToFetch)
+        } else {
+            val categoryValues = this.values[dataCategory] as LinkedHashMap<String, ArrayList<String>>
+            val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
+            result = getRandomString(selectedValues)
+        }
+
+        if (result.matches(Regex(numeralRegEx))) {
+            result = fetchNumerals(result)
+        }
+        if (result.matches(Regex(numeralAndBracesRegEx))) {
+            result = fetchKeyValueData(dataCategory, result)
+        }
+        return result
     }
 
     fun matchAndReplace(stringToMatch: String, stringBuffer: StringBuffer, regExp: String, method: (Matcher) -> Matcher): String {
@@ -115,43 +158,12 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         return stringBuffer.toString()
     }
 
-    fun fetchNumerals(selectedValues: ArrayList<String>): String {
-        val numeral = getRandomString(selectedValues)
-        val stringBuffer = StringBuffer()
-        return matchAndReplace(numeral, stringBuffer, numeralOnlyRegEx,
-                { matcher -> matcher.appendReplacement(stringBuffer, Random().nextInt(10).toString()) })
-    }
-
-    fun getDataToFetch(category: String, selectedValues: ArrayList<String>): String {
-        val setOfValues = getRandomString(selectedValues)
-        val stringBuffer = StringBuffer()
-        return matchAndReplace(setOfValues, stringBuffer, numeralAndBracesRegEx,
-                { matcher -> matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1))) })
-    }
-
-    fun fetchValueByCategory(category: String, key: String): String {
-        val separator = key.indexOf(".")
-        var dataCategory = category
-        var keyToFetch = key
-        if (separator != -1) {
-            dataCategory = key.substring(0, separator).toLowerCase()
-            keyToFetch = key.substring(separator + 1, key.length)
-        }
-        val categoryValues = this.values[dataCategory] as LinkedHashMap<String, ArrayList<String>>
-        val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
-
-        var result = getRandomString(selectedValues)
-        if (result.matches(Regex(numeralRegEx))) {
-            result = fetchNumerals(selectedValues)
-        }
-        if (selectedValues[0].matches(Regex(numeralAndBracesRegEx))) {
-            result = getDataToFetch(category, selectedValues)
-        }
-        return result
-    }
-
     fun getRandomString(selectedValues: ArrayList<String>): String {
         return selectedValues[Random().nextInt(selectedValues.size)]
+    }
+
+    fun getResourceNotFound(key: String): String {
+        return "Resource not found $key"
     }
 
     companion object Companion {
@@ -337,7 +349,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun heyArnold(): HeyArnoldProvider {
-            throw Exception("HeyArnoldProvider not available yet")
+            return HeyArnoldProviderImpl()
         }
 
         @JvmStatic

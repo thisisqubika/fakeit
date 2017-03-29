@@ -87,7 +87,7 @@
                 android:id="@+id/book"
                 style="@style/Base.Wrapper.FullSeparatorMargin"
                 android:layout_below="@id/artist"
-                android:enabled="false"
+                android:enabled="true"
                 android:onClick="@{() -> viewModel.onBookClick()}"
                 android:text="@string/book"/>
 
@@ -127,7 +127,7 @@
                 style="@style/Base.Wrapper.FullSeparatorMargin"
                 android:layout_below="@id/book"
                 android:layout_toRightOf="@id/company"
-                android:enabled="false"
+                android:enabled="true"
                 android:onClick="@{() -> viewModel.onCompassClick()}"
                 android:text="@string/compass"/>
 
@@ -204,7 +204,7 @@
                 style="@style/Base.Wrapper.FullSeparatorMargin"
                 android:layout_below="@id/game_of_thrones"
                 android:layout_toRightOf="@id/harry_potter"
-                android:enabled="false"
+                android:enabled="true"
                 android:onClick="@{() -> viewModel.onHeyArnoldClick()}"
                 android:text="@string/hey_arnold"/>
 

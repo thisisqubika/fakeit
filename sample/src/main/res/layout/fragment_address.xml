@@ -40,39 +40,39 @@
         <TextView
             android:id="@+id/address_building_number_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/address_street_label"
+            android:layout_below="@+id/address_street"
             android:text="@string/address_building_number"/>
 
         <TextView
             android:id="@+id/address_building_number"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/address_street_label"
+            android:layout_below="@+id/address_street"
             android:layout_toRightOf="@+id/address_building_number_label"
             android:text="@{viewModel.data.buildingNumber}"/>
 
         <TextView
             android:id="@+id/address_zip_code_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/address_building_number_label"
+            android:layout_below="@+id/address_building_number"
             android:text="@string/address_zip_code"/>
 
         <TextView
             android:id="@+id/address_zip_code"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/address_building_number_label"
+            android:layout_below="@+id/address_building_number"
             android:layout_toRightOf="@+id/address_zip_code_label"
             android:text="@{viewModel.data.zipCode}"/>
 
         <TextView
             android:id="@+id/address_state_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/address_zip_code_label"
+            android:layout_below="@+id/address_zip_code"
             android:text="@string/address_state"/>
 
         <TextView
             android:id="@+id/address_state"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/address_zip_code_label"
+            android:layout_below="@+id/address_zip_code"
             android:layout_toRightOf="@+id/address_state_label"
             android:text="@{viewModel.data.state}"/>
 

@@ -26,52 +26,52 @@
         <TextView
             android:id="@+id/card_brand_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/card_name_label"
+            android:layout_below="@+id/card_name"
             android:text="@string/card_brand"/>
 
         <TextView
             android:id="@+id/card_brand"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/card_name_label"
+            android:layout_below="@+id/card_name"
             android:layout_toRightOf="@+id/card_brand_label"
             android:text="@{viewModel.data.brand}"/>
 
         <TextView
             android:id="@+id/card_number_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/card_brand_label"
+            android:layout_below="@+id/card_brand"
             android:text="@string/card_number"/>
 
         <TextView
             android:id="@+id/card_number"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/card_brand_label"
+            android:layout_below="@+id/card_brand"
             android:layout_toRightOf="@+id/card_number_label"
             android:text="@{viewModel.data.number}"/>
 
         <TextView
             android:id="@+id/card_type_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/card_number_label"
+            android:layout_below="@+id/card_number"
             android:text="@string/card_type"/>
 
         <TextView
             android:id="@+id/card_type"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/card_number_label"
+            android:layout_below="@+id/card_number"
             android:layout_toRightOf="@+id/card_type_label"
             android:text="@{viewModel.data.type}"/>
 
         <TextView
             android:id="@+id/expiration_date_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/card_type_label"
+            android:layout_below="@+id/card_type"
             android:text="@string/card_expiration_date"/>
 
         <TextView
             android:id="@+id/expiration_date"
             style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/card_type_label"
+            android:layout_below="@+id/card_type"
             android:layout_toRightOf="@+id/expiration_date_label"
             android:text="@{viewModel.data.expirationDate}"/>
 

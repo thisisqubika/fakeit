@@ -42,6 +42,9 @@ ru:
         - "#{female_last_name} #{female_first_name}"
         - "#{female_first_name} #{female_middle_name} #{female_last_name}"
         - "#{female_last_name} #{female_first_name} #{female_middle_name}"
+      name_with_middle:
+        - "#{male_last_name} #{male_first_name} #{male_middle_name}"
+        - "#{female_last_name} #{female_first_name} #{female_middle_name}"
 
     phone_number:
       formats: ['+7(9##)###-##-##']

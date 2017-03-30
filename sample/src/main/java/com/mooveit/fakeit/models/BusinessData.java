@@ -1,10 +1,7 @@
 package com.mooveit.fakeit.models;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.databinding.ObservableField;
-
-import com.mooveit.fakeit.BR;
 
 public class BusinessData extends BaseObservable {
 

@@ -5,13 +5,13 @@
     <data>
 
         <variable
-            name="ancientData"
-            type="com.mooveit.fakeit.models.AncientData"/>
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.AncientViewModel"/>
     </data>
 
     <RelativeLayout
         android:id="@+id/activity_main"
-        style="@style/Base.ContainerFullWidth">
+        style="@style/Base.ContainerFullWidth.FullPadded">
 
         <TextView
             android:id="@+id/ancient_god_label"
@@ -22,12 +22,12 @@
             android:id="@+id/ancient_god"
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_toRightOf="@+id/ancient_god_label"
-            android:text="@{ancientData.god}"/>
+            android:text="@{viewModel.data.god}"/>
 
         <TextView
             android:id="@+id/ancient_primordial_label"
             style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/ancient_god_label"
+            android:layout_below="@+id/ancient_god"
             android:text="@string/ancient_primordial"/>
 
         <TextView
@@ -35,7 +35,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/ancient_god"
             android:layout_toRightOf="@+id/ancient_primordial_label"
-            android:text="@{ancientData.primordial}"/>
+            android:text="@{viewModel.data.primordial}"/>
 
         <TextView
             android:id="@+id/ancient_titan_label"
@@ -48,7 +48,7 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/ancient_primordial"
             android:layout_toRightOf="@+id/ancient_titan_label"
-            android:text="@{ancientData.titan}"/>
+            android:text="@{viewModel.data.titan}"/>
 
         <TextView
             android:id="@+id/ancient_hero_label"
@@ -61,7 +61,13 @@
             style="@style/Base.Wrapper.MarginLeft"
             android:layout_below="@+id/ancient_titan"
             android:layout_toRightOf="@+id/ancient_hero_label"
-            android:text="@{ancientData.hero}"/>
+            android:text="@{viewModel.data.hero}"/>
 
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
     </RelativeLayout>
 </layout>

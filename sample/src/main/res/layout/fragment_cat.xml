@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.CatViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/cat_breed_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/cat_breed"/>
+
+        <TextView
+            android:id="@+id/cat_breed"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/cat_breed_label"
+            android:text="@{viewModel.data.catBreed}"/>
+
+        <TextView
+            android:id="@+id/cat_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/cat_breed"
+            android:text="@string/cat_name"/>
+
+        <TextView
+            android:id="@+id/cat_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/cat_breed"
+            android:layout_toRightOf="@+id/cat_name_label"
+            android:text="@{viewModel.data.catName}"/>
+
+        <TextView
+            android:id="@+id/cat_registry_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/cat_name"
+            android:text="@string/cat_registry"/>
+
+        <TextView
+            android:id="@+id/cat_registry"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/cat_name"
+            android:layout_toRightOf="@+id/cat_registry_label"
+            android:text="@{viewModel.data.catRegistry}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

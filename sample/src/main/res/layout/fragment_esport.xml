@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.ESportViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/player_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/e_sport_players"/>
+
+        <TextView
+            android:id="@+id/player"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/player_label"
+            android:text="@{viewModel.data.player}"/>
+
+        <TextView
+            android:id="@+id/team_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/player"
+            android:text="@string/e_sport_teams"/>
+
+        <TextView
+            android:id="@+id/team"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/player"
+            android:layout_toRightOf="@+id/team_label"
+            android:text="@{viewModel.data.team}"/>
+
+        <TextView
+            android:id="@+id/league_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/team"
+            android:text="@string/e_sport_leagues"/>
+
+        <TextView
+            android:id="@+id/league"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/team"
+            android:layout_toRightOf="@+id/league_label"
+            android:text="@{viewModel.data.league}"/>
+
+        <TextView
+            android:id="@+id/event_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/league"
+            android:text="@string/e_sport_events"/>
+
+        <TextView
+            android:id="@+id/event"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/league"
+            android:layout_toRightOf="@+id/event_label"
+            android:text="@{viewModel.data.event}"/>
+
+        <TextView
+            android:id="@+id/game_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/event"
+            android:text="@string/e_sport_games"/>
+
+        <TextView
+            android:id="@+id/game"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/event"
+            android:layout_toRightOf="@+id/game_label"
+            android:text="@{viewModel.data.game}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

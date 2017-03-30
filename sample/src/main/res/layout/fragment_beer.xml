@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.BeerViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/beer_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/beer_name"/>
+
+        <TextView
+            android:id="@+id/beer_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/beer_name_label"
+            android:text="@{viewModel.data.beerName}"/>
+
+        <TextView
+            android:id="@+id/beer_style_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/beer_name"
+            android:text="@string/beer_style"/>
+
+        <TextView
+            android:id="@+id/beer_style"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/beer_name"
+            android:layout_toRightOf="@+id/beer_style_label"
+            android:text="@{viewModel.data.beerStyle}"/>
+
+        <TextView
+            android:id="@+id/beer_hop_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/beer_style"
+            android:text="@string/beer_hop"/>
+
+        <TextView
+            android:id="@+id/beer_hop"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/beer_style"
+            android:layout_toRightOf="@+id/beer_hop_label"
+            android:text="@{viewModel.data.beerHop}"/>
+
+        <TextView
+            android:id="@+id/beer_yeast_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/beer_hop"
+            android:text="@string/beer_yeast"/>
+
+        <TextView
+            android:id="@+id/beer_yeast"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/beer_hop"
+            android:layout_toRightOf="@+id/beer_hop_label"
+            android:text="@{viewModel.data.beerYeast}"/>
+
+        <TextView
+            android:id="@+id/beer_malts_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/beer_yeast"
+            android:text="@string/beer_malts"/>
+
+        <TextView
+            android:id="@+id/beer_malts"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/beer_yeast"
+            android:layout_toRightOf="@+id/beer_malts_label"
+            android:text="@{viewModel.data.beerMalts}"/>
+
+        <TextView
+            android:id="@+id/beer_ibu_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/beer_malts"
+            android:text="@string/beer_ibu"/>
+
+        <TextView
+            android:id="@+id/beer_ibu"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/beer_malts"
+            android:layout_toRightOf="@+id/beer_ibu_label"
+            android:text="@{viewModel.data.beerIbu}"/>
+
+        <TextView
+            android:id="@+id/beer_alcohol_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/beer_ibu"
+            android:text="@string/beer_alcohol"/>
+
+        <TextView
+            android:id="@+id/beer_alcohol"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/beer_ibu"
+            android:layout_toRightOf="@+id/beer_alcohol_label"
+            android:text="@{viewModel.data.beerAlcohol}"/>
+
+        <TextView
+            android:id="@+id/beer_blg_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/beer_alcohol"
+            android:text="@string/beer_blg"/>
+
+        <TextView
+            android:id="@+id/beer_blg"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/beer_alcohol"
+            android:layout_toRightOf="@+id/beer_blg_label"
+            android:text="@{viewModel.data.beerBlg}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

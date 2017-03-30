@@ -1,103 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
-            name="nameData"
-            type="com.mooveit.fakeit.models.NameData"/>
-
-        <variable
-            name="businessData"
-            type="com.mooveit.fakeit.models.BusinessData"/>
-
-        <variable
-            name="addressData"
-            type="com.mooveit.fakeit.models.AddressData"/>
-
-        <variable
-            name="cardData"
-            type="com.mooveit.fakeit.models.CardData"/>
-
-        <variable
-            name="ancientData"
-            type="com.mooveit.fakeit.models.AncientData"/>
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.MainViewModel"/>
     </data>
 
     <ScrollView
-        style="@style/Base.ContainerFullPadded"
-        android:fitsSystemWindows="true"
-        tools:context="com.mooveit.fakeit.MainActivity">
+        style="@style/Base.ContainerWithoutPadding">
 
         <RelativeLayout
             android:id="@+id/activity_main"
-            style="@style/Base.ContainerWithoutPadding">
-
-            <include
-                android:id="@+id/layout_name"
-                layout="@layout/layout_name"
-                bind:nameData="@{nameData}"/>
-
-            <View
-                android:id="@+id/separator_1"
-                style="@style/Base.Separator"
-                android:layout_below="@+id/layout_name"/>
-
-            <include
-                android:id="@+id/layout_business"
-                style="@style/Base.ContainerFullWidth"
-                layout="@layout/layout_business"
-                android:layout_below="@+id/separator_1"
-                bind:businessData="@{businessData}"/>
-
-            <View
-                android:id="@+id/separator_2"
-                style="@style/Base.Separator"
-                android:layout_below="@+id/layout_business"/>
-
-            <include
-                android:id="@+id/layout_address"
-                style="@style/Base.ContainerFullWidth"
-                layout="@layout/layout_address"
-                android:layout_below="@+id/separator_2"
-                bind:addressData="@{addressData}"/>
-
-            <View
-                android:id="@+id/separator_3"
-                style="@style/Base.Separator"
-                android:layout_below="@+id/layout_address"/>
-
-            <include
-                android:id="@+id/layout_card"
-                style="@style/Base.ContainerFullWidth"
-                layout="@layout/layout_card"
-                android:layout_below="@+id/separator_3"
-                bind:cardData="@{cardData}"/>
-
-            <View
-                android:id="@+id/separator_4"
-                style="@style/Base.Separator"
-                android:layout_below="@+id/layout_card"/>
-
-            <include
-                android:id="@+id/layout_ancient"
-                style="@style/Base.ContainerFullWidth"
-                layout="@layout/layout_ancient"
-                android:layout_below="@+id/separator_4"
-                bind:ancientData="@{ancientData}"/>
+            style="@style/Base.ContainerWithoutPadding"
+            android:gravity="center_horizontal">
 
             <Button
-                android:id="@+id/refresh"
-                style="@style/Base.Wrapper"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/layout_card"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/separator_margin"
-                android:onClick="refresh"
-                android:text="@string/refresh"/>
+                android:id="@+id/address"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:onClick="@{() -> viewModel.onAddressClick()}"
+                android:text="@string/address"/>
+
+            <Button
+                android:id="@+id/ancient"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_toRightOf="@id/address"
+                android:onClick="@{() -> viewModel.onAncientClick()}"
+                android:text="@string/ancient"/>
+
+            <Button
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_toRightOf="@id/ancient"
+                android:onClick="@{() -> viewModel.onBusinessClick()}"
+                android:text="@string/business"/>
+
+            <Button
+                android:id="@+id/card"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/address"
+                android:onClick="@{() -> viewModel.onCardClick()}"
+                android:text="@string/card"/>
+
+            <Button
+                android:id="@+id/name"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/address"
+
+                android:layout_toRightOf="@id/card"
+                android:onClick="@{() -> viewModel.onNameClick()}"
+                android:text="@string/name"/>
+
+            <Button
+                android:id="@+id/app"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/address"
+                android:layout_toRightOf="@id/name"
+                android:onClick="@{() -> viewModel.onAppClick()}"
+                android:text="@string/app"/>
+
+            <Button
+                android:id="@+id/artist"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/card"
+                android:onClick="@{() -> viewModel.onArtistClick()}"
+                android:text="@string/artist"/>
+
+            <Button
+                android:id="@+id/bank"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/card"
+                android:layout_toRightOf="@id/artist"
+                android:onClick="@{() -> viewModel.onBankClick()}"
+                android:text="@string/bank"/>
+
+            <Button
+                android:id="@+id/beer"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/card"
+                android:layout_toRightOf="@id/bank"
+                android:onClick="@{() -> viewModel.onBeerClick()}"
+                android:text="@string/beer"/>
+
+            <Button
+                android:id="@+id/book"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/artist"
+                android:enabled="true"
+                android:onClick="@{() -> viewModel.onBookClick()}"
+                android:text="@string/book"/>
+
+            <Button
+                android:id="@+id/cat"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/artist"
+                android:layout_toRightOf="@id/book"
+                android:onClick="@{() -> viewModel.onCatClick()}"
+                android:text="@string/cat"/>
+
+            <Button
+                android:id="@+id/chuck_norris"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/artist"
+                android:layout_toRightOf="@id/cat"
+                android:onClick="@{() -> viewModel.onChuckNorrisClick()}"
+                android:text="@string/chuck_norris"/>
+
+            <Button
+                android:id="@+id/code"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/book"
+                android:onClick="@{() -> viewModel.onCodeClick()}"
+                android:text="@string/code"/>
+
+            <Button
+                android:id="@+id/company"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/book"
+                android:layout_toRightOf="@id/code"
+                android:onClick="@{() -> viewModel.onCompanyClick()}"
+                android:text="@string/company"/>
+
+            <Button
+                android:id="@+id/compass"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/book"
+                android:layout_toRightOf="@id/company"
+                android:enabled="true"
+                android:onClick="@{() -> viewModel.onCompassClick()}"
+                android:text="@string/compass"/>
+
+            <Button
+                android:id="@+id/demographic"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/code"
+                android:onClick="@{() -> viewModel.onDemographicClick()}"
+                android:text="@string/demographic"/>
+
+            <Button
+                android:id="@+id/educator"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/code"
+                android:layout_toRightOf="@id/demographic"
+                android:onClick="@{() -> viewModel.onEducatorClick()}"
+                android:text="@string/educator"/>
+
+            <Button
+                android:id="@+id/esport"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/code"
+                android:layout_toRightOf="@id/educator"
+                android:onClick="@{() -> viewModel.onESportClick()}"
+                android:text="@string/e_sport"/>
+
+            <Button
+                android:id="@+id/file"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/demographic"
+                android:onClick="@{() -> viewModel.onFileClick()}"
+                android:text="@string/file"/>
+
+            <Button
+                android:id="@+id/food"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/demographic"
+                android:layout_toRightOf="@id/file"
+                android:onClick="@{() -> viewModel.onFoodClick()}"
+                android:text="@string/food"/>
+
+            <Button
+                android:id="@+id/friends"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/demographic"
+                android:layout_toRightOf="@id/food"
+                android:onClick="@{() -> viewModel.onFriendsClick()}"
+                android:text="@string/friends"/>
+
+            <Button
+                android:id="@+id/game_of_thrones"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/file"
+                android:onClick="@{() -> viewModel.onGameOfThronesClick()}"
+                android:text="@string/game_of_thrones"/>
+
+            <Button
+                android:id="@+id/hacker"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/file"
+                android:layout_toRightOf="@id/game_of_thrones"
+                android:onClick="@{() -> viewModel.onHackerClick()}"
+                android:text="@string/hacker"/>
+
+            <Button
+                android:id="@+id/harry_potter"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/game_of_thrones"
+                android:onClick="@{() -> viewModel.onHarryPotterClick()}"
+                android:text="@string/harry_potter"/>
+
+            <Button
+                android:id="@+id/hey_arnold"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/game_of_thrones"
+                android:layout_toRightOf="@id/harry_potter"
+                android:enabled="true"
+                android:onClick="@{() -> viewModel.onHeyArnoldClick()}"
+                android:text="@string/hey_arnold"/>
+
+            <Button
+                android:id="@+id/hipster"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/harry_potter"
+                android:onClick="@{() -> viewModel.onHipsterClick()}"
+                android:text="@string/hipster"/>
+
+            <Button
+                android:id="@+id/internet"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/harry_potter"
+                android:layout_toRightOf="@id/hipster"
+                android:onClick="@{() -> viewModel.onInternetClick()}"
+                android:text="@string/internet"/>
+
+            <Button
+                android:id="@+id/job"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/harry_potter"
+                android:layout_toRightOf="@id/internet"
+                android:onClick="@{() -> viewModel.onJobClick()}"
+                android:text="@string/job"/>
+
+            <Button
+                android:id="@+id/lord_of_the_rings"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/hipster"
+                android:onClick="@{() -> viewModel.onLordOfTheRingsClick()}"
+                android:text="@string/lord_of_the_rings"/>
+
+            <Button
+                android:id="@+id/lorem"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/hipster"
+                android:layout_toRightOf="@id/lord_of_the_rings"
+                android:onClick="@{() -> viewModel.onLoremClick()}"
+                android:text="@string/lorem"/>
+
+            <Button
+                android:id="@+id/music"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/lord_of_the_rings"
+                android:onClick="@{() -> viewModel.onMusicClick()}"
+                android:text="@string/music"/>
+
+            <Button
+                android:id="@+id/phone_number"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/lord_of_the_rings"
+                android:layout_toRightOf="@id/music"
+                android:onClick="@{() -> viewModel.onPhoneNumberClick()}"
+                android:text="@string/phone_number"/>
+
+            <Button
+                android:id="@+id/pokemon"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/lord_of_the_rings"
+                android:layout_toRightOf="@id/phone_number"
+                android:onClick="@{() -> viewModel.onPokemonClick()}"
+                android:text="@string/pokemon"/>
+
+            <Button
+                android:id="@+id/rick_and_morty"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/music"
+                android:onClick="@{() -> viewModel.onRickAndMortyClick()}"
+                android:text="@string/rick_and_morty"/>
+
+            <Button
+                android:id="@+id/rock_band"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/music"
+                android:layout_toRightOf="@id/rick_and_morty"
+                android:onClick="@{() -> viewModel.onRockBandClick()}"
+                android:text="@string/rock_band"/>
         </RelativeLayout>
     </ScrollView>
 </layout>

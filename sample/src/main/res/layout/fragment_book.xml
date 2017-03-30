@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.BookViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/book_author_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/book_author"/>
+
+        <TextView
+            android:id="@+id/book_author"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/book_author_label"
+            android:text="@{viewModel.data.bookAuthor}"/>
+
+        <TextView
+            android:id="@+id/book_genre_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/book_author"
+            android:text="@string/book_genre"/>
+
+        <TextView
+            android:id="@+id/book_genre"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/book_author"
+            android:layout_toRightOf="@+id/book_genre_label"
+            android:text="@{viewModel.data.bookGenre}"/>
+
+        <TextView
+            android:id="@+id/book_publisher_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/book_genre"
+            android:text="@string/book_publisher"/>
+
+        <TextView
+            android:id="@+id/book_publisher"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/book_genre"
+            android:layout_toRightOf="@+id/book_publisher_label"
+            android:text="@{viewModel.data.bookPublisher}"/>
+
+        <TextView
+            android:id="@+id/book_title_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/book_publisher"
+            android:text="@string/book_title"/>
+
+        <TextView
+            android:id="@+id/book_title"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/book_publisher"
+            android:layout_toRightOf="@+id/book_title_label"
+            android:text="@{viewModel.data.bookTitle}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

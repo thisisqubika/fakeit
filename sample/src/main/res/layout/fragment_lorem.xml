@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.LoremViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/lorem_words_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/lorem_words"/>
+
+        <TextView
+            android:id="@+id/lorem_words"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/lorem_words_label"
+            android:text="@{viewModel.data.words}"/>
+
+        <TextView
+            android:id="@+id/lorem_supplemental_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/lorem_words"
+            android:text="@string/lorem_supplemental"/>
+
+        <TextView
+            android:id="@+id/lorem_supplemental"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/lorem_words"
+            android:layout_toRightOf="@+id/lorem_supplemental_label"
+            android:text="@{viewModel.data.supplemental}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+</layout>

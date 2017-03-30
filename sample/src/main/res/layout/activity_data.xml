@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Base.ContainerWithoutPadding"
+    tools:context="com.mooveit.fakeit.DataActivity">
+
+    <FrameLayout
+        android:id="@+id/data_container"
+        style="@style/Base.ContainerWithoutPadding"/>
+</android.support.design.widget.CoordinatorLayout>

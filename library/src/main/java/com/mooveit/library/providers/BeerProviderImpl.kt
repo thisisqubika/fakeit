@@ -29,17 +29,17 @@ class BeerProviderImpl : BeerProvider {
     }
 
     override fun ibu(): String {
-        val randomIbu = rand.nextInt((100 - 10) + 1) + 10;
+        val randomIbu = rand.nextInt((100 - 10) + 1) + 10
         return randomIbu.toString()
     }
 
     override fun alcohol(): String {
-        val randomAlcohol = rand.nextFloat() * (10.0 - 2.0) + 2.0;
+        val randomAlcohol = rand.nextFloat() * (10.0 - 2.0) + 2.0
         return randomAlcohol.toString()
     }
 
     override fun blg(): String {
-        val randomBlg = rand.nextFloat() * (20.0 - 5.0) + 5.0;
+        val randomBlg = rand.nextFloat() * (20.0 - 5.0) + 5.0
         return randomBlg.toString()
     }
 }

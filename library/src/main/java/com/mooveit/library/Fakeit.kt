@@ -17,16 +17,16 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     val numeralOnlyRegEx = "#"
     val defaultLanguage = "en"
     val yaml = Yaml()
-    val values: LinkedHashMap<String, LinkedHashMap<String, String>>
-    val valuesDefaults: LinkedHashMap<String, LinkedHashMap<String, String>>
+    val fakeValues: LinkedHashMap<String, LinkedHashMap<String, String>>
+    val fakeValuesDefaults: LinkedHashMap<String, LinkedHashMap<String, String>>
 
     init {
         val assetManager = context.assets
-        this.values = getValues(locale.language, assetManager)
+        this.fakeValues = getValues(locale.language, assetManager)
         if (locale.language != defaultLanguage) {
-            this.valuesDefaults = getValues(defaultLanguage, assetManager)
+            this.fakeValuesDefaults = getValues(defaultLanguage, assetManager)
         } else {
-            this.valuesDefaults = LinkedHashMap()
+            this.fakeValuesDefaults = LinkedHashMap()
         }
     }
 
@@ -37,32 +37,9 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
     }
 
-    fun fetchCategoryKeyValues(key: String, category: String,
-                               valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
-        var separator = category.indexOf(".")
-        var subCategory = category
-        var values = valuesToFetch
-        var check = true
-        if (separator == -1 && values[subCategory] == null) {
-            if (this.valuesDefaults.size == 0) {
-                throw Exception(getResourceNotFound(key))
-            }
-            values = this.valuesDefaults
-        }
-        while (separator != -1) {
-            if (values[subCategory.substring(0, separator)] == null) {
-                if (!check || this.valuesDefaults.size == 0) {
-                    throw Exception(getResourceNotFound(key))
-                }
-                separator = category.indexOf(".")
-                subCategory = category
-                values = this.valuesDefaults
-                check = false
-            }
-            values = values[subCategory.substring(0, separator)] as LinkedHashMap<String, LinkedHashMap<String, String>>
-            subCategory = subCategory.substring(separator + 1, subCategory.length)
-            separator = subCategory.indexOf(".")
-        }
+    fun fetchCategory(key: String, category: String, check: Boolean,
+                      valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
+        var (_, subCategory, _, values) = getCategoryAndValues(key, Params(category.indexOf("."), category, check, valuesToFetch))
         if (values[subCategory] is LinkedHashMap<*, *>) {
             return values[subCategory] as LinkedHashMap<*, *>
         } else if (values[subCategory] is ArrayList<*>) {
@@ -73,25 +50,56 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
     }
 
+    fun getCategoryAndValues(key: String, baseParams: Params): Params {
+        val p = Params(baseParams.separator, baseParams.category, baseParams.check, baseParams.values)
+
+        if (p.separator == -1 && p.values[p.category] == null) {
+            checkAndSetParams(key, baseParams, p)
+        }
+
+        while (p.separator != -1) {
+            if (p.check && p.values[p.category.substring(0, p.separator)] == null) {
+                checkAndSetParams(key, baseParams, p)
+            }
+            p.values = p.values[p.category.substring(0, p.separator)] as LinkedHashMap<String, LinkedHashMap<String, String>>
+            p.category = p.category.substring(p.separator + 1, p.category.length)
+            p.separator = p.category.indexOf(".")
+            if (p.separator == -1 && p.values[p.category] == null) {
+                checkAndSetParams(key, baseParams, p)
+            }
+        }
+        return p
+    }
+
+    fun checkAndSetParams(key: String, baseParams: Params, params: Params) {
+        if (!params.check || this.fakeValuesDefaults.size == 0) {
+            throw Exception(getResourceNotFound(key))
+        }
+        params.separator = baseParams.category.indexOf(".")
+        params.category = baseParams.category
+        params.values = this.fakeValuesDefaults
+        params.check = false
+    }
+
     fun fetchSelectedValue(key: String, category: String, selected: String): String {
-        var categoryKeyValues = fetchCategoryKeyValues(key, category, this.values)
-        if (categoryKeyValues[selected] == null) {
-            if (this.valuesDefaults.size == 0) {
+        var categoryValues = fetchCategory(key, category, true, this.fakeValues)
+        if (categoryValues[selected] == null) {
+            if (this.fakeValuesDefaults.size == 0) {
                 throw Exception(getResourceNotFound(key))
             }
-            categoryKeyValues = fetchCategoryKeyValues(key, category, this.valuesDefaults)
-            if (categoryKeyValues[selected] == null) {
+            categoryValues = fetchCategory(key, category, false, this.fakeValuesDefaults)
+            if (categoryValues[selected] == null) {
                 throw Exception(getResourceNotFound(key))
             }
         }
-        if (categoryKeyValues[selected] is ArrayList<*>) {
-            var values = categoryKeyValues[selected] as ArrayList<ArrayList<String>>
+        if (categoryValues[selected] is ArrayList<*>) {
+            var values = categoryValues[selected] as ArrayList<ArrayList<String>>
             if (values[0] is CharSequence) {
                 return getRandomString(values as ArrayList<String>)
             }
             return getRandomString(values[Random().nextInt(values.size)])
-        } else if (categoryKeyValues[selected] is String) {
-            return categoryKeyValues[selected] as String
+        } else if (categoryValues[selected] is String) {
+            return categoryValues[selected] as String
         } else {
             throw Exception("Resource $category.$selected is not a value")
         }
@@ -135,7 +143,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
             keyToFetch = key.substring(separator + 1, key.length)
             result = fetchSelectedValue(key, dataCategory, keyToFetch)
         } else {
-            val categoryValues = this.values[dataCategory] as LinkedHashMap<String, ArrayList<String>>
+            val categoryValues = this.fakeValues[dataCategory] as LinkedHashMap<String, ArrayList<String>>
             val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
             result = getRandomString(selectedValues)
         }
@@ -165,6 +173,9 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     fun getResourceNotFound(key: String): String {
         return "Resource not found $key"
     }
+
+    data class Params(var separator: Int, var category: String, var check: Boolean,
+                      var values: LinkedHashMap<String, LinkedHashMap<String, String>>)
 
     companion object Companion {
 

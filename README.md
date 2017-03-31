@@ -12,7 +12,7 @@ Maven
 <dependency>
   <groupId>com.github.moove-it</groupId>
   <artifactId>fakeit</artifactId>
-  <version>v0.1</version>
+  <version>v0.2</version>
 </dependency>
 ```
 or Gradle:
@@ -24,7 +24,7 @@ allprojects {
 }
   
 dependencies {
-  compile 'com.github.moove-it:fakeit:v0.1'
+  compile 'com.github.moove-it:fakeit:v0.2'
 }
 ```
 

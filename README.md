@@ -31,7 +31,7 @@ dependencies {
 Basic usage
 --------
 
-Fakeit can be used in Java and Kotlin Android apps.
+Fakeit can be used in Java and Kotlin Android apps. Run the sample app to check all the available models and generate some random values.
 
 First you need to initialize Fakeit:
 
@@ -56,22 +56,39 @@ This is the current list of fake data models available:
 
 - Address
 - Ancient
+- App
 - Artist
+- Bank
 - Beer
 - Book
 - Business
 - Card
 - Cat
 - Chuck Norris
+- Code
+- Company
 - Compass
 - Demographic
+- Educator
 - Esport
 - File
 - Food
 - Friends
 - Game of Thrones
+- Hacker
 - Harry Potter
+- Hey Arnold
+- Hipster
+- Internet
+- Job
+- Lord of the Rings
+- Lorem
+- Music
 - Name
+- Phone number
+- Pokemon
+- Rick and Morty
+- Rock band
         
 
 Questions and issues

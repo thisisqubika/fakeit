@@ -11,11 +11,13 @@ The following guide set some guidelines to contribute with Fakeit, please read i
   * [Suggesting Enhancements](#suggesting-enhancements)
   * [Pull Requests](#pull-requests)
 
-### General
+## General
 
 - Make an individual pull request / report for each suggestion / bug or enhancement.
 - Search previous suggestions before making a new one, as yours may be a duplicate, use the proper filters to help you with that.
 - Check your spelling and grammar.
+
+## How Can I Contribute?
 
 ### Reporting Bugs
 
@@ -24,12 +26,12 @@ The following guide set some guidelines to contribute with Fakeit, please read i
 - If possible, add a step-by-step guide to reproduce it along with the crash stacktrace.
 - If running Fakeit on Android, add the Android API version.
 
-## Suggesting Enhancements
+### Suggesting Enhancements
 
 - Use the [Github issue tracker](https://github.com/moove-it/fakeit/issues).
 - Use the [Feature] tag for features and the [Enhancement] tag for improvements.
 
-## Pull Requests
+### Pull Requests
 
 - Before creating a PR, create an issue related to what you are fixing / improving.
 - Add a brief description and a link to the related issue.

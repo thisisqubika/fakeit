@@ -99,7 +99,7 @@ For bug reports and feature requests, use [Github issue tracker](https://github.
 Contributing
 --------
 
-All contributions are welcome!
+See the [contribution guide](CONTRIBUTING.md).
 
 License
 --------

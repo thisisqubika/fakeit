@@ -14,16 +14,15 @@ The following guide set some guidelines to contribute with Fakeit, please read i
 ### General
 
 - Make an individual pull request / report for each suggestion / bug or enhancement.
-- Search previous suggestions before making a new one, as yours may be a duplicate.
+- Search previous suggestions before making a new one, as yours may be a duplicate, use the proper filters to help you with that.
 - Check your spelling and grammar.
 
 ### Reporting Bugs
 
 - For reporting bugs please use the [Github issue tracker](https://github.com/moove-it/fakeit/issues).
-- Before reporting a bug, be sure the bug was not already reported, use the search feature along with the filter by label to help you with that.
-- The created issue must start with the [Bug] tag along with a brief description of the bug.
-- If possible, add a step-to-step to reproduce it along with the crash stacktrace.
-- If run on Android, try to add the API version also.
+- The reported bug must start with the [Bug] tag along with a brief description of the bug.
+- If possible, add a step-by-step guide to reproduce it along with the crash stacktrace.
+- If running Fakeit on Android, add the Android API version.
 
 ## Suggesting Enhancements
 

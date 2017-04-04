@@ -36,6 +36,6 @@ The following guide set some guidelines to contribute with Fakeit, please read i
 - Add a brief description and a link to the related issue.
 - Use a correct branch-naming:
   - For features use: ```feature/add-ru-locale```
-  - For bugs use: ```bug/fix-crash-en-name```
+  - For fixes use: ```fix/crash-en-locale-name```
   - For enhancements: ```enhancements/improve-fetch-code-style```
 

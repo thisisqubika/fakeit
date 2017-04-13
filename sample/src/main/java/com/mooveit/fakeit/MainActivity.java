@@ -8,6 +8,8 @@ import com.mooveit.fakeit.databinding.ActivityMainBinding;
 import com.mooveit.fakeit.viewmodels.MainViewModel;
 import com.mooveit.library.Fakeit;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity implements MainViewModel.MainCallback {
 
     @Override
@@ -15,7 +17,8 @@ public class MainActivity extends AppCompatActivity implements MainViewModel.Mai
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setViewModel(new MainViewModel(this));
-        Fakeit.initWithLocale(this, "en");
+
+        Fakeit.initWithLocale(this, Locale.ENGLISH);
     }
 
     @Override

@@ -22,7 +22,13 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
     init {
         val assetManager = context.assets
-        this.fakeValues = getValues(locale.language, assetManager)
+        var stringLocale = locale.language
+
+        if (!locale.country.isEmpty()) {
+            stringLocale = stringLocale.plus("-").plus(locale.country)
+        }
+
+        this.fakeValues = getValues(stringLocale, assetManager)
         if (locale.language != defaultLanguage) {
             this.fakeValuesDefaults = getValues(defaultLanguage, assetManager)
         } else {
@@ -189,6 +195,12 @@ class Fakeit private constructor(context: Context, locale: Locale) {
                     }
                 }
             }
+        }
+
+        @JvmStatic
+        fun resetLocale(context: Context, locale: Locale) {
+            fakeit = null
+            initWithLocale(context, locale)
         }
 
         @JvmStatic

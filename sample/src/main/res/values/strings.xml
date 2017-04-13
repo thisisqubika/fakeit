@@ -211,4 +211,28 @@
     <string name="rock_band">Rock band</string>
 
     <string name="refresh">Refresh</string>
+
+    <string name="english">English</string>
+    <string name="russian">Russian</string>
+    <string name="spanish">Spanish</string>
+    <string name="german">German</string>
+    <string name="catalan">Catalan</string>
+    <string name="persian">Persian</string>
+    <string name="finnish">Finnish</string>
+    <string name="french">French</string>
+    <string name="hebrew">Hebrew</string>
+    <string name="indonesian">Indonesian </string>
+    <string name="italian">Italian</string>
+    <string name="japanese">Japanese </string>
+    <string name="korean">Korean</string>
+    <string name="norwegian">Norwegian Bokmål</string>
+    <string name="dutch">Dutch</string>
+    <string name="polish">Polish</string>
+    <string name="portuguese">Portuguese </string>
+    <string name="slovak">Slovak</string>
+    <string name="swedish">Swedish</string>
+    <string name="turkish">Turkish</string>
+    <string name="ukrainian">Ukrainian </string>
+    <string name="vietnamese">Vietnamese </string>
+    <string name="chinese">Chinese</string>
 </resources>

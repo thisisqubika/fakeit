@@ -22,7 +22,6 @@ public class NameViewModel extends BaseViewModel {
         mData.firstName.set(Fakeit.name().firstName());
         mData.lastName.set(Fakeit.name().lastName());
         mData.title.set(Fakeit.name().title());
-        mData.userName.set("avatar4242");
     }
 
     @Override

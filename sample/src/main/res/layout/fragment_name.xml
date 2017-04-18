@@ -75,19 +75,6 @@
             android:layout_toRightOf="@+id/title_label"
             android:text="@{viewModel.data.title}"/>
 
-        <TextView
-            android:id="@+id/user_name_label"
-            style="@style/Base.Wrapper.Bold"
-            android:layout_below="@+id/title_label"
-            android:text="@string/user_name"/>
-
-        <TextView
-            android:id="@+id/user_name"
-            style="@style/Base.Wrapper.MarginLeft"
-            android:layout_below="@+id/title"
-            android:layout_toRightOf="@+id/user_name_label"
-            android:text="@{viewModel.data.userName}"/>
-
         <Button
             android:id="@+id/refresh"
             style="@style/Base.RefreshButton"

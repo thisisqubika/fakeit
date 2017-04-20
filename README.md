@@ -22,7 +22,7 @@ allprojects {
     maven { url 'https://jitpack.io' }
   }
 }
-  
+
 dependencies {
   compile 'com.github.moove-it:fakeit:v0.2'
 }
@@ -39,7 +39,7 @@ First you need to initialize Fakeit:
 // Default locale is en
 Fakeit.init(context)
 
-// Or you can pass a Locale o a String locale
+// Or you can pass a Locale or a String locale
 Fakeit.init(context, locale)
 ```
 
@@ -89,7 +89,7 @@ This is the current list of fake data models available:
 - Pokemon
 - Rick and Morty
 - Rock band
-        
+
 
 Questions and issues
 --------

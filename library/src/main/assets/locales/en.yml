@@ -1,12 +1,14 @@
 en:
-  time:
-    formats:
-      us: "%m/%d/%Y %I:%M %p"
-    am: "AM"
-    pm: "PM"
-
   faker:
     separator: ' & '
+
+    date:
+        formats: ["MM/dd/yyyy", "MM/dd/yy"]
+        format_with_time:
+          - "#{formats} #{Time.formats}"
+    time:
+        formats: ["HH:mm a", "HH:mm"]
+
     address:
       city_prefix: [North, East, West, South, New, Lake, Port]
       city_suffix: [town, ton, land, ville, berg, burgh, borough, bury, view, port, mouth, stad, furt, chester, mouth, fort, haven, side, shire]

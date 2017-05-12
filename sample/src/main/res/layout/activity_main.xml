@@ -283,6 +283,13 @@
                 android:layout_toRightOf="@id/rick_and_morty"
                 android:onClick="@{() -> viewModel.onRockBandClick()}"
                 android:text="@string/rock_band"/>
+
+            <Button
+                android:id="@+id/date_time"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/rick_and_morty"
+                android:onClick="@{() -> viewModel.onDateTimeClick()}"
+                android:text="@string/date_time"/>
         </RelativeLayout>
     </ScrollView>
 </layout>

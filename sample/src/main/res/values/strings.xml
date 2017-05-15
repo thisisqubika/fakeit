@@ -89,6 +89,10 @@
     <string name="compass_half_wind_azimuth">Compass half wind azimuth:</string>
     <string name="compass_quarter_wind_azimuth">Compass quarter wind azimuth:</string>
 
+    <string name="date_formatter">Date:</string>
+    <string name="time_formatter">Time:</string>
+    <string name="date_time_formatter">Date Time:</string>
+
     <string name="demographic_race">Demographic race:</string>
     <string name="demographic_educational_attainment">Demographic educational attainment:</string>
     <string name="demographic_demonym">Demographic demonym:</string>
@@ -190,6 +194,7 @@
     <string name="company">Company</string>
     <string name="compass">Compass</string>
     <string name="demographic">Demographic</string>
+    <string name="date_time">Date Time</string>
     <string name="educator">Educator</string>
     <string name="e_sport">E-Sport</string>
     <string name="file">File</string>

@@ -296,6 +296,11 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
 
         @JvmStatic
+        fun dateTime(): DateTimeProvider {
+            return DateTimeProviderImpl()
+        }
+
+        @JvmStatic
         fun demographic(): DemographicProvider {
             return DemographicProviderImpl()
         }

@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface AncientProvider: Provider {
+interface AncientProvider : Provider {
 
     fun god(): String
     fun primordial(): String

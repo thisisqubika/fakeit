@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface PhoneNumberProvider {
+interface PhoneNumberProvider : Provider {
 
     fun formats(): String
 }

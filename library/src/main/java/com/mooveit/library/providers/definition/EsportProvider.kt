@@ -1,5 +1,6 @@
 package com.mooveit.library.providers.definition
-interface EsportProvider {
+
+interface EsportProvider : Provider {
 
     fun player(): String
     fun team(): String

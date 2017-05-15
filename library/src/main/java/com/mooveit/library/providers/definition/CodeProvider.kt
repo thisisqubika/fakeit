@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface CodeProvider {
+interface CodeProvider : Provider {
 
     fun asin(): String
 }

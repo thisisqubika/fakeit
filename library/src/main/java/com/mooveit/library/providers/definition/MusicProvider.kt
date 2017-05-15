@@ -1,7 +1,7 @@
 package com.mooveit.library.providers.definition
 
 
-interface MusicProvider {
+interface MusicProvider : Provider {
 
     fun key(): String
     fun chord(): String

@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface FileProvider {
+interface FileProvider : Provider {
 
     fun extension(): String
     fun mimeType(): String

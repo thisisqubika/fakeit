@@ -54,6 +54,9 @@ public class DataActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case (R.id.unique_value):
+                Fakeit.changeUniqueValueState();
+                break;
             case (R.id.english):
                 Fakeit.resetLocale(this, Constants.FakeitLocale.EN.locale());
                 break;

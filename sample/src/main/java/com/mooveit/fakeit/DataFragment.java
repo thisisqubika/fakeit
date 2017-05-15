@@ -142,8 +142,7 @@ public class DataFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return getViewDataBinding(inflater, container).getRoot();
     }
 

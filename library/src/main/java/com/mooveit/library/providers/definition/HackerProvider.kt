@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface HackerProvider {
+interface HackerProvider : Provider {
 
     fun abbreviation(): String
     fun adjective(): String

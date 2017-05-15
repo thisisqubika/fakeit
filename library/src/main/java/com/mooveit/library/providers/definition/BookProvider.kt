@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface BookProvider {
+interface BookProvider : Provider {
 
     fun title(): String
     fun author(): String

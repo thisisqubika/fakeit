@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface JobProvider {
+interface JobProvider : Provider {
 
     fun field(): String
     fun seniority(): String

@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface DemographicProvider {
+interface DemographicProvider : Provider {
 
     fun race(): String
     fun educationalAttainment(): String

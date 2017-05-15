@@ -212,6 +212,8 @@
 
     <string name="refresh">Refresh</string>
 
+    <string name="unique_value">Unique Value</string>
+
     <string name="english">English</string>
     <string name="russian">Russian</string>
     <string name="spanish">Spanish</string>

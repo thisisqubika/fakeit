@@ -22,6 +22,7 @@ import com.mooveit.fakeit.databinding.FragmentChuckNorrisFactsBinding;
 import com.mooveit.fakeit.databinding.FragmentCodeBinding;
 import com.mooveit.fakeit.databinding.FragmentCompanyBinding;
 import com.mooveit.fakeit.databinding.FragmentCompassBinding;
+import com.mooveit.fakeit.databinding.FragmentDateTimeBinding;
 import com.mooveit.fakeit.databinding.FragmentDemographicBinding;
 import com.mooveit.fakeit.databinding.FragmentEducatorBinding;
 import com.mooveit.fakeit.databinding.FragmentEsportBinding;
@@ -57,6 +58,7 @@ import com.mooveit.fakeit.models.ChuckNorrisFactsData;
 import com.mooveit.fakeit.models.CodeData;
 import com.mooveit.fakeit.models.CompanyData;
 import com.mooveit.fakeit.models.CompassData;
+import com.mooveit.fakeit.models.DateTimeData;
 import com.mooveit.fakeit.models.DemographicData;
 import com.mooveit.fakeit.models.ESportData;
 import com.mooveit.fakeit.models.EducatorData;
@@ -92,6 +94,7 @@ import com.mooveit.fakeit.viewmodels.ChuckNorrisFactsViewModel;
 import com.mooveit.fakeit.viewmodels.CodeViewModel;
 import com.mooveit.fakeit.viewmodels.CompanyViewModel;
 import com.mooveit.fakeit.viewmodels.CompassViewModel;
+import com.mooveit.fakeit.viewmodels.DateTimeViewModel;
 import com.mooveit.fakeit.viewmodels.DemographicViewModel;
 import com.mooveit.fakeit.viewmodels.ESportViewModel;
 import com.mooveit.fakeit.viewmodels.EducatorViewModel;
@@ -208,6 +211,10 @@ public class DataFragment extends Fragment {
             case R.layout.fragment_demographic:
                 binding = FragmentDemographicBinding.inflate(inflater, container, false);
                 ((FragmentDemographicBinding) binding).setViewModel(new DemographicViewModel(new DemographicData()));
+                break;
+            case R.layout.fragment_date_time:
+                binding = FragmentDateTimeBinding.inflate(inflater, container, false);
+                ((FragmentDateTimeBinding) binding).setViewModel(new DateTimeViewModel(new DateTimeData()));
                 break;
             case R.layout.fragment_educator:
                 binding = FragmentEducatorBinding.inflate(inflater, container, false);

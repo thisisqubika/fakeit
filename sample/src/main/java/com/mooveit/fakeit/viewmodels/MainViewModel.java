@@ -79,6 +79,10 @@ public class MainViewModel {
         mMainCallback.startActivityWithLayout(R.layout.fragment_demographic);
     }
 
+    public void onDateTimeClick() {
+        mMainCallback.startActivityWithLayout(R.layout.fragment_date_time);
+    }
+
     public void onEducatorClick() {
         mMainCallback.startActivityWithLayout(R.layout.fragment_educator);
     }

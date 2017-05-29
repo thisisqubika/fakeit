@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface DateTimeProvider {
+interface DateTimeProvider : Provider {
 
     fun dateFormatter(): String
     fun timeFormatter(): String

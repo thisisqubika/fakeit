@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface EducatorProvider {
+interface EducatorProvider : Provider {
 
     fun name(): String
     fun secondary(): String

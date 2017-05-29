@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface RickAndMortyProvider {
+interface RickAndMortyProvider : Provider {
 
     fun character(): String
     fun location(): String

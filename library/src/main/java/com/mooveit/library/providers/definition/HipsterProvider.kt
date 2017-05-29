@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface HipsterProvider {
+interface HipsterProvider : Provider {
 
     fun words(): String
 }

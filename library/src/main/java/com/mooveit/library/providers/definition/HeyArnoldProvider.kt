@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface HeyArnoldProvider {
+interface HeyArnoldProvider : Provider {
 
     fun character(): String
     fun location(): String

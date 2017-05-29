@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface ArtistProvider {
+interface ArtistProvider : Provider {
 
     fun name(): String
 }

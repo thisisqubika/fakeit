@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface PokemonProvider {
+interface PokemonProvider : Provider {
 
     fun name(): String
     fun location(): String

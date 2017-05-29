@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface FoodProvider {
+interface FoodProvider : Provider {
 
     fun ingredient(): String
     fun spice(): String

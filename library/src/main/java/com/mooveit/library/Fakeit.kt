@@ -2,12 +2,47 @@ package com.mooveit.library
 
 import android.content.Context
 import android.content.res.AssetManager
-import com.mooveit.library.providers.*
 import com.mooveit.library.providers.definition.*
+import com.mooveit.library.providers.definition.AddressProvider
+import com.mooveit.library.providers.definition.AncientProvider
+import com.mooveit.library.providers.definition.AppProvider
+import com.mooveit.library.providers.definition.ArtistProvider
+import com.mooveit.library.providers.definition.BankProvider
+import com.mooveit.library.providers.definition.BeerProvider
+import com.mooveit.library.providers.definition.BookProvider
+import com.mooveit.library.providers.definition.BusinessProvider
+import com.mooveit.library.providers.definition.CardProvider
+import com.mooveit.library.providers.definition.CatProvider
+import com.mooveit.library.providers.definition.ChuckNorrisFactsProvider
+import com.mooveit.library.providers.definition.CodeProvider
+import com.mooveit.library.providers.definition.CompanyProvider
+import com.mooveit.library.providers.definition.CompassProvider
+import com.mooveit.library.providers.definition.DemographicProvider
+import com.mooveit.library.providers.definition.EducatorProvider
+import com.mooveit.library.providers.definition.EsportProvider
+import com.mooveit.library.providers.definition.FileProvider
+import com.mooveit.library.providers.definition.FoodProvider
+import com.mooveit.library.providers.definition.FriendsProvider
+import com.mooveit.library.providers.definition.GameOfThronesProvider
+import com.mooveit.library.providers.definition.HackerProvider
+import com.mooveit.library.providers.definition.HarryPotterProvider
+import com.mooveit.library.providers.definition.HeyArnoldProvider
+import com.mooveit.library.providers.definition.HipsterProvider
+import com.mooveit.library.providers.definition.InternetProvider
+import com.mooveit.library.providers.definition.JobProvider
+import com.mooveit.library.providers.definition.LordOfTheRingsProvider
+import com.mooveit.library.providers.definition.LoremProvider
+import com.mooveit.library.providers.definition.MusicProvider
+import com.mooveit.library.providers.definition.NameProvider
+import com.mooveit.library.providers.definition.PhoneNumberProvider
+import com.mooveit.library.providers.definition.PokemonProvider
+import com.mooveit.library.providers.definition.RickAndMortyProvider
+import com.mooveit.library.providers.definition.RockBandProvider
 import org.yaml.snakeyaml.Yaml
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
 
 class Fakeit private constructor(context: Context, locale: Locale) {
@@ -16,9 +51,12 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
     val numeralOnlyRegEx = "#"
     val defaultLanguage = "en"
+
     val yaml = Yaml()
     val fakeValues: LinkedHashMap<String, LinkedHashMap<String, String>>
     val fakeValuesDefaults: LinkedHashMap<String, LinkedHashMap<String, String>>
+
+    var uniqueValueActive = false
 
     init {
         val assetManager = context.assets
@@ -186,6 +224,7 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     companion object Companion {
 
         var fakeit: Fakeit? = null
+        var providers = HashMap<String, Provider>()
 
         fun fakeitInit(context: Context, locale: Locale) {
             if (fakeit == null) {
@@ -221,78 +260,96 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
 
         @JvmStatic
+        fun getUniqueValue(): Boolean {
+            return fakeit?.let { it.uniqueValueActive } ?: false
+        }
+
+        @JvmStatic
+        fun changeUniqueValueState() {
+            fakeit?.uniqueValueActive = fakeit?.let { !it.uniqueValueActive } ?: false
+        }
+
+        private fun getProvider(key: String, provider: () -> Provider): Provider {
+            return providers[key].let { it } ?: {
+                val auxProvider = provider()
+                providers.put(key, auxProvider)
+                auxProvider
+            }()
+        }
+
+        @JvmStatic
         fun name(): NameProvider {
-            return NameProviderImpl()
+            return getProvider("name", { com.mooveit.library.providers.NameProvider() }) as NameProvider
         }
 
         @JvmStatic
         fun business(): BusinessProvider {
-            return BusinessProviderImpl()
+            return getProvider("business", { com.mooveit.library.providers.BusinessProvider() }) as BusinessProvider
         }
 
         @JvmStatic
         fun address(): AddressProvider {
-            return AddressProviderImpl()
+            return getProvider("address", { com.mooveit.library.providers.AddressProvider() }) as AddressProvider
         }
 
         @JvmStatic
         fun app(): AppProvider {
-            return AppProviderImpl()
+            return getProvider("app", { com.mooveit.library.providers.AppProvider() }) as AppProvider
         }
 
         @JvmStatic
         fun card(): CardProvider {
-            return CardProviderImpl()
+            return getProvider("card", { com.mooveit.library.providers.CardProvider() }) as CardProvider
         }
 
         @JvmStatic
         fun ancient(): AncientProvider {
-            return AncientProviderImpl()
+            return getProvider("ancient", { com.mooveit.library.providers.AncientProvider() }) as AncientProvider
         }
 
         @JvmStatic
         fun artist(): ArtistProvider {
-            return ArtistProviderImpl()
+            return getProvider("artist", { com.mooveit.library.providers.ArtistProvider() }) as ArtistProvider
         }
 
         @JvmStatic
         fun bank(): BankProvider {
-            return BankProviderImpl()
+            return getProvider("bank", { com.mooveit.library.providers.BankProvider() }) as BankProvider
         }
 
         @JvmStatic
         fun beer(): BeerProvider {
-            return BeerProviderImpl()
+            return getProvider("beer", { com.mooveit.library.providers.BeerProvider() }) as BeerProvider
         }
 
         @JvmStatic
         fun book(): BookProvider {
-            return BookProviderImpl()
+            return getProvider("book", { com.mooveit.library.providers.BookProvider() }) as BookProvider
         }
 
         @JvmStatic
         fun cat(): CatProvider {
-            return CatProviderImpl()
+            return getProvider("cat", { com.mooveit.library.providers.CatProvider() }) as CatProvider
         }
 
         @JvmStatic
         fun chuckNorris(): ChuckNorrisFactsProvider {
-            return ChuckNorrisFactsProviderImpl()
+            return getProvider("chuckNorris", { com.mooveit.library.providers.ChuckNorrisFactsProvider() }) as ChuckNorrisFactsProvider
         }
 
         @JvmStatic
         fun code(): CodeProvider {
-            return CodeProviderImpl()
+            return getProvider("code", { com.mooveit.library.providers.CodeProvider() }) as CodeProvider
         }
 
         @JvmStatic
         fun company(): CompanyProvider {
-            return CompanyProviderImpl()
+            return getProvider("company", { com.mooveit.library.providers.CompanyProvider() }) as CompanyProvider
         }
 
         @JvmStatic
         fun compass(): CompassProvider {
-            return CompassProviderImpl()
+            return getProvider("compass", { com.mooveit.library.providers.CompassProvider() }) as CompassProvider
         }
 
         @JvmStatic
@@ -302,102 +359,102 @@ class Fakeit private constructor(context: Context, locale: Locale) {
 
         @JvmStatic
         fun demographic(): DemographicProvider {
-            return DemographicProviderImpl()
+            return getProvider("demographic", { com.mooveit.library.providers.DemographicProvider() }) as DemographicProvider
         }
 
         @JvmStatic
         fun hipster(): HipsterProvider {
-            return HipsterProviderImpl()
+            return getProvider("hipster", { com.mooveit.library.providers.HipsterProvider() }) as HipsterProvider
         }
 
         @JvmStatic
         fun educator(): EducatorProvider {
-            return EducatorProviderImpl()
+            return getProvider("educator", { com.mooveit.library.providers.EducatorProvider() }) as EducatorProvider
         }
 
         @JvmStatic
         fun esports(): EsportProvider {
-            return EsportProviderImpl()
+            return getProvider("esports", { com.mooveit.library.providers.EsportProvider() }) as EsportProvider
         }
 
         @JvmStatic
         fun internet(): InternetProvider {
-            return InternetProviderImpl()
+            return getProvider("internet", { com.mooveit.library.providers.InternetProvider() }) as InternetProvider
         }
 
         @JvmStatic
         fun file(): FileProvider {
-            return FileProviderImpl()
+            return getProvider("file", { com.mooveit.library.providers.FileProvider() }) as FileProvider
         }
 
         @JvmStatic
         fun food(): FoodProvider {
-            return FoodProviderImpl()
+            return getProvider("food", { com.mooveit.library.providers.FoodProvider() }) as FoodProvider
         }
 
         @JvmStatic
         fun friends(): FriendsProvider {
-            return FriendsProviderImpl()
+            return getProvider("friends", { com.mooveit.library.providers.FriendsProvider() }) as FriendsProvider
         }
 
         @JvmStatic
         fun gameOfThrones(): GameOfThronesProvider {
-            return GameOfThronesProviderImpl()
+            return getProvider("gameOfThrones", { com.mooveit.library.providers.GameOfThronesProvider() }) as GameOfThronesProvider
         }
 
         @JvmStatic
         fun harryPotter(): HarryPotterProvider {
-            return HarryPotterProviderImpl()
+            return getProvider("harryPotter", { com.mooveit.library.providers.HarryPotterProvider() }) as HarryPotterProvider
         }
 
         @JvmStatic
         fun hacker(): HackerProvider {
-            return HackerProviderImpl()
+            return getProvider("hacker", { com.mooveit.library.providers.HackerProvider() }) as HackerProvider
         }
 
         @JvmStatic
         fun job(): JobProvider {
-            return JobProviderImpl()
+            return getProvider("job", { com.mooveit.library.providers.JobProvider() }) as JobProvider
         }
 
         @JvmStatic
         fun lorem(): LoremProvider {
-            return LoremProviderImpl()
+            return getProvider("lorem", { com.mooveit.library.providers.LoremProvider() }) as LoremProvider
         }
 
         @JvmStatic
         fun lordOfTheRings(): LordOfTheRingsProvider {
-            return LordOfTheRingsProviderImpl()
+            return getProvider("lordOfTheRings", { com.mooveit.library.providers.LordOfTheRingsProvider() }) as LordOfTheRingsProvider
         }
 
         @JvmStatic
         fun music(): MusicProvider {
-            return MusicProviderImpl()
+            return getProvider("music", { com.mooveit.library.providers.MusicProvider() }) as MusicProvider
         }
 
         @JvmStatic
         fun heyArnold(): HeyArnoldProvider {
-            return HeyArnoldProviderImpl()
+            return getProvider("heyArnold", { com.mooveit.library.providers.HeyArnoldProvider() }) as HeyArnoldProvider
         }
 
         @JvmStatic
         fun pokemon(): PokemonProvider {
-            return PokemonProviderImpl()
+            return getProvider("pokemon", { com.mooveit.library.providers.PokemonProvider() }) as PokemonProvider
         }
 
         @JvmStatic
         fun phone(): PhoneNumberProvider {
-            return PhoneNumberProviderImpl()
+            return getProvider("phone", { com.mooveit.library.providers.PhoneNumberProvider() }) as PhoneNumberProvider
         }
 
         @JvmStatic
         fun rickAndMorty(): RickAndMortyProvider {
-            return RickAndMortyProviderImpl()
+            return getProvider("rickAndMorty", { com.mooveit.library.providers.RickAndMortyProvider() }) as RickAndMortyProvider
         }
 
         @JvmStatic
         fun rockBand(): RockBandProvider {
-            return RockBandProviderImpl()
+            return getProvider("rockBand", { com.mooveit.library.providers.RockBandProvider() }) as RockBandProvider
         }
     }
 }

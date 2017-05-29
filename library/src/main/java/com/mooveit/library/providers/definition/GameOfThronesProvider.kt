@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface GameOfThronesProvider {
+interface GameOfThronesProvider : Provider {
 
     fun character(): String
     fun house(): String

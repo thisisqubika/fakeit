@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface CompanyProvider {
+interface CompanyProvider : Provider {
 
     fun suffix(): String
     fun buzzwords(): String

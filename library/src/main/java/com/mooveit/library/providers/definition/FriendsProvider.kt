@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface FriendsProvider {
+interface FriendsProvider : Provider {
 
     fun character(): String
     fun location(): String

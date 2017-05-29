@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface ChuckNorrisFactsProvider {
+interface ChuckNorrisFactsProvider : Provider {
 
     fun fact(): String
 }

@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface CompassProvider {
+interface CompassProvider : Provider {
 
     fun cardinal(): String
     fun ordinal(): String

@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface LordOfTheRingsProvider {
+interface LordOfTheRingsProvider : Provider {
 
     fun character(): String
     fun location(): String

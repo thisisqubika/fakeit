@@ -1,49 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/english"
+    <item
+        android:id="@+id/unique_value"
+        android:title="@string/unique_value"/>
+    <item
+        android:id="@+id/english"
         android:title="@string/english"/>
-    <item android:id="@+id/russian"
+    <item
+        android:id="@+id/russian"
         android:title="@string/russian"/>
-    <item android:id="@+id/spanish"
+    <item
+        android:id="@+id/spanish"
         android:title="@string/spanish"/>
-    <item android:id="@+id/german"
+    <item
+        android:id="@+id/german"
         android:title="@string/german"/>
-    <item android:id="@+id/catalan"
+    <item
+        android:id="@+id/catalan"
         android:title="@string/catalan"/>
-    <item android:id="@+id/persian"
+    <item
+        android:id="@+id/persian"
         android:title="@string/persian"/>
-    <item android:id="@+id/finnish"
+    <item
+        android:id="@+id/finnish"
         android:title="@string/finnish"/>
-    <item android:id="@+id/french"
+    <item
+        android:id="@+id/french"
         android:title="@string/french"/>
-    <item android:id="@+id/hebrew"
+    <item
+        android:id="@+id/hebrew"
         android:title="@string/hebrew"/>
-    <item android:id="@+id/indonesian"
+    <item
+        android:id="@+id/indonesian"
         android:title="@string/indonesian"/>
-    <item android:id="@+id/italian"
+    <item
+        android:id="@+id/italian"
         android:title="@string/italian"/>
-    <item android:id="@+id/japanese"
+    <item
+        android:id="@+id/japanese"
         android:title="@string/japanese"/>
-    <item android:id="@+id/korean"
+    <item
+        android:id="@+id/korean"
         android:title="@string/korean"/>
-    <item android:id="@+id/norwegian"
+    <item
+        android:id="@+id/norwegian"
         android:title="@string/norwegian"/>
-    <item android:id="@+id/dutch"
+    <item
+        android:id="@+id/dutch"
         android:title="@string/dutch"/>
-    <item android:id="@+id/polish"
+    <item
+        android:id="@+id/polish"
         android:title="@string/polish"/>
-    <item android:id="@+id/portuguese"
+    <item
+        android:id="@+id/portuguese"
         android:title="@string/portuguese"/>
-    <item android:id="@+id/slovak"
+    <item
+        android:id="@+id/slovak"
         android:title="@string/slovak"/>
-    <item android:id="@+id/swedish"
+    <item
+        android:id="@+id/swedish"
         android:title="@string/swedish"/>
-    <item android:id="@+id/turkish"
+    <item
+        android:id="@+id/turkish"
         android:title="@string/turkish"/>
-    <item android:id="@+id/ukrainian"
+    <item
+        android:id="@+id/ukrainian"
         android:title="@string/ukrainian"/>
-    <item android:id="@+id/vietnamese"
+    <item
+        android:id="@+id/vietnamese"
         android:title="@string/vietnamese"/>
-    <item android:id="@+id/chinese"
+    <item
+        android:id="@+id/chinese"
         android:title="@string/chinese"/>
 </menu>

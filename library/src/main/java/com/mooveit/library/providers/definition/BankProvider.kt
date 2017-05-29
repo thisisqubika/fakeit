@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface BankProvider {
+interface BankProvider : Provider {
 
     fun name(): String
     fun swiftBic(): String

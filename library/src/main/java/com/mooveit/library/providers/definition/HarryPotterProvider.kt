@@ -1,6 +1,6 @@
 package com.mooveit.library.providers.definition
 
-interface HarryPotterProvider {
+interface HarryPotterProvider : Provider {
 
     fun character(): String
     fun location(): String

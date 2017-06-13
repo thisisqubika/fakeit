@@ -12,7 +12,7 @@ Maven
 <dependency>
   <groupId>com.github.moove-it</groupId>
   <artifactId>fakeit</artifactId>
-  <version>v0.2</version>
+  <version>v0.3</version>
 </dependency>
 ```
 or Gradle:
@@ -24,7 +24,7 @@ allprojects {
 }
 
 dependencies {
-  compile 'com.github.moove-it:fakeit:v0.2'
+  compile 'com.github.moove-it:fakeit:v0.3'
 }
 ```
 
@@ -68,6 +68,7 @@ This is the current list of fake data models available:
 - Code
 - Company
 - Compass
+- Date
 - Demographic
 - Educator
 - Esport
@@ -90,6 +91,14 @@ This is the current list of fake data models available:
 - Rick and Morty
 - Rock band
 
+Unique value
+--------
+
+Now you can ask Fakeit for unique values.
+
+```java
+Fakeit.getUniqueValue()
+```
 
 Questions and issues
 --------

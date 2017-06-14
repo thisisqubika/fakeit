@@ -58,73 +58,73 @@ public class DataActivity extends AppCompatActivity {
                 Fakeit.changeUniqueValueState();
                 break;
             case (R.id.english):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.EN.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.EN.locale());
                 break;
             case (R.id.russian):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.RU.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.RU.locale());
                 break;
             case (R.id.spanish):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.ES.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.ES.locale());
                 break;
             case (R.id.german):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.DE.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.DE.locale());
                 break;
             case (R.id.catalan):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.CA.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.CA.locale());
                 break;
             case (R.id.persian):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.FA.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.FA.locale());
                 break;
             case (R.id.finnish):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.FI.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.FI.locale());
                 break;
             case (R.id.french):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.FR.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.FR.locale());
                 break;
             case (R.id.hebrew):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.HE.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.HE.locale());
                 break;
             case (R.id.indonesian):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.ID.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.ID.locale());
                 break;
             case (R.id.italian):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.IT.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.IT.locale());
                 break;
             case (R.id.japanese):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.JA.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.JA.locale());
                 break;
             case (R.id.korean):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.KO.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.KO.locale());
                 break;
             case (R.id.norwegian):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.NB.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.NB.locale());
                 break;
             case (R.id.dutch):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.NL.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.NL.locale());
                 break;
             case (R.id.polish):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.PL.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.PL.locale());
                 break;
             case (R.id.portuguese):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.PT.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.PT.locale());
                 break;
             case (R.id.slovak):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.SK.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.SK.locale());
                 break;
             case (R.id.swedish):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.SV.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.SV.locale());
                 break;
             case (R.id.turkish):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.TR.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.TR.locale());
                 break;
             case (R.id.ukrainian):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.UK.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.UK.locale());
                 break;
             case (R.id.vietnamese):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.VI.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.VI.locale());
                 break;
             case (R.id.chinese):
-                Fakeit.resetLocale(this, Constants.FakeitLocale.ZH.locale());
+                Fakeit.resetLocale(Constants.FakeitLocale.ZH.locale());
                 break;
             case android.R.id.home:
                 super.onBackPressed();

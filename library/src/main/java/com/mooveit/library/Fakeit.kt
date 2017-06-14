@@ -271,11 +271,15 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         }
 
         private fun getProvider(key: String, provider: () -> Provider): Provider {
-            return providers[key].let { it } ?: {
-                val auxProvider = provider()
-                providers.put(key, auxProvider)
-                auxProvider
-            }()
+            if (fakeit == null) {
+                throw Exception("Fake it not ready. Did you forgot to call init?")
+            } else {
+                return providers[key].let { it } ?: {
+                    val auxProvider = provider()
+                    providers.put(key, auxProvider)
+                    auxProvider
+                }()
+            }
         }
 
         @JvmStatic

@@ -3,7 +3,9 @@ Fakeit
 
 ![alt text](https://github.com/moove-it/fakeit/blob/master/banner.png "Fakeit Github banner")
 
-This library is a port of the Ruby gem [Faker](https://github.com/stympy/faker). It generates realistic fake data — like names, emails, dates, countries — to be used in your Android development environment. It can be used in a variety of scenarios, including automated testing and database population.
+This library is a port of the Ruby gem [Faker](https://github.com/stympy/faker). It generates realistic fake data — like names, emails, dates, countries — to be used in your JVM development environment. It can be used in a variety of scenarios, including automated testing and database population.
+
+The library was meant to be used on Android, but it can be used in projects based on Java or Kotlin.
 
 Download
 --------
@@ -12,7 +14,7 @@ Maven
 <dependency>
   <groupId>com.github.moove-it</groupId>
   <artifactId>fakeit</artifactId>
-  <version>v0.3</version>
+  <version>v0.4</version>
 </dependency>
 ```
 or Gradle:
@@ -24,23 +26,24 @@ allprojects {
 }
 
 dependencies {
-  compile 'com.github.moove-it:fakeit:v0.3'
+  compile 'com.github.moove-it:fakeit:v0.4'
 }
 ```
 
 Basic usage
 --------
 
-Fakeit can be used in Java and Kotlin Android apps. Run the sample app to check all the available models and generate some random values.
+Fakeit can be used in Java and Kotlin applications. No need of Android context.
+Run the sample app to check all the available models and generate some random values.
 
 First you need to initialize Fakeit:
 
 ```java
 // Default locale is en
-Fakeit.init(context)
+Fakeit.init()
 
 // Or you can pass a Locale or a String locale
-Fakeit.init(context, locale)
+Fakeit.init(locale)
 ```
 
 And then, call the methods like this:

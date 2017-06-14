@@ -46,7 +46,7 @@ import java.util.regex.Pattern
 import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
 
-class Fakeit private constructor(context: Context, locale: Locale) {
+class Fakeit private constructor(locale: Locale) {
 
     val numeralAndBracesRegEx = "#\\{(.*?)\\}"
     val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
@@ -60,23 +60,22 @@ class Fakeit private constructor(context: Context, locale: Locale) {
     var uniqueValueActive = false
 
     init {
-        val assetManager = context.assets
         var stringLocale = locale.language
 
         if (!locale.country.isEmpty()) {
             stringLocale = stringLocale.plus("-").plus(locale.country)
         }
 
-        this.fakeValues = getValues(stringLocale, assetManager)
+        this.fakeValues = getValues(stringLocale)
         if (locale.language != defaultLanguage) {
-            this.fakeValuesDefaults = getValues(defaultLanguage, assetManager)
+            this.fakeValuesDefaults = getValues(defaultLanguage)
         } else {
             this.fakeValuesDefaults = LinkedHashMap()
         }
     }
 
-    fun getValues(language: String, assetManager: AssetManager): LinkedHashMap<String, LinkedHashMap<String, String>> {
-        val inputStreamDefault = assetManager.open(("locales/".plus(language.plus(".yml"))))
+    fun getValues(language: String): LinkedHashMap<String, LinkedHashMap<String, String>> {
+        val inputStreamDefault = javaClass.getResourceAsStream("/assets/locales/".plus(language).plus(".yml"))
         val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
         val localeValuesDefault = yamlValuesDefault[language] as Map<*, *>
         return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
@@ -227,37 +226,37 @@ class Fakeit private constructor(context: Context, locale: Locale) {
         var fakeit: Fakeit? = null
         var providers = HashMap<String, Provider>()
 
-        fun fakeitInit(context: Context, locale: Locale) {
+        fun fakeitInit(locale: Locale) {
             if (fakeit == null) {
                 synchronized(Fakeit::class.java) {
                     if (fakeit == null) {
-                        fakeit = Fakeit(context, locale)
+                        fakeit = Fakeit(locale)
                     }
                 }
             }
         }
 
         @JvmStatic
-        fun resetLocale(context: Context, locale: Locale) {
+        fun resetLocale(locale: Locale) {
             fakeit = null
-            initWithLocale(context, locale)
+            initWithLocale(locale)
         }
 
         @JvmStatic
-        fun init(context: Context): Fakeit {
-            initWithLocale(context, "en")
+        fun init(): Fakeit {
+            initWithLocale("en")
             return fakeit as Fakeit
         }
 
         @JvmStatic
-        fun initWithLocale(context: Context, locale: Locale): Fakeit {
-            fakeitInit(context, locale)
+        fun initWithLocale(locale: Locale): Fakeit {
+            fakeitInit(locale)
             return fakeit as Fakeit
         }
 
         @JvmStatic
-        fun initWithLocale(context: Context, localeString: String): Fakeit {
-            return initWithLocale(context, Locale(localeString))
+        fun initWithLocale(localeString: String): Fakeit {
+            return initWithLocale(Locale(localeString))
         }
 
         @JvmStatic

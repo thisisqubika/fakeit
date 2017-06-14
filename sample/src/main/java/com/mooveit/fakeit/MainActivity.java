@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainViewModel.Mai
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setViewModel(new MainViewModel(this));
 
-        Fakeit.initWithLocale(this, Locale.ENGLISH);
+        Fakeit.initWithLocale(Locale.ENGLISH);
     }
 
     @Override

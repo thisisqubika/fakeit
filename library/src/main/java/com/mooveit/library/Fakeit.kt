@@ -40,6 +40,8 @@ import com.mooveit.library.providers.definition.PokemonProvider
 import com.mooveit.library.providers.definition.RickAndMortyProvider
 import com.mooveit.library.providers.definition.RockBandProvider
 import org.yaml.snakeyaml.Yaml
+import java.io.File
+import java.io.FileInputStream
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -75,7 +77,8 @@ class Fakeit private constructor(locale: Locale) {
     }
 
     fun getValues(language: String): LinkedHashMap<String, LinkedHashMap<String, String>> {
-        val inputStreamDefault = javaClass.getResourceAsStream("/assets/locales/".plus(language).plus(".yml"))
+        val file = File("library/src/main/assets/locales/".plus(language).plus(".yml"))
+        val inputStreamDefault = FileInputStream(file)
         val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
         val localeValuesDefault = yamlValuesDefault[language] as Map<*, *>
         return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>

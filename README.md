@@ -9,7 +9,8 @@ The library was originally created for Android projects, but it can be used in a
 
 Download
 --------
-Maven
+
+You can use either Maven:
 ```xml
 <dependency>
   <groupId>com.github.moove-it</groupId>

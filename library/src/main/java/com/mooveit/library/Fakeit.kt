@@ -1,7 +1,6 @@
 package com.mooveit.library
 
-import android.content.Context
-import android.content.res.AssetManager
+import android.content.res.Resources
 import com.mooveit.library.providers.*
 import com.mooveit.library.providers.definition.*
 import com.mooveit.library.providers.definition.AddressProvider
@@ -40,13 +39,14 @@ import com.mooveit.library.providers.definition.PokemonProvider
 import com.mooveit.library.providers.definition.RickAndMortyProvider
 import com.mooveit.library.providers.definition.RockBandProvider
 import org.yaml.snakeyaml.Yaml
-import java.io.File
-import java.io.FileInputStream
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
+import java.io.BufferedReader
+import java.io.InputStreamReader
+
 
 class Fakeit private constructor(locale: Locale) {
 
@@ -77,11 +77,11 @@ class Fakeit private constructor(locale: Locale) {
     }
 
     fun getValues(language: String): LinkedHashMap<String, LinkedHashMap<String, String>> {
-        val file = File("library/src/main/assets/locales/".plus(language).plus(".yml"))
-        val inputStreamDefault = FileInputStream(file)
+        val inputStreamDefault = this.javaClass.classLoader.getResourceAsStream("res/raw/".plus(language).plus(".yml"))
         val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
         val localeValuesDefault = yamlValuesDefault[language] as Map<*, *>
         return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
+
     }
 
     fun fetchCategory(key: String, category: String, check: Boolean,

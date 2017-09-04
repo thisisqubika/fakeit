@@ -11,13 +11,13 @@ open class BaseProvider {
     }
 
     fun getValue(key: String, fakeItValue: () -> String): String {
-        if (Fakeit.getUniqueValue()) {
+        return if (Fakeit.getUniqueValue()) {
             if (!valuesMap.contains(key)) {
                 putValue(key, fakeItValue())
             }
-            return valuesMap[key]!!
+            valuesMap[key]!!
         } else {
-            return fakeItValue()
+            fakeItValue()
         }
     }
 }

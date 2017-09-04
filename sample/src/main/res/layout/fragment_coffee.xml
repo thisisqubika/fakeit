@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mooveit.fakeit.viewmodels.CoffeeViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        style="@style/Base.ContainerFullWidth.FullPadded">
+
+        <TextView
+            android:id="@+id/coffee_blend_name_label"
+            style="@style/Base.Wrapper.Bold"
+            android:text="@string/coffee_blend_name"/>
+
+        <TextView
+            android:id="@+id/coffee_blend_name"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_toRightOf="@+id/coffee_blend_name_label"
+            android:text="@{viewModel.data.coffeeBlendName}"/>
+
+        <TextView
+            android:id="@+id/coffee_origin_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/coffee_blend_name"
+            android:text="@string/coffee_origin"/>
+
+        <TextView
+            android:id="@+id/coffee_origin"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/coffee_blend_name"
+            android:layout_toRightOf="@+id/coffee_origin_label"
+            android:text="@{viewModel.data.coffeeOrigin}"/>
+
+        <TextView
+            android:id="@+id/coffee_variety_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/coffee_origin_label"
+            android:text="@string/coffee_variety"/>
+
+        <TextView
+            android:id="@+id/coffee_variety"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/coffee_origin_label"
+            android:layout_toRightOf="@+id/coffee_variety_label"
+            android:text="@{viewModel.data.coffeeVariety}"/>
+
+        <TextView
+            android:id="@+id/coffee_notes_label"
+            style="@style/Base.Wrapper.Bold"
+            android:layout_below="@+id/coffee_variety_label"
+            android:text="@string/coffee_notes"/>
+
+        <TextView
+            android:id="@+id/coffee_notes"
+            style="@style/Base.Wrapper.MarginLeft"
+            android:layout_below="@+id/coffee_variety_label"
+            android:layout_toRightOf="@+id/coffee_notes_label"
+            android:text="@{viewModel.data.coffeeNotes}"/>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/Base.RefreshButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.refresh()}"/>
+    </RelativeLayout>
+
+</layout>

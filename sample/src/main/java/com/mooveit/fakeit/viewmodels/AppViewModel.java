@@ -1,7 +1,6 @@
 package com.mooveit.fakeit.viewmodels;
 
 import com.mooveit.fakeit.models.AppData;
-import com.mooveit.fakeit.models.BusinessData;
 import com.mooveit.library.Fakeit;
 
 public class AppViewModel extends BaseViewModel {

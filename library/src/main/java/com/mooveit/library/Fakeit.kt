@@ -1,51 +1,13 @@
 package com.mooveit.library
 
-import android.content.res.Resources
 import com.mooveit.library.providers.*
 import com.mooveit.library.providers.definition.*
-import com.mooveit.library.providers.definition.AddressProvider
-import com.mooveit.library.providers.definition.AncientProvider
-import com.mooveit.library.providers.definition.AppProvider
-import com.mooveit.library.providers.definition.ArtistProvider
-import com.mooveit.library.providers.definition.BankProvider
-import com.mooveit.library.providers.definition.BeerProvider
-import com.mooveit.library.providers.definition.BookProvider
-import com.mooveit.library.providers.definition.BusinessProvider
-import com.mooveit.library.providers.definition.CardProvider
-import com.mooveit.library.providers.definition.CatProvider
-import com.mooveit.library.providers.definition.ChuckNorrisFactsProvider
-import com.mooveit.library.providers.definition.CodeProvider
-import com.mooveit.library.providers.definition.CompanyProvider
-import com.mooveit.library.providers.definition.CompassProvider
-import com.mooveit.library.providers.definition.DemographicProvider
-import com.mooveit.library.providers.definition.EducatorProvider
-import com.mooveit.library.providers.definition.EsportProvider
-import com.mooveit.library.providers.definition.FileProvider
-import com.mooveit.library.providers.definition.FoodProvider
-import com.mooveit.library.providers.definition.FriendsProvider
-import com.mooveit.library.providers.definition.GameOfThronesProvider
-import com.mooveit.library.providers.definition.HackerProvider
-import com.mooveit.library.providers.definition.HarryPotterProvider
-import com.mooveit.library.providers.definition.HeyArnoldProvider
-import com.mooveit.library.providers.definition.HipsterProvider
-import com.mooveit.library.providers.definition.InternetProvider
-import com.mooveit.library.providers.definition.JobProvider
-import com.mooveit.library.providers.definition.LordOfTheRingsProvider
-import com.mooveit.library.providers.definition.LoremProvider
-import com.mooveit.library.providers.definition.MusicProvider
-import com.mooveit.library.providers.definition.NameProvider
-import com.mooveit.library.providers.definition.PhoneNumberProvider
-import com.mooveit.library.providers.definition.PokemonProvider
-import com.mooveit.library.providers.definition.RickAndMortyProvider
-import com.mooveit.library.providers.definition.RockBandProvider
 import org.yaml.snakeyaml.Yaml
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
-import java.io.BufferedReader
-import java.io.InputStreamReader
 
 
 class Fakeit private constructor(locale: Locale) {
@@ -78,22 +40,32 @@ class Fakeit private constructor(locale: Locale) {
 
     fun getValues(language: String): LinkedHashMap<String, LinkedHashMap<String, String>> {
         val inputStreamDefault = this.javaClass.classLoader.getResourceAsStream("res/raw/".plus(language).plus(".yml"))
-        val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
-        val localeValuesDefault = yamlValuesDefault[language] as Map<*, *>
-        return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
+        return if (inputStreamDefault != null) {
+            val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
+            val localeValuesDefault = yamlValuesDefault[language] as Map<*, *>
+            localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
+        } else {
+            getDefaultValues()
+        }
+    }
 
+    fun getDefaultValues(): LinkedHashMap<String, LinkedHashMap<String, String>> {
+        val inputStreamDefault = this.javaClass.classLoader.getResourceAsStream("res/raw/".plus(defaultLanguage).plus(".yml"))
+        val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
+        val localeValuesDefault = yamlValuesDefault[defaultLanguage] as Map<*, *>
+        return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
     }
 
     fun fetchCategory(key: String, category: String, check: Boolean,
                       valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
         var (_, subCategory, _, values) = getCategoryAndValues(key, Params(category.indexOf("."), category, check, valuesToFetch))
-        if (values[subCategory] is LinkedHashMap<*, *>) {
-            return values[subCategory] as LinkedHashMap<*, *>
-        } else if (values[subCategory] is ArrayList<*>) {
-            var valuesList = values[subCategory] as ArrayList<LinkedHashMap<*, *>>
-            return valuesList[Random().nextInt(valuesList.size)]
-        } else {
-            throw Exception("Resource Key not found $category on $key")
+        return when {
+            values[subCategory] is LinkedHashMap<*, *> -> values[subCategory] as LinkedHashMap<*, *>
+            values[subCategory] is ArrayList<*> -> {
+                var valuesList = values[subCategory] as ArrayList<LinkedHashMap<*, *>>
+                valuesList[Random().nextInt(valuesList.size)]
+            }
+            else -> throw Exception("Resource Key not found $category on $key")
         }
     }
 

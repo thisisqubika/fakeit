@@ -20,6 +20,7 @@ import com.mooveit.fakeit.databinding.FragmentCardBinding;
 import com.mooveit.fakeit.databinding.FragmentCatBinding;
 import com.mooveit.fakeit.databinding.FragmentChuckNorrisFactsBinding;
 import com.mooveit.fakeit.databinding.FragmentCodeBinding;
+import com.mooveit.fakeit.databinding.FragmentCoffeeBinding;
 import com.mooveit.fakeit.databinding.FragmentCompanyBinding;
 import com.mooveit.fakeit.databinding.FragmentCompassBinding;
 import com.mooveit.fakeit.databinding.FragmentDateTimeBinding;
@@ -56,6 +57,7 @@ import com.mooveit.fakeit.models.CardData;
 import com.mooveit.fakeit.models.CatData;
 import com.mooveit.fakeit.models.ChuckNorrisFactsData;
 import com.mooveit.fakeit.models.CodeData;
+import com.mooveit.fakeit.models.CoffeeData;
 import com.mooveit.fakeit.models.CompanyData;
 import com.mooveit.fakeit.models.CompassData;
 import com.mooveit.fakeit.models.DateTimeData;
@@ -92,6 +94,7 @@ import com.mooveit.fakeit.viewmodels.CardViewModel;
 import com.mooveit.fakeit.viewmodels.CatViewModel;
 import com.mooveit.fakeit.viewmodels.ChuckNorrisFactsViewModel;
 import com.mooveit.fakeit.viewmodels.CodeViewModel;
+import com.mooveit.fakeit.viewmodels.CoffeeViewModel;
 import com.mooveit.fakeit.viewmodels.CompanyViewModel;
 import com.mooveit.fakeit.viewmodels.CompassViewModel;
 import com.mooveit.fakeit.viewmodels.DateTimeViewModel;
@@ -199,6 +202,10 @@ public class DataFragment extends Fragment {
             case R.layout.fragment_code:
                 binding = FragmentCodeBinding.inflate(inflater, container, false);
                 ((FragmentCodeBinding) binding).setViewModel(new CodeViewModel(new CodeData()));
+                break;
+            case R.layout.fragment_coffee:
+                binding = FragmentCoffeeBinding.inflate(inflater, container, false);
+                ((FragmentCoffeeBinding) binding).setViewModel(new CoffeeViewModel(new CoffeeData()));
                 break;
             case R.layout.fragment_company:
                 binding = FragmentCompanyBinding.inflate(inflater, container, false);

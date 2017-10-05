@@ -67,6 +67,10 @@ public class MainViewModel {
         mMainCallback.startActivityWithLayout(R.layout.fragment_code);
     }
 
+    public void onCoffeeClick() {
+        mMainCallback.startActivityWithLayout(R.layout.fragment_coffee);
+    }
+
     public void onCompanyClick() {
         mMainCallback.startActivityWithLayout(R.layout.fragment_company);
     }

@@ -322,6 +322,9 @@ class Fakeit private constructor(locale: Locale) {
         }
 
         @JvmStatic
+        fun coffee(): CoffeeProvider = getProvider("coffee", { CoffeeProviderImpl() }) as CoffeeProvider
+
+        @JvmStatic
         fun company(): CompanyProvider {
             return getProvider("company", { CompanyProviderImpl() }) as CompanyProvider
         }

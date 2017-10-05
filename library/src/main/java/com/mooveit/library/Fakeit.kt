@@ -58,7 +58,7 @@ class Fakeit private constructor(locale: Locale) {
 
     fun fetchCategory(key: String, category: String, check: Boolean,
                       valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
-        var (_, subCategory, _, values) = getCategoryAndValues(key, Params(category.indexOf("."), category, check, valuesToFetch))
+        val (_, subCategory, _, values) = getCategoryAndValues(key, Params(category.indexOf("."), category, check, valuesToFetch))
         return when {
             values[subCategory] is LinkedHashMap<*, *> -> values[subCategory] as LinkedHashMap<*, *>
             values[subCategory] is ArrayList<*> -> {
@@ -111,16 +111,16 @@ class Fakeit private constructor(locale: Locale) {
                 throw Exception(getResourceNotFound(key))
             }
         }
-        if (categoryValues[selected] is ArrayList<*>) {
-            var values = categoryValues[selected] as ArrayList<ArrayList<String>>
-            if (values[0] is CharSequence) {
-                return getRandomString(values as ArrayList<String>)
+        when {
+            categoryValues[selected] is ArrayList<*> -> {
+                val values = categoryValues[selected] as ArrayList<ArrayList<String>>
+                if (values[0] is CharSequence) {
+                    return getRandomString(values as ArrayList<String>)
+                }
+                return getRandomString(values[Random().nextInt(values.size)])
             }
-            return getRandomString(values[Random().nextInt(values.size)])
-        } else if (categoryValues[selected] is String) {
-            return categoryValues[selected] as String
-        } else {
-            throw Exception("Resource $category.$selected is not a value")
+            categoryValues[selected] is String -> return categoryValues[selected] as String
+            else -> throw Exception("Resource $category.$selected is not a value")
         }
     }
 
@@ -130,12 +130,10 @@ class Fakeit private constructor(locale: Locale) {
         val selected = key.substring(separator + 1, key.length)
         val selectedValue = fetchSelectedValue(key, category, selected)
 
-        if (selectedValue.matches(Regex(numeralAndBracesRegEx))) {
-            return fetchKeyValueData(category, selectedValue)
-        } else if (selectedValue.matches(Regex(numeralRegEx))) {
-            return fetchNumerals(selectedValue)
-        } else {
-            return selectedValue
+        return when {
+            selectedValue.matches(Regex(numeralAndBracesRegEx)) -> fetchKeyValueData(category, selectedValue)
+            selectedValue.matches(Regex(numeralRegEx)) -> fetchNumerals(selectedValue)
+            else -> selectedValue
         }
     }
 
@@ -162,7 +160,8 @@ class Fakeit private constructor(locale: Locale) {
             keyToFetch = key.substring(separator + 1, key.length)
             result = fetchSelectedValue(key, dataCategory, keyToFetch)
         } else {
-            val categoryValues = this.fakeValues[dataCategory] as LinkedHashMap<String, ArrayList<String>>
+            val categoryValues = fakeValues[dataCategory] as? LinkedHashMap<String, ArrayList<String>> ?:
+                    fakeValuesDefaults[dataCategory] as LinkedHashMap<String, ArrayList<String>>
             val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
             result = getRandomString(selectedValues)
         }
@@ -185,13 +184,10 @@ class Fakeit private constructor(locale: Locale) {
         return stringBuffer.toString()
     }
 
-    fun getRandomString(selectedValues: ArrayList<String>): String {
-        return selectedValues[Random().nextInt(selectedValues.size)]
-    }
+    fun getRandomString(selectedValues: ArrayList<String>): String =
+            selectedValues[Random().nextInt(selectedValues.size)]
 
-    fun getResourceNotFound(key: String): String {
-        return "Resource not found $key"
-    }
+    fun getResourceNotFound(key: String): String = "Resource not found $key"
 
     data class Params(var separator: Int, var category: String, var check: Boolean,
                       var values: LinkedHashMap<String, LinkedHashMap<String, String>>)
@@ -230,14 +226,10 @@ class Fakeit private constructor(locale: Locale) {
         }
 
         @JvmStatic
-        fun initWithLocale(localeString: String): Fakeit {
-            return initWithLocale(Locale(localeString))
-        }
+        fun initWithLocale(localeString: String): Fakeit = initWithLocale(Locale(localeString))
 
         @JvmStatic
-        fun getUniqueValue(): Boolean {
-            return fakeit?.let { it.uniqueValueActive } ?: false
-        }
+        fun getUniqueValue(): Boolean = fakeit?.uniqueValueActive ?: false
 
         @JvmStatic
         fun changeUniqueValueState() {
@@ -257,183 +249,111 @@ class Fakeit private constructor(locale: Locale) {
         }
 
         @JvmStatic
-        fun name(): NameProvider {
-            return getProvider("name", { NameProviderImpl() }) as NameProvider
-        }
+        fun name(): NameProvider = getProvider("name", { NameProviderImpl() }) as NameProvider
 
         @JvmStatic
-        fun business(): BusinessProvider {
-            return getProvider("business", { BusinessProviderImpl() }) as BusinessProvider
-        }
+        fun business(): BusinessProvider = getProvider("business", { BusinessProviderImpl() }) as BusinessProvider
 
         @JvmStatic
-        fun address(): AddressProvider {
-            return getProvider("address", { AddressProviderImpl() }) as AddressProvider
-        }
+        fun address(): AddressProvider = getProvider("address", { AddressProviderImpl() }) as AddressProvider
 
         @JvmStatic
-        fun app(): AppProvider {
-            return getProvider("app", { AppProviderImpl() }) as AppProvider
-        }
+        fun app(): AppProvider = getProvider("app", { AppProviderImpl() }) as AppProvider
 
         @JvmStatic
-        fun card(): CardProvider {
-            return getProvider("card", { CardProviderImpl() }) as CardProvider
-        }
+        fun card(): CardProvider = getProvider("card", { CardProviderImpl() }) as CardProvider
 
         @JvmStatic
-        fun ancient(): AncientProvider {
-            return getProvider("ancient", { AncientProviderImpl() }) as AncientProvider
-        }
+        fun ancient(): AncientProvider = getProvider("ancient", { AncientProviderImpl() }) as AncientProvider
 
         @JvmStatic
-        fun artist(): ArtistProvider {
-            return getProvider("artist", { ArtistProviderImpl() }) as ArtistProvider
-        }
+        fun artist(): ArtistProvider = getProvider("artist", { ArtistProviderImpl() }) as ArtistProvider
 
         @JvmStatic
-        fun bank(): BankProvider {
-            return getProvider("bank", { BankProviderImpl() }) as BankProvider
-        }
+        fun bank(): BankProvider = getProvider("bank", { BankProviderImpl() }) as BankProvider
 
         @JvmStatic
-        fun beer(): BeerProvider {
-            return getProvider("beer", { BeerProviderImpl() }) as BeerProvider
-        }
+        fun beer(): BeerProvider = getProvider("beer", { BeerProviderImpl() }) as BeerProvider
 
         @JvmStatic
-        fun book(): BookProvider {
-            return getProvider("book", { BookProviderImpl() }) as BookProvider
-        }
+        fun book(): BookProvider = getProvider("book", { BookProviderImpl() }) as BookProvider
 
         @JvmStatic
-        fun cat(): CatProvider {
-            return getProvider("cat", { CatProviderImpl() }) as CatProvider
-        }
+        fun cat(): CatProvider = getProvider("cat", { CatProviderImpl() }) as CatProvider
 
         @JvmStatic
-        fun chuckNorris(): ChuckNorrisFactsProvider {
-            return getProvider("chuckNorris", { ChuckNorrisFactsProviderImpl() }) as ChuckNorrisFactsProvider
-        }
+        fun chuckNorris(): ChuckNorrisFactsProvider = getProvider("chuckNorris", { ChuckNorrisFactsProviderImpl() }) as ChuckNorrisFactsProvider
 
         @JvmStatic
-        fun code(): CodeProvider {
-            return getProvider("code", { CodeProviderImpl() }) as CodeProvider
-        }
+        fun code(): CodeProvider = getProvider("code", { CodeProviderImpl() }) as CodeProvider
 
         @JvmStatic
-        fun company(): CompanyProvider {
-            return getProvider("company", { CompanyProviderImpl() }) as CompanyProvider
-        }
+        fun company(): CompanyProvider = getProvider("company", { CompanyProviderImpl() }) as CompanyProvider
 
         @JvmStatic
-        fun compass(): CompassProvider {
-            return getProvider("compass", { CompassProviderImpl() }) as CompassProvider
-        }
+        fun compass(): CompassProvider = getProvider("compass", { CompassProviderImpl() }) as CompassProvider
 
         @JvmStatic
-        fun dateTime(): DateTimeProvider {
-            return getProvider("dateTime", { DateTimeProviderImpl() }) as DateTimeProvider
-        }
+        fun dateTime(): DateTimeProvider = getProvider("dateTime", { DateTimeProviderImpl() }) as DateTimeProvider
 
         @JvmStatic
-        fun demographic(): DemographicProvider {
-            return getProvider("demographic", { DemographicProviderImpl() }) as DemographicProvider
-        }
+        fun demographic(): DemographicProvider = getProvider("demographic", { DemographicProviderImpl() }) as DemographicProvider
 
         @JvmStatic
-        fun hipster(): HipsterProvider {
-            return getProvider("hipster", { HipsterProviderImpl() }) as HipsterProvider
-        }
+        fun hipster(): HipsterProvider = getProvider("hipster", { HipsterProviderImpl() }) as HipsterProvider
 
         @JvmStatic
-        fun educator(): EducatorProvider {
-            return getProvider("educator", { EducatorProviderImpl() }) as EducatorProvider
-        }
+        fun educator(): EducatorProvider = getProvider("educator", { EducatorProviderImpl() }) as EducatorProvider
 
         @JvmStatic
-        fun esports(): EsportProvider {
-            return getProvider("esports", { EsportProviderImpl() }) as EsportProvider
-        }
+        fun esports(): EsportProvider = getProvider("esports", { EsportProviderImpl() }) as EsportProvider
 
         @JvmStatic
-        fun internet(): InternetProvider {
-            return getProvider("internet", { InternetProviderImpl() }) as InternetProvider
-        }
+        fun internet(): InternetProvider = getProvider("internet", { InternetProviderImpl() }) as InternetProvider
 
         @JvmStatic
-        fun file(): FileProvider {
-            return getProvider("file", { FileProviderImpl() }) as FileProvider
-        }
+        fun file(): FileProvider = getProvider("file", { FileProviderImpl() }) as FileProvider
 
         @JvmStatic
-        fun food(): FoodProvider {
-            return getProvider("food", { FoodProviderImpl() }) as FoodProvider
-        }
+        fun food(): FoodProvider = getProvider("food", { FoodProviderImpl() }) as FoodProvider
 
         @JvmStatic
-        fun friends(): FriendsProvider {
-            return getProvider("friends", { FriendsProviderImpl() }) as FriendsProvider
-        }
+        fun friends(): FriendsProvider = getProvider("friends", { FriendsProviderImpl() }) as FriendsProvider
 
         @JvmStatic
-        fun gameOfThrones(): GameOfThronesProvider {
-            return getProvider("gameOfThrones", { GameOfThronesProviderImpl() }) as GameOfThronesProvider
-        }
+        fun gameOfThrones(): GameOfThronesProvider = getProvider("gameOfThrones", { GameOfThronesProviderImpl() }) as GameOfThronesProvider
 
         @JvmStatic
-        fun harryPotter(): HarryPotterProvider {
-            return getProvider("harryPotter", { HarryPotterProviderImpl() }) as HarryPotterProvider
-        }
+        fun harryPotter(): HarryPotterProvider = getProvider("harryPotter", { HarryPotterProviderImpl() }) as HarryPotterProvider
 
         @JvmStatic
-        fun hacker(): HackerProvider {
-            return getProvider("hacker", { HackerProviderImpl() }) as HackerProvider
-        }
+        fun hacker(): HackerProvider = getProvider("hacker", { HackerProviderImpl() }) as HackerProvider
 
         @JvmStatic
-        fun job(): JobProvider {
-            return getProvider("job", { JobProviderImpl() }) as JobProvider
-        }
+        fun job(): JobProvider = getProvider("job", { JobProviderImpl() }) as JobProvider
 
         @JvmStatic
-        fun lorem(): LoremProvider {
-            return getProvider("lorem", { LoremProviderImpl() }) as LoremProvider
-        }
+        fun lorem(): LoremProvider = getProvider("lorem", { LoremProviderImpl() }) as LoremProvider
 
         @JvmStatic
-        fun lordOfTheRings(): LordOfTheRingsProvider {
-            return getProvider("lordOfTheRings", { LordOfTheRingsProviderImpl() }) as LordOfTheRingsProvider
-        }
+        fun lordOfTheRings(): LordOfTheRingsProvider = getProvider("lordOfTheRings", { LordOfTheRingsProviderImpl() }) as LordOfTheRingsProvider
 
         @JvmStatic
-        fun music(): MusicProvider {
-            return getProvider("music", { MusicProviderImpl() }) as MusicProvider
-        }
+        fun music(): MusicProvider = getProvider("music", { MusicProviderImpl() }) as MusicProvider
 
         @JvmStatic
-        fun heyArnold(): HeyArnoldProvider {
-            return getProvider("heyArnold", { HeyArnoldProviderImpl() }) as HeyArnoldProvider
-        }
+        fun heyArnold(): HeyArnoldProvider = getProvider("heyArnold", { HeyArnoldProviderImpl() }) as HeyArnoldProvider
 
         @JvmStatic
-        fun pokemon(): PokemonProvider {
-            return getProvider("pokemon", { PokemonProviderImpl() }) as PokemonProvider
-        }
+        fun pokemon(): PokemonProvider = getProvider("pokemon", { PokemonProviderImpl() }) as PokemonProvider
 
         @JvmStatic
-        fun phone(): PhoneNumberProvider {
-            return getProvider("phone", { PhoneNumberProviderImpl() }) as PhoneNumberProvider
-        }
+        fun phone(): PhoneNumberProvider = getProvider("phone", { PhoneNumberProviderImpl() }) as PhoneNumberProvider
 
         @JvmStatic
-        fun rickAndMorty(): RickAndMortyProvider {
-            return getProvider("rickAndMorty", { RickAndMortyProviderImpl() }) as RickAndMortyProvider
-        }
+        fun rickAndMorty(): RickAndMortyProvider = getProvider("rickAndMorty", { RickAndMortyProviderImpl() }) as RickAndMortyProvider
 
         @JvmStatic
-        fun rockBand(): RockBandProvider {
-            return getProvider("rockBand", { RockBandProviderImpl() }) as RockBandProvider
-        }
+        fun rockBand(): RockBandProvider = getProvider("rockBand", { RockBandProviderImpl() }) as RockBandProvider
     }
 }

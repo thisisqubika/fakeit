@@ -1,5 +1,5 @@
 # encoding: utf-8
-ca-CAT:
+cacat:
   faker:
     address:
       city: [Amposta, Badalona, Barberà del Vallès, Barcelona, Blanes, Calafell, Cambrils, Castellar del Vallès, Castelldefels, Cerdanyola del Vallès, Cornellà de Llobregat, El Masnou, El Prat de Llobregat, El Vendrell, Esparreguera, Esplugues de Llobregat, Figueres, Gavà, Girona, Granollers, Igualada, Lleida, Lloret de Mar, Manlleu, Manresa, Martorell, Mataró, Molins de Rei, Mollet del Vallès, Montcada i Reixac, Olesa de Montserrat, Olot, Palafrugell, Pineda de Mar, Premià de Mar, Reus, Ripollet, Rubí, Sabadell, Salou, Salt, Sant Adrià de Besòs, Sant Andreu de la Barca, Sant Boi de Llobregat, Sant Cugat del Vallès, Sant Feliu de Guíxols, Sant Feliu de Llobregat, Sant Joan Despí, Sant Pere de Ribes, Sant Vicenç dels Horts, Santa Coloma de Gramenet, Santa Perpètua de Mogoda, Sitges, Tarragona, Terrassa, Tortosa, Valls, Vic, Vila-seca, Viladecans, Vilafranca del Penedès, Vilanova i la Geltrú]

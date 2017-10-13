@@ -27,7 +27,7 @@ class Fakeit private constructor(locale: Locale) {
         var stringLocale = locale.language
 
         if (!locale.country.isEmpty()) {
-            stringLocale = stringLocale.plus("-").plus(locale.country)
+            stringLocale = stringLocale.plus(locale.country.toLowerCase())
         }
 
         this.fakeValues = getValues(stringLocale)

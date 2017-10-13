@@ -3,7 +3,7 @@
 # Surnames familiar to Nigerians
 # 36 Nigerian states
 
-en-NG:
+enng:
   faker:
     name:
       name:

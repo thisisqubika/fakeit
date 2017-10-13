@@ -1,4 +1,4 @@
-en-UG:
+enug:
   faker:
     internet:
       domain_suffix: [ug, com, org, co.ug, org.ug, net]

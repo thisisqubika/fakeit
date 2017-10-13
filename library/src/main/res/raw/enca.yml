@@ -1,4 +1,4 @@
-en-CA:
+enca:
   faker:
     address:
       postcode: /[A-CEJ-NPR-TVXY][0-9][A-CEJ-NPR-TV-Z] ?[0-9][A-CEJ-NPR-TV-Z][0-9]/

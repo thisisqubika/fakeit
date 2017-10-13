@@ -27,6 +27,11 @@
     <string name="card_number">Card number:</string>
     <string name="card_type">Card type:</string>
     <string name="card_expiration_date">Card expiration date:</string>
+    
+    <string name="coffee_blend_name">Coffee blend name:</string>
+    <string name="coffee_origin">Coffee origin:</string>
+    <string name="coffee_variety">Coffee variety:</string>
+    <string name="coffee_notes">Coffee notes:</string>
 
     <string name="business_name">Business name:</string>
     <string name="business_type">Business type:</string>
@@ -191,6 +196,7 @@
     <string name="cat">Cat</string>
     <string name="chuck_norris">Chuck Norris</string>
     <string name="code">Code</string>
+    <string name="coffee">Coffee</string>
     <string name="company">Company</string>
     <string name="compass">Compass</string>
     <string name="demographic">Demographic</string>

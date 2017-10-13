@@ -290,6 +290,14 @@
                 android:layout_below="@id/rick_and_morty"
                 android:onClick="@{() -> viewModel.onDateTimeClick()}"
                 android:text="@string/date_time"/>
+
+            <Button
+                android:id="@+id/coffee"
+                style="@style/Base.Wrapper.FullSeparatorMargin"
+                android:layout_below="@id/rick_and_morty"
+                android:layout_toRightOf="@id/date_time"
+                android:onClick="@{() -> viewModel.onCoffeeClick()}"
+                android:text="@string/coffee"/>
         </RelativeLayout>
     </ScrollView>
 </layout>

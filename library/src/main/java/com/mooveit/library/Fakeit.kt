@@ -27,7 +27,7 @@ class Fakeit private constructor(locale: Locale) {
         var stringLocale = locale.language
 
         if (!locale.country.isEmpty()) {
-            stringLocale = stringLocale.plus("-").plus(locale.country)
+            stringLocale = stringLocale.plus(locale.country.toLowerCase())
         }
 
         this.fakeValues = getValues(stringLocale)
@@ -289,6 +289,9 @@ class Fakeit private constructor(locale: Locale) {
 
         @JvmStatic
         fun company(): CompanyProvider = getProvider("company", { CompanyProviderImpl() }) as CompanyProvider
+
+        @JvmStatic  
+        fun coffee(): CoffeeProvider = getProvider("coffee", { CoffeeProviderImpl() }) as CoffeeProvider
 
         @JvmStatic
         fun compass(): CompassProvider = getProvider("compass", { CompassProviderImpl() }) as CompassProvider

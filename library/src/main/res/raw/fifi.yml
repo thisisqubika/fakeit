@@ -1,4 +1,4 @@
-fi-FI:
+fifi:
   faker:
     address:
       city_prefix: [Haap, He, Kau, Oul, Ra, Ni, 'No', Ke, La, Or]

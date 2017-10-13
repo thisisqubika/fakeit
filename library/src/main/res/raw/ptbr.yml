@@ -1,4 +1,4 @@
-pt-BR:
+ptbr:
   faker:
     address:
       city_prefix: [Nova, Velha, Grande, Vila, Município de]

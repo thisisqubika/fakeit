@@ -1,4 +1,4 @@
-da-DK:
+dadk:
   faker:
     address:
       city_prefix: [Nord, Birke, Ny, Frederiks, Lille, Vær, Ring, Støv, Sven, Munke, Kerte, Horn, Aa, Bør, Otte, Had, Vi, Rud, Bro, Vide, Jyde, Lange]

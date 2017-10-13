@@ -1,5 +1,4 @@
-
-en-SG:
+ensg:
   faker:
     name:
       male_first_name: &male_first_name

@@ -4,72 +4,123 @@ import com.mooveit.library.providers.*
 import com.mooveit.library.providers.definition.*
 import org.yaml.snakeyaml.Yaml
 import java.util.*
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
 
-
 class Fakeit private constructor(locale: Locale) {
 
-    val numeralAndBracesRegEx = "#\\{(.*?)\\}"
-    val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
-    val numeralOnlyRegEx = "#"
-    val defaultLanguage = "en"
-
-    val yaml = Yaml()
-    val fakeValues: LinkedHashMap<String, LinkedHashMap<String, String>>
-    val fakeValuesDefaults: LinkedHashMap<String, LinkedHashMap<String, String>>
+    private val yaml = Yaml()
+    private val fakeValues: LinkedHashMap<String, LinkedHashMap<String, String>>
+    private val fakeValuesDefaults: LinkedHashMap<String, LinkedHashMap<String, String>>
 
     var uniqueValueActive = false
 
     init {
-        var stringLocale = locale.language
-
-        if (!locale.country.isEmpty()) {
-            stringLocale = stringLocale.plus(locale.country.toLowerCase())
-        }
-
-        this.fakeValues = getValues(stringLocale)
-        if (locale.language != defaultLanguage) {
-            this.fakeValuesDefaults = getValues(defaultLanguage)
+        val stringLocale = if (locale.country.isEmpty()) {
+            locale.language
         } else {
-            this.fakeValuesDefaults = LinkedHashMap()
+            locale.language.plus(locale.country.toLowerCase())
         }
-    }
 
-    fun getValues(language: String): LinkedHashMap<String, LinkedHashMap<String, String>> {
-        val inputStreamDefault = this.javaClass.classLoader.getResourceAsStream("res/raw/".plus(language).plus(".yml"))
-        return if (inputStreamDefault != null) {
-            val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
-            val localeValuesDefault = yamlValuesDefault[language] as Map<*, *>
-            localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
+        fakeValues = yaml.getValues(stringLocale, javaClass)
+        fakeValuesDefaults = if (stringLocale != defaultLanguage) {
+            yaml.getValues(defaultLanguage, javaClass)
         } else {
-            getDefaultValues()
+            LinkedHashMap()
         }
     }
 
-    fun getDefaultValues(): LinkedHashMap<String, LinkedHashMap<String, String>> {
-        val inputStreamDefault = this.javaClass.classLoader.getResourceAsStream("res/raw/".plus(defaultLanguage).plus(".yml"))
-        val yamlValuesDefault = yaml.load(inputStreamDefault) as Map<*, *>
-        val localeValuesDefault = yamlValuesDefault[defaultLanguage] as Map<*, *>
-        return localeValuesDefault["faker"] as LinkedHashMap<String, LinkedHashMap<String, String>>
+    /***
+     * Initial method to call
+     *
+     * @param key String for search Example: "address.secondary_address"
+     *
+     * @return String
+     ***/
+    fun fetch(key: String): String {
+        val separator = key.lastIndexOf(".")
+        val category = key.substring(0, separator)
+        val selected = key.substring(separator + 1, key.length)
+        val selectedValue = fetchSelectedValue(key, category, selected)
+
+        val matchBraces = Pattern.compile(numeralAndBracesRegEx).matcher(selectedValue)
+        val matchNumeric = Pattern.compile(numeralRegEx).matcher(selectedValue)
+        return when {
+            matchBraces.find() -> fetchKeyValueData(category, selectedValue)
+            matchNumeric.find() -> fetchNumerals(selectedValue)
+            else -> selectedValue
+        }
     }
 
-    fun fetchCategory(key: String, category: String, check: Boolean,
-                      valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
+    /***
+     * Get random string result from the values map
+     *
+     * @param key String for search Example: "address.secondary_address"
+     * @param category String the key for the map to return Example: "address"
+     * @param selected String the key for the map returned Example: "secondary_address"
+     *
+     * @return String
+     ***/
+    private fun fetchSelectedValue(key: String, category: String, selected: String): String {
+        var categoryValues = fetchCategory(key, category, true, fakeValues)
+        if (categoryValues[selected] == null) {
+            if (fakeValuesDefaults.size == 0) {
+                throw Exception(getResourceNotFound(key))
+            }
+            categoryValues = fetchCategory(key, category, false, fakeValuesDefaults)
+            if (categoryValues[selected] == null) {
+                throw Exception(getResourceNotFound(key))
+            }
+        }
+        when {
+            categoryValues[selected] is ArrayList<*> -> {
+                val values = categoryValues[selected] as ArrayList<ArrayList<String>>
+                if (values[0] is CharSequence) {
+                    return (values as ArrayList<String>).getRandomString()
+                }
+                return values[Random().nextInt(values.size)].getRandomString()
+            }
+            categoryValues[selected] is String -> return categoryValues[selected] as String
+            else -> throw Exception("Resource $category.$selected is not a value")
+        }
+    }
+
+    /***
+     * Get the map that holds the selected value as key Example: key: "address.secondary_address" selected: "secondary_address"
+     * It call getCategoryAndValues(...) to return the correct values map if needed instead of valuesToFetch
+     *
+     * @param key String for search Example: "address.secondary_address"
+     * @param category String the key for the map  Example: "address"
+     * @param check Boolean true if needed to check on default params
+     * @param valuesToFetch LinkedHashMap<String, LinkedHashMap<String, String>> the initial map to fetch the category
+     *
+     * @return LinkedHashMap<*, *>
+     ***/
+    private fun fetchCategory(key: String, category: String, check: Boolean,
+                              valuesToFetch: LinkedHashMap<String, LinkedHashMap<String, String>>): LinkedHashMap<*, *> {
         val (_, subCategory, _, values) = getCategoryAndValues(key, Params(category.indexOf("."), category, check, valuesToFetch))
         return when {
             values[subCategory] is LinkedHashMap<*, *> -> values[subCategory] as LinkedHashMap<*, *>
             values[subCategory] is ArrayList<*> -> {
-                var valuesList = values[subCategory] as ArrayList<LinkedHashMap<*, *>>
+                val valuesList = values[subCategory] as ArrayList<LinkedHashMap<*, *>>
                 valuesList[Random().nextInt(valuesList.size)]
             }
             else -> throw Exception("Resource Key not found $category on $key")
         }
     }
 
-    fun getCategoryAndValues(key: String, baseParams: Params): Params {
+    /***
+     * Get the param holder needed for the key.
+     * If the values for the language does not have the category it will set the params to the defaults.
+     * It search until the end of the map if needed.
+     *
+     * @param key string for search Example: "address.secondary_address"
+     * @param baseParams Params the initial value holder for search
+     *
+     * @return Params
+     ***/
+    private fun getCategoryAndValues(key: String, baseParams: Params): Params {
         val p = Params(baseParams.separator, baseParams.category, baseParams.check, baseParams.values)
 
         if (p.separator == -1 && p.values[p.category] == null) {
@@ -90,7 +141,14 @@ class Fakeit private constructor(locale: Locale) {
         return p
     }
 
-    fun checkAndSetParams(key: String, baseParams: Params, params: Params) {
+    /***
+     * Method that reset the param for search with the defaults and initial param
+     *
+     * @param key String for search Example: "address.secondary_address"
+     * @param baseParams Params the initial value holder for search
+     * @param params Params new value holder for search
+     ***/
+    private fun checkAndSetParams(key: String, baseParams: Params, params: Params) {
         if (!params.check || this.fakeValuesDefaults.size == 0) {
             throw Exception(getResourceNotFound(key))
         }
@@ -100,95 +158,40 @@ class Fakeit private constructor(locale: Locale) {
         params.check = false
     }
 
-    fun fetchSelectedValue(key: String, category: String, selected: String): String {
-        var categoryValues = fetchCategory(key, category, true, this.fakeValues)
-        if (categoryValues[selected] == null) {
-            if (this.fakeValuesDefaults.size == 0) {
-                throw Exception(getResourceNotFound(key))
-            }
-            categoryValues = fetchCategory(key, category, false, this.fakeValuesDefaults)
-            if (categoryValues[selected] == null) {
-                throw Exception(getResourceNotFound(key))
-            }
-        }
-        when {
-            categoryValues[selected] is ArrayList<*> -> {
-                val values = categoryValues[selected] as ArrayList<ArrayList<String>>
-                if (values[0] is CharSequence) {
-                    return getRandomString(values as ArrayList<String>)
-                }
-                return getRandomString(values[Random().nextInt(values.size)])
-            }
-            categoryValues[selected] is String -> return categoryValues[selected] as String
-            else -> throw Exception("Resource $category.$selected is not a value")
-        }
-    }
-
-    fun fetch(key: String): String {
-        val separator = key.lastIndexOf(".")
-        val category = key.substring(0, separator)
-        val selected = key.substring(separator + 1, key.length)
-        val selectedValue = fetchSelectedValue(key, category, selected)
-
-        return when {
-            selectedValue.matches(Regex(numeralAndBracesRegEx)) -> fetchKeyValueData(category, selectedValue)
-            selectedValue.matches(Regex(numeralRegEx)) -> fetchNumerals(selectedValue)
-            else -> selectedValue
-        }
-    }
-
-    fun fetchNumerals(numeral: String): String {
+    private fun fetchKeyValueData(category: String, selectedValue: String): String {
         val stringBuffer = StringBuffer()
-        return matchAndReplace(numeral, stringBuffer, numeralOnlyRegEx,
-                { matcher -> matcher.appendReplacement(stringBuffer, Random().nextInt(10).toString()) })
+        return matchAndReplace(selectedValue, stringBuffer, numeralAndBracesRegEx, { matcher ->
+            matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group().replace("#{", "").replace("}", "")))
+        })
     }
 
-    fun fetchKeyValueData(category: String, selectedValue: String): String {
-        val stringBuffer = StringBuffer()
-        return matchAndReplace(selectedValue, stringBuffer, numeralAndBracesRegEx,
-                { matcher -> matcher.appendReplacement(stringBuffer, fetchValueByCategory(category, matcher.group(1))) })
-    }
-
-    fun fetchValueByCategory(category: String, key: String): String {
+    /***
+     * Initial method for recursive mode Example when the map random string return "#{Name.first_name} #{street_suffix}"
+     *
+     * @param key String for search Example: "address.secondary_address"
+     * @param category String the key for the map to return Example: "address"
+     *
+     * @return String random from map fetched
+     ***/
+    private fun fetchValueByCategory(category: String, key: String): String {
         val separator = key.lastIndexOf(".")
-        var dataCategory = category
-        var keyToFetch = key
-        var result: String
-
-        if (separator != -1) {
-            dataCategory = key.substring(0, separator).toLowerCase()
-            keyToFetch = key.substring(separator + 1, key.length)
-            result = fetchSelectedValue(key, dataCategory, keyToFetch)
+        return if (separator == -1) {
+            fetch("$category.$key".toLowerCase())
         } else {
-            val categoryValues = fakeValues[dataCategory] as? LinkedHashMap<String, ArrayList<String>> ?:
-                    fakeValuesDefaults[dataCategory] as LinkedHashMap<String, ArrayList<String>>
-            val selectedValues = categoryValues[keyToFetch] as ArrayList<String>
-            result = getRandomString(selectedValues)
+            fetch(key.toLowerCase())
         }
-
-        if (result.matches(Regex(numeralRegEx))) {
-            result = fetchNumerals(result)
-        }
-        if (result.matches(Regex(numeralAndBracesRegEx))) {
-            result = fetchKeyValueData(dataCategory, result)
-        }
-        return result
     }
 
-    fun matchAndReplace(stringToMatch: String, stringBuffer: StringBuffer, regExp: String, method: (Matcher) -> Matcher): String {
-        val matcher = Pattern.compile(regExp).matcher(stringToMatch)
-        while (matcher.find()) {
-            method(matcher)
-        }
-        matcher.appendTail(stringBuffer)
-        return stringBuffer.toString()
-    }
-
-    fun getRandomString(selectedValues: ArrayList<String>): String =
-            selectedValues[Random().nextInt(selectedValues.size)]
-
-    fun getResourceNotFound(key: String): String = "Resource not found $key"
-
+    /***
+     *  Search params holder class
+     *
+     *  @param separator Int position of "." char on the key search string
+     *  @param category String the key without the las part from last index of "." to end
+     *  Example: key: "address.secondary_address" category: "address"
+     *
+     *  @param check Boolean true if needed to check on default params
+     *  @param values LinkedHashMap<String, LinkedHashMap<String, String>> where to search the category
+     ***/
     data class Params(var separator: Int, var category: String, var check: Boolean,
                       var values: LinkedHashMap<String, LinkedHashMap<String, String>>)
 
@@ -290,7 +293,7 @@ class Fakeit private constructor(locale: Locale) {
         @JvmStatic
         fun company(): CompanyProvider = getProvider("company", { CompanyProviderImpl() }) as CompanyProvider
 
-        @JvmStatic  
+        @JvmStatic
         fun coffee(): CoffeeProvider = getProvider("coffee", { CoffeeProviderImpl() }) as CoffeeProvider
 
         @JvmStatic
